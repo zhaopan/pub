@@ -1,0 +1,15 @@
+#ubuntu16.04 LAMP INSTALL
+
+安装mysql
+sudo apt-get install mysql-server
+
+安装Apache
+sudo apt-get install apache2
+
+安装PHP 5 环境
+sudo apt-get install libapache2-mod-php5
+sudo a2enmod php5
+sudo service apache2 restart
+
+结合PHP与mysql
+sudo apt-get install php5-mysql
