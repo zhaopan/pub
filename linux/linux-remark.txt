@@ -1,20 +1,20 @@
-﻿sudo apt-get install ubuntu-desktop	//安装桌面
-netstat -tln 		//查看服务监听端口
-netstat      		//查看进程号
-ps -aux     		//查看进程号
-ps -aux | more 		//全部查看
+﻿sudo apt-get install ubuntu-desktop //安装桌面
+netstat -tln        //查看服务监听端口
+netstat             //查看进程号
+ps -aux             //查看进程号
+ps -aux | more      //全部查看
 ps -ef | grep mysql //查看mysql的进程
-pmap -x pid			//查看进程的内存占用
-kill -9 3306 		//强制杀掉进程号3306
-cat /etc/group 		//查看所有组
-cat /etc/shadow		//查看所有用户
-sudo passwd root 	//修改root密码的方法
-service vsftpd restart 	//重启服务
-/var/log/vsftpd.log	//ftp日志
-crontab -e			//cron定时任务
+pmap -x pid         //查看进程的内存占用
+kill -9 3306        //强制杀掉进程号3306
+cat /etc/group      //查看所有组
+cat /etc/shadow     //查看所有用户
+sudo passwd root    //修改root密码的方法
+service vsftpd restart  //重启服务
+/var/log/vsftpd.log //ftp日志
+crontab -e          //cron定时任务
 cat /etc/vsftpd.conf | grep -v "#" | more //显示去除#之外的行
-chkconfig -l		//检查开启的服务
-chkconfig serviceName off	//关闭开启的服务
+chkconfig -l        //检查开启的服务
+chkconfig serviceName off   //关闭开启的服务
 update-rc.d oracle-xe disable//停止oracle-xe服务。
 screen -S gogs 后台执行
 screen -R gogs 重连
@@ -31,9 +31,9 @@ tail -f log.txt | perl -pe 's/(ERROR)/\e[1;31m$1\e[0m/g'
 
 修改用户主目录的方法:
 1.vim /etc/passwd
-	找到要修改的用户那几行，修改掉即可。此法很暴力，建议慎用
+    找到要修改的用户那几行，修改掉即可。此法很暴力，建议慎用
 2.usermod -d /usr/newfolder -u uid
-	-u后面一定要接uid啊，不是username
+    -u后面一定要接uid啊，不是username
 
 
 测试磁盘写入效率 dd bs=64k count=4k if=/dev/zero of=test oflag=dsyn
@@ -108,8 +108,8 @@ lynx -dump http://www.baidu.com
 sudo apt-get install language-pack-gnome-zh-hans
 sudo apt-get update
 vim /etc/default/locale
-LANG="en_US.UTF-8"   	=> 	LANG="zh_CN.UTF-8"
-LANGUAGE="en_US:en"	=>	LANGUAGE="zh_CN:zh"
+LANG="en_US.UTF-8"      =>  LANG="zh_CN.UTF-8"
+LANGUAGE="en_US:en" =>  LANGUAGE="zh_CN:zh"
 sudo apt-get update
 sudo reboot
 
