@@ -1,18 +1,18 @@
-SELECT SUM(SinglePage_kb)+sum(MultiPage_kb) FROM
+SELECT SUM(SINGLEPAGE_KB)+SUM(MULTIPAGE_KB) FROM
 (
-SELECT sum(single_Pages_kb) as SinglePage_kb,
-	sum(multi_pages_kb) as MultiPage_kb
-FROM sys.dm_os_memory_clerks
-	GROUP BY type
-) AS a 
+SELECT SUM(SINGLE_PAGES_KB) AS SINGLEPAGE_KB,
+    SUM(MULTI_PAGES_KB) AS MULTIPAGE_KB
+FROM SYS.DM_OS_MEMORY_CLERKS
+    GROUP BY TYPE
+) AS A
 
 UNION
-SELECT COUNT(row_count) * 8.0 FROM sys.dm_os_buffer_descriptors
+SELECT COUNT(ROW_COUNT) * 8.0 FROM SYS.DM_OS_BUFFER_DESCRIPTORS
 
-SELECT 
-	ISNULL(DB_NAME(database_id),'ResourceDb') AS DatabaseName
-	, CAST(COUNT(row_count) * 8.0 / (1024.0) AS DECIMAL(28,2))
-												AS [Size (MB)]
-FROM sys.dm_os_buffer_descriptors
-GROUP BY database_id
-ORDER BY DatabaseName
+SELECT
+    ISNULL(DB_NAME(DATABASE_ID),'RESOURCEDB') AS DATABASENAME
+    , CAST(COUNT(ROW_COUNT) * 8.0 / (1024.0) AS DECIMAL(28,2))
+                                                AS [SIZE (MB)]
+FROM SYS.DM_OS_BUFFER_DESCRIPTORS
+GROUP BY DATABASE_ID
+ORDER BY DATABASENAME

@@ -1,12 +1,12 @@
-declare @val nvarchar(200)
-declare my_cursor cursor local static read_only forward_only for 
-select order_num from transportquarantinecert
-open my_cursor
-fetch from my_cursor into @val
-while @@fetch_status = 0
-	begin
+DECLARE @VAL NVARCHAR(200)
+DECLARE MY_CURSOR CURSOR LOCAL STATIC READ_ONLY FORWARD_ONLY FOR
+SELECT ORDER_NUM FROM TRANSPORTQUARANTINECERT
+OPEN MY_CURSOR
+FETCH FROM MY_CURSOR INTO @VAL
+WHILE @@FETCH_STATUS = 0
+    BEGIN
 
-		fetch from my_cursor into @val
-	end
-close my_cursor
-deallocate my_cursor
+        FETCH FROM MY_CURSOR INTO @VAL
+    END
+CLOSE MY_CURSOR
+DEALLOCATE MY_CURSOR
