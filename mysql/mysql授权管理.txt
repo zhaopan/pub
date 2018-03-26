@@ -16,3 +16,6 @@ mysql>grant all privileges on channel.* to mysqluser@"%";--所有权限
 mysql>flush privileges;--刷新系统权限表
 mysql>grant select,delete,update,create,drop on channel.* to mysqluser@"%";--部分权限
 mysql>flush privileges;--刷新系统权限表
+
+create database gogs engine = innodb 
+create database if not exists gogs default character set utf8 COLLATE utf8_general_ci
