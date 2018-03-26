@@ -80,7 +80,7 @@ log-queries-not-using-indexes = nouseindex.log --就是字面意思，log下来�
 log=mylog.log --对所有执行语句进行记录
 
 backup:
-mysqldump -u root -p zs_activity>zs_activity.sql
+mysqldump -u root -p caixin>caixin.sql
 return:
 mysql -u root -p zs_activity<zs_activity.sql
 

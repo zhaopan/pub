@@ -16,8 +16,8 @@ cat /etc/vsftpd.conf | grep -v "#" | more //显示去除#之外的行
 chkconfig -l        //检查开启的服务
 chkconfig serviceName off   //关闭开启的服务
 update-rc.d oracle-xe disable//停止oracle-xe服务。
-screen -S gogs 后台执行
-screen -R gogs 重连
+screen -S ngrok 后台执行
+screen -R ngrok 重连
 
 目录755、文件664
 chmod 666 -R ./
