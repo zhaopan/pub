@@ -71,16 +71,16 @@ $create database if not exists gogs default character set utf8 COLLATE utf8_gene
 
 ## Centos Install gogs
 
-## Pull gogs image from Docker Hub
-
-```bash
-$docker pull gogs/gogs
-```
-
 ## Create local directory for volume
 
 ```bash
 $mkdir -p /var/gogs
+```
+
+## Pull gogs image from Docker Hub
+
+```bash
+$docker pull gogs/gogs
 ```
 
 ## Use `docker run` gogs for the first time
