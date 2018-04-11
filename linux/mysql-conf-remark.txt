@@ -47,10 +47,8 @@ change master to master_host='127.0.0.1',master_user='root',master_password='pwd
 start slave;
 #end client start slave
 
-
 show slave status\G;	#检查服务是否启动
 change master to master_host='';	#客户端取消主从
-
 
 #不完全解决办法:
 ----------------------------------------------------------
