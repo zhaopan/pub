@@ -5,21 +5,31 @@
 在运行一个非常消耗资源的find命令时，很多人都倾向于把它放在后台执行，因为遍历一个大的文件系统可能会花费很长的时间(这里是指30G字节以上的文件系统)。
 
 ## 1，在某个路径下查文件。
-
-	在/etc下查找"*.log"的文件 find /etc -name "*.log"
+在/etc下查找"*.log"的文件 
+```bash
+find /etc -name "*.log"
+```
 
 ## 2，扩展，列出某个路径下所有文件，包括子目录。
-	find /etc -name "*"
+```bash
+find /etc -name "*"
+```
 
 ## 3，在某个路径下查找所有包含"hello abcserver"字符串的文件。
-	find /etc -name "*" | xargs grep "hello abcserver"
-	或者
-	find /etc -name "*" | xargs grep "hello abcserver" > ./cqtest.txt
+```bash
+find /etc -name "*" | xargs grep "hello abcserver"
+```
+或者
+```bash
+find /etc -name "*" | xargs grep "hello abcserver" > ./cqtest.txt
+```
 
 ##  一、find 命令格式
 
 ###  1、find命令的一般形式为；
-	find pathname -options [-print -exec -ok ...]
+```bash
+find pathname -options [-print -exec -ok ...]
+```
 
 ###  2、find命令的参数；
 	pathname: find命令所查找的目录路径。例如用.来表示当前目录，用/来表示系统根目录。
