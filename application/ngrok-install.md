@@ -90,7 +90,9 @@ ngrokd -log=ngrok_log.txt -domain="tunnel.xx.com" -httpAddr=":8000" #注意$NGRO
 ```
 
 ## windows配置文件
+
 `示例:windows配置文件`
+
 ```bash
 #ngrok-test.cfg 单独映射
 server_addr: "tunnel.xx.com:4443"
@@ -113,6 +115,7 @@ api:
 ```
 
 ## 启动windows客户端
+
 `示例:windows启动`
 
 ```bash
