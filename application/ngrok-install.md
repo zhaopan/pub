@@ -84,22 +84,54 @@ GOOS=windows GOARCH=amd64 make release-client
 ## 启动服务端
 
 ```bash
+#linux.sh
+
 ngrokd -log=ngrok_log.txt -domain="tunnel.xx.com" -httpAddr=":8000" #注意$NGROK_DOMAIN在系统重启后会释放这个值，所以用常量
 ```
 
 ## windows配置文件
-
-ngrok.cfg
-
+`示例:windows配置文件`
 ```bash
+#ngrok-test.cfg 单独映射
 server_addr: "tunnel.xx.com:4443"
 trust_host_root_certs: false
 ```
 
+```bash
+#ngrok-git-api.cfg 批量映射
+server_addr:"tunnel.xx.com:4443"
+trust_host_root_certs:false
+tunnels:
+git:
+  subdomain:git
+  proto:
+  http:8000
+api:
+  subdomain:api
+  proto:
+  http:8000
+```
+
 ## 启动windows客户端
+`示例:windows启动`
 
 ```bash
-ngrok -config=ngrok.cfg -log=ngrok_log.txt -subdomain upal 80
+bin #ngrokd文件夹
+conf #配置文件夹
+    ngrok-test.cfg #单独启动
+    ngrok-git-api.cfg #批量启动
+start-test.bat #bat启动文件-单独
+start-git-api.bat #bat启动文件-批量启动
+```
+
+```bash
+#start-test.bat 单独启动
+bin\ngrok -config=ngrok-test.cfg -log=ngrok_log.txt -subdomain=test 80
+```
+
+```bash
+#start-git-api.bat 批量启动
+bin\ngrok -config=conf\ngrok-git-api.cfg -log=ngrok_log.txt start api git
 ```
 
 `注意:`
