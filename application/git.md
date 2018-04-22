@@ -1,12 +1,9 @@
 # git remark
 
 ## git保存密码
-
-`vim .git/config`
-
+`$vim .git/config`
 ```xml
 [credential]
-
     helper = store
 ```
 
