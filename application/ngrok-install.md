@@ -94,24 +94,24 @@ ngrokd -log=ngrok_log.txt -domain="tunnel.xx.com" -httpAddr=":8000" #注意$NGRO
 `示例:windows配置文件`
 
 ```bash
-#ngrok-test.cfg 单独映射
+#ngrok-test.yml 单独映射
 server_addr: "tunnel.xx.com:4443"
 trust_host_root_certs: false
 ```
 
 ```bash
-#ngrok-git-api.cfg 批量映射
-server_addr:"tunnel.xx.com:4443"
-trust_host_root_certs:false
+#ngrok-git-api.yml 批量映射
+server_addr: "tunnel.xx.com:4443"
+trust_host_root_certs: false
 tunnels:
-git:
-  subdomain:git
-  proto:
-  http:8000
-api:
-  subdomain:api
-  proto:
-  http:8000
+  git:
+    subdomain: git
+    proto:
+      http: 8000
+  api:
+    subdomain: api
+    proto:
+      http: 8000
 ```
 
 ## 启动windows客户端
@@ -121,20 +121,22 @@ api:
 ```bash
 bin #ngrokd文件夹
 conf #配置文件夹
-    ngrok-test.cfg #单独启动
-    ngrok-git-api.cfg #批量启动
+    ngrok-test.yml #单独启动
+    ngrok-git-api.yml #批量启动
+logs
+    ...#日志文件    
 start-test.bat #bat启动文件-单独
 start-git-api.bat #bat启动文件-批量启动
 ```
 
 ```bash
 #start-test.bat 单独启动
-bin\ngrok -config=ngrok-test.cfg -log=ngrok_log.txt -subdomain=test 80
+bin\ngrok -config=ngrok-test.yml -log=logs\ngrok_log.txt -subdomain=test 80
 ```
 
 ```bash
 #start-git-api.bat 批量启动
-bin\ngrok -config=conf\ngrok-git-api.cfg -log=ngrok_log.txt start api git
+bin\ngrok -config=conf\ngrok-git-api.yml -log=logs\ngrok_log.txt start api git
 ```
 
 `注意:`
