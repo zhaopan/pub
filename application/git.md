@@ -417,7 +417,7 @@ $ git commit -am 'commit remark'
 $ git push origin master
 ```
 
-- **分支推送，若远程不存在分支则在远程创建新分支**
+**分支推送，若远程不存在分支则在远程创建新分支**
 ```bash
 $ git push origin 本地分支名:远程分支名
 ```
