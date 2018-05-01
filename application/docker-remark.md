@@ -25,6 +25,7 @@ $docker-compose --version
 **Install nginx**
 
 - **Default config nginx**
+
 ```bash
 $docker pull nginx
 $docker run --name nginx -p 80:80 -d nginx
