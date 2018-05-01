@@ -3,6 +3,7 @@
 **Install Docker**
 
 - **aliyun docker mirror**
+
 ```bash
 $curl -fsSL get.docker.com -o get-docker.sh
 $sudo sh get-docker.sh --mirror Aliyun
@@ -30,6 +31,7 @@ $docker run --name nginx -p 80:80 -d nginx
 ```
 
 - **Custom config nginx**
+
 ```bash
 #创建配置文件目录
 $mkdir -p ~/nginx/conf
