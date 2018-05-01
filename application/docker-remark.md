@@ -3,7 +3,6 @@
 **Install Docker**
 
 - **aliyun docker mirror**
-
 ```bash
 $ curl -fsSL get.docker.com -o get-docker.sh
 $ sudo sh get-docker.sh --mirror Aliyun
@@ -17,7 +16,6 @@ $ sudo systemctl start docker
 ```
 
 **Install docker-compose**
-
 ```bash
 $ sudo curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 $ sudo chmod +x /usr/local/bin/docker-compose
@@ -34,7 +32,6 @@ $ docker run --name nginx -p 80:80 -d nginx
 ```
 
 - **Custom config nginx**
-
 ```bash
 # 创建配置文件目录
 $ mkdir -p ~/nginx/conf
@@ -49,13 +46,11 @@ $ docker run --name nginx -v ~/nginx/nginx.conf:/etc/nginx/nginx.conf:ro -d -p 8
 ```
 
 **Install apache**
-
 ```bash
 $ docker pull httpd
 ```
 
 **Install shadowsocks**
-
 ```bash
 $ docker run -dt --name shadowsocks -p 22354:22354 -p 22353:22353/udp mritd/shadowsocks -m "ss-server" -s "-s 0.0.0.0 -p 22354 -m chacha20-ietf -k 密码 --fast-open" -x -e "kcpserver" -k "-t 127.0.0.1:22354 -l :22353 -mode fast2 -dscp 46 -mtu 1350 -crypt salsa20 -datashard 7 -parityshard 3 -interval 10 -key kcp密码"
 ```
@@ -94,7 +89,6 @@ $ docker start gogs
 ```
 
 **Create docker network**
-
 ```bash
 $ docker network create mynet
 ```
