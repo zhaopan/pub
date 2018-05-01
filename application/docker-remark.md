@@ -32,6 +32,7 @@ $ docker run --name nginx -p 80:80 -d nginx
 ```
 
 - **Custom config nginx**
+
 ```bash
 # 创建配置文件目录
 $ mkdir -p ~/nginx/conf
@@ -56,8 +57,6 @@ $ docker pull httpd
 ```bash
 $ docker run -dt --name shadowsocks -p 22354:22354 -p 22353:22353/udp mritd/shadowsocks -m "ss-server" -s "-s 0.0.0.0 -p 22354 -m chacha20-ietf -k 密码 --fast-open" -x -e "kcpserver" -k "-t 127.0.0.1:22354 -l :22353 -mode fast2 -dscp 46 -mtu 1350 -crypt salsa20 -datashard 7 -parityshard 3 -interval 10 -key kcp密码"
 ```
-
-
 
 **Install mysql**
 ```bash
