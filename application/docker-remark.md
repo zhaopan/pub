@@ -10,7 +10,8 @@ $ sudo sh get-docker.sh --mirror Aliyun
 ```
 
 **Auto start docker**
-```
+
+```bash
 $ sudo systemctl enable docker
 $ sudo systemctl start docker
 ```
@@ -26,12 +27,14 @@ $ docker-compose --version
 **Install nginx**
 
 - **Default config nginx**
+
 ```bash
 $ docker pull nginx
 $ docker run --name nginx -p 80:80 -d nginx
 ```
 
 - **Custom config nginx**
+
 ```bash
 # 创建配置文件目录
 $ mkdir -p ~/nginx/conf
@@ -57,9 +60,8 @@ $ docker pull httpd
 $ docker run -dt --name shadowsocks -p 22354:22354 -p 22353:22353/udp mritd/shadowsocks -m "ss-server" -s "-s 0.0.0.0 -p 22354 -m chacha20-ietf -k 密码 --fast-open" -x -e "kcpserver" -k "-t 127.0.0.1:22354 -l :22353 -mode fast2 -dscp 46 -mtu 1350 -crypt salsa20 -datashard 7 -parityshard 3 -interval 10 -key kcp密码"
 ```
 
-
-
 **Install mysql**
+
 ```bash
 # Pull mysql image from Docker Hub
 $ docker pull mysql
@@ -76,6 +78,7 @@ $ create database if not exists gogs default character set utf8 COLLATE utf8_gen
 ```
 
 **Install gogs**
+
 ```bash
 # Create local directory for volume
 $ mkdir -p /var/gogs
@@ -86,7 +89,7 @@ $ docker pull gogs/gogs
 # Use `docker run` gogs for the first time
 $ sudo docker run --name=gogs -p 10022:22 -p 10080:3000 -v /var/gogs:/data -d gogs/gogs --net mynet
 
-#Use `docker start` gogs if you have stopped it
+# Use `docker start` gogs if you have stopped it
 $ docker start gogs
 ```
 
