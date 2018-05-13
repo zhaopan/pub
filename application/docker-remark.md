@@ -10,6 +10,7 @@ $ sudo sh get-docker.sh --mirror Aliyun
 ```
 
 **Auto start docker**
+
 ```bash
 $ sudo systemctl enable docker
 $ sudo systemctl start docker
@@ -57,6 +58,7 @@ $ docker run -dt --name shadowsocks -p 22354:22354 -p 22353:22353/udp mritd/shad
 ```
 
 **Install mysql**
+
 ```bash
 # Pull mysql image from Docker Hub
 $ docker pull mysql
@@ -73,6 +75,7 @@ $ create database if not exists gogs default character set utf8 COLLATE utf8_gen
 ```
 
 **Install gogs**
+
 ```bash
 # Create local directory for volume
 $ mkdir -p /var/gogs
