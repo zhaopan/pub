@@ -3,6 +3,7 @@
 **Install Docker**
 
 - **aliyun docker mirror**
+
 ```bash
 $ curl -fsSL get.docker.com -o get-docker.sh
 $ sudo sh get-docker.sh --mirror Aliyun
@@ -24,12 +25,14 @@ $ docker-compose --version
 **Install nginx**
 
 - **Default config nginx**
+
 ```bash
 $ docker pull nginx
 $ docker run --name nginx -p 80:80 -d nginx
 ```
 
 - **Custom config nginx**
+
 ```bash
 # 创建配置文件目录
 $ mkdir -p ~/nginx/conf
@@ -80,7 +83,7 @@ $ docker pull gogs/gogs
 # Use `docker run` gogs for the first time
 $ sudo docker run --name=gogs -p 10022:22 -p 10080:3000 -v /var/gogs:/data -d gogs/gogs --net mynet
 
-#Use `docker start` gogs if you have stopped it
+# Use `docker start` gogs if you have stopped it
 $ docker start gogs
 ```
 
