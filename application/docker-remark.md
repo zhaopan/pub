@@ -44,8 +44,16 @@ $ docker cp tmp-nginx-container:/etc/nginx/nginx.conf ~/nginx/conf/nginx.conf
 $ docker rm -f tmp-nginx-container
 
 # 运行自定义配置文件的nginx容器
-$ docker run --name nginx -v ~/nginx/nginx.conf:/etc/nginx/nginx.conf:ro -d -p 8080:80 nginx
+$ docker run \
+--name nginx \
+-p 80:80 -d \
+-v ~/nginx/html:/usr/share/nginx/html \
+-v ~/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro \
+-v ~/nginx/conf/conf.d:/etc/nginx/conf.d \
+nginx
 ```
+
+
 
 **Install apache**
 ```bash
@@ -98,3 +106,9 @@ $ docker network create mynet
 **docker yml.file**
 
 **Dockerfile**
+
+**Lookup docker logs**
+```bash
+journalctl -u docker.service
+docker logs -f -t nginx
+```
