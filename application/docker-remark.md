@@ -44,7 +44,18 @@ $ docker cp tmp-nginx-container:/etc/nginx/nginx.conf ~/nginx/conf/nginx.conf
 $ docker rm -f tmp-nginx-container
 
 # 运行自定义配置文件的nginx容器
-$ docker run --name nginx -v ~/nginx/nginx.conf:/etc/nginx/nginx.conf:ro -d -p 8080:80 nginx
+$ docker run \
+--name nginx \
+-d -p 80:80 \
+-v ~/nginx/html:/usr/share/nginx/html \
+-v ~/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro \
+-v ~/nginx/conf/conf.d:/etc/nginx/conf.d \
+nginx
+
+
+# 自动重启
+docker update --restart=always nginx
+
 ```
 
 **Install apache**
@@ -72,6 +83,9 @@ $ docker exec -it mysql mysql -uroot -p
 # Container Shell Access
 $ docker exec -it mysql bash
 $ create database if not exists gogs default character set utf8 COLLATE utf8_general_ci
+
+# 自动重启
+docker update --restart=always mysql
 ```
 
 **Install gogs**
@@ -88,6 +102,9 @@ $ sudo docker run --name=gogs -p 10022:22 -p 10080:3000 -v /var/gogs:/data -d go
 
 # Use `docker start` gogs if you have stopped it
 $ docker start gogs
+
+# 自动重启
+docker update --restart=always gogs
 ```
 
 **Create docker network**
@@ -98,3 +115,9 @@ $ docker network create mynet
 **docker yml.file**
 
 **Dockerfile**
+
+**Lookup docker logs**
+```bash
+journalctl -u docker.service
+docker logs -f -t nginx
+```
