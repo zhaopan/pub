@@ -4,16 +4,17 @@
 
 一般来说，日常使用只要记住下图6个命令，就可以了。但是熟练使用，恐怕要要记住60~100个命令。
 
-![git](https://fkwar.oss-cn-beijing.aliyuncs.com/869f4282-8b84-4bd9-a582-37193acd6d23.png)
+![git](http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png)
 
-**下面整理的 Git 命令清单。几个专业名词的译名如下。**
+## 下面整理的 Git 命令清单。几个专业名词的译名如下。
 
 - Workspace：工作区
 - Index / Stage：暂存区
 - Repository：仓库区（本地仓库）
 - Remote：远程仓库
 
-**新建版本仓库**
+## 新建版本仓库
+
 ```bash
 # 在当前目录新建一个Git代码库
 $ git init
@@ -25,9 +26,10 @@ $ git init [project-name]
 $ git clone [-o faker] [url]
 ```
 
-**配置**
+## 配置
 
 Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
+
 ```bash
 # 显示当前的Git配置
 $ git config --list
@@ -43,7 +45,8 @@ $ git config [--global] user.email "[email address]"
 $ git config core.ignorecase  false
 ```
 
-**增加/删除文件**
+## 增加/删除文件
+
 ```bash
 # 添加指定文件到暂存区
 $ git add [file1] [file2] ...
@@ -68,7 +71,8 @@ $ git rm --cached [file]
 $ git mv [file-original] [file-renamed]
 ```
 
-**代码提交**
+## 代码提交
+
 ```bash
 # 提交暂存区到仓库区
 $ git commit -m [message]
@@ -90,7 +94,8 @@ $ git commit --amend -m [message]
 $ git commit --amend [file1] [file2] ...
 ```
 
-**分支**
+## 分支
+
 ```bash
 # 列出所有本地分支
 $ git branch
@@ -158,7 +163,8 @@ $ git push origin --delete [branch-name]
 $ git branch -dr [remote/branch]
 ```
 
-**标签**
+## 标签
+
 ```bash
 # 列出所有tag
 $ git tag
@@ -188,7 +194,8 @@ $ git push [remote] --tags
 $ git checkout -b [branch] [tag]
 ```
 
-**查看信息/搜索**
+## 查看信息/搜索
+
 ```bash
 # 显示有变更的文件
 $ git status [-sb] #s:short,给一个短格式的展示，b:展示当前分支
@@ -278,7 +285,8 @@ $ git log -SiCheck --oneline
 $ git log -L :git_deflate_bound:zlib.c
 ```
 
-**远程同步**
+## 远程同步
+
 ```bash
 # 下载远程仓库的所有变动 [shortname] 为远程仓库的shortname, 如origin,为空时:默认origin
 $ git fetch [shortname]
@@ -321,7 +329,8 @@ $ git push [remote] --all
 $ git push [remote] --force
 ```
 
-**撤销**
+## 撤销
+
 ```bash
 # 恢复暂存区的指定文件到工作区
 $ git checkout [file]
@@ -381,55 +390,40 @@ $ git stash list
 $ git clean -f -d
 ```
 
-**其他**
+## 常规命令
+
 ```bash
 # 生成一个可供发布的压缩包
 $ git archive
-```
 
-**本地存储密码**
-```bash
+# 快速本地保存密码
 $ echo -e "[credential] \n\thelper = store">> .git/config
-```
 
-**获取最新**
-```bash
+# 拉取最新版本
 $ git reset --hard
 $ git pull
-```
 
-**覆盖本地仓库**
-```bash
+# 覆盖本地仓库
 $ git fetch origin master
-```
 
-**拉取 Git 远端分支**
-> 例如，我要拉取远端其他小伙伴提交的新分支 test
-
-```bash
+# 例如，我要拉取远端其他小伙伴提交的新分支 test
 $ git fetch
 $ git checkout -b test origin/test
-```
 
-**git commit**
-```bash
+# 提交到本地仓库
 $ git commit -am 'commit remark'
+
+# 推送至远程仓库
 $ git push origin master
-```
 
-**分支推送，若远程不存在分支则在远程创建新分支**
-```bash
+# 分支推送，若远程不存在分支则在远程创建新分支
 $ git push origin 本地分支名:远程分支名
-```
 
-**查看用户名和邮箱地址**
-```bash
+# 查看用户名和邮箱地址
 $ git config user.name
 $ git config user.email
-```
 
-**修改用户名和邮箱地址**
-```bash
+# 修改用户名和邮箱地址
 $ git config --global user.name "xxx"
 $ git config --global user.email "xxx@gmail.com"
 ```
