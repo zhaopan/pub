@@ -90,6 +90,7 @@ http {
 - nginx/conf/conf.d/default.conf
 
 ```nginx
+server {
     listen       80;
     server_name  localhost;
 
@@ -110,7 +111,7 @@ server {
     server_name  git.***.com;
     client_max_body_size 50m;
     location / {
-        #一定要注意这里是docker 容器的内网地址+端口,以"/"结尾,不然会报错。
+        #一定要注意这里是docker容器的内网地址+端口,以"/"结尾,不然会报错。
         proxy_pass http://172.17.0.3:3000/;
         proxy_redirect default;
         proxy_buffer_size 64k;
