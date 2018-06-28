@@ -1,3 +1,6 @@
+# mysql-conf-notes
+
+```conf
 [client]
 port = 3306
 socket = /home/mysql/mysql/tmp/mysql.sock
@@ -114,3 +117,4 @@ max_allowed_packet = 64M
 disable-auto-rehash #允许通过TAB键提示
 default-character-set = utf8
 connect-timeout = 3
+```
