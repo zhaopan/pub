@@ -1,5 +1,8 @@
-#service conf:
-----------------------------------------------------------
+# mysql-conf-remark
+
+## service conf
+
+```conf
 #conf syn data
 server-id=1 #主数据库一般都是id为1
 log-bin=mysql-bin #必须的
@@ -11,9 +14,11 @@ relay-log=relay-bin
 relay-log-index=relay-bin-index
 replicate-do-db=oto_shop_server #需要同步的文件，记入二进制日志，可列多行
 #endconf syn data
+```
 
-#client conf:
-----------------------------------------------------------
+## client conf
+
+```conf
 #conf syn data
 server-id=243 #建议门店编号(整型)
 expire_logs_days=15 #为避免日志文件过大，设置过期时间为15天
@@ -37,11 +42,12 @@ replicate_do_table=oto_shop_client.GoodsAttribute
 replicate_do_table=oto_shop_client.GoodsType
 #end syn data table
 #endconf syn data
+```
 
+## client slave setting
 
-#客户端主从设置
-----------------------------------------------------------
-#client start slave
+```conf
+# client start slave
 stop slave;
 change master to master_host='127.0.0.1',master_user='root',master_password='pwd***';
 start slave;
@@ -49,9 +55,12 @@ start slave;
 
 show slave status\G;	#检查服务是否启动
 change master to master_host='';	#客户端取消主从
+```
 
-#不完全解决办法:
-----------------------------------------------------------
+## 不完全解决办法
+
+```bash
 slave stop;
 set global sql_slave_skip_counter=1;
 slave start;
+```

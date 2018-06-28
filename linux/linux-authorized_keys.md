@@ -1,23 +1,27 @@
-1)linux服务器端生成key
+# linux-authorized_keys
+
+```bash
+# 1.生成私钥
+
+`linux`
 ssh-keygen -t rsa
 cat id_rsa.pub >> authorized_keys
 
-2)windows端使用puttygen加载id_rsa，另存为.ppk
-
-3)设置putty
+`Windows`
+#windows端使用puttygen加载id_rsa，另存为.ppk
 conection->data->auto-login，设置默认用户名
 ssh->auth->加载私钥(*.ppk)
 
-4）修改配置
+## 2.修改Linux配置
 sudo vim /etc/ssh/sshd_config
 PubkeyAuthentication yes
 AuthorizedKeysFile ~/.ssh/authorized_keys
 
-5）设置权限
+## 3.设置权限
 chmod 755 ~
 chmod 700 ~/.ssh
 chmod 644 ~/.ssh/authorized_keys
 
-6)重启ssh
+## 4.重启ssh
 sudo /etc/init.d/ssh restart
-成功登录了。
+```
