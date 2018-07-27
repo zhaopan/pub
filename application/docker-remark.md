@@ -176,6 +176,9 @@ $docker start gogs
 
 # 自动重启
 $docker update --restart=always gogs
+
+# nginx proxy gogs conf
+$see cref="install nginx"
 ```
 
 ## Create docker network

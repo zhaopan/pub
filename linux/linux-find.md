@@ -352,6 +352,7 @@ $find / -name "CON.FILE" -depth -print
 ### 12、使用mount选项
 
 在当前的文件系统中查找文件（不进入其他文件系统），可以使用find命令的mount选项。
+
 ```bash
 #从当前目录开始查找位于本文件系统中文件名以XC结尾的文件：
 $find . -name "*.XC" -mount -print
