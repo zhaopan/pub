@@ -185,6 +185,11 @@ $see cref="install nginx"
 
 ```bash
 $docker network create mynet
+# 步骤1: 创建自定义网络
+# 创建自定义网络，并且指定网段：172.17.0.0/16
+$docker network create --subnet=172.17.0.0/16 mynetwork
+# 步骤2: 创建Docker容器
+$docker run -itd --name mysql --net mynetwork --ip 172.17.0.2 centos:latest /bin/bash
 ```
 
 ## docker yml.file
