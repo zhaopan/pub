@@ -61,7 +61,7 @@ sudo docker run \
 docker update --restart=always nginx
 ```
 
-- nginx/conf/nginx.conf
+- ~/nginx/conf/nginx.conf
 
 ```nginx
 user  nginx;
@@ -87,7 +87,7 @@ http {
 
 ```
 
-- nginx/conf/conf.d/default.conf
+- ~/nginx/conf/conf.d/default.conf
 
 ```nginx
 server {
@@ -103,7 +103,7 @@ server {
 
 ```
 
-- nginx/conf/conf.d/git.conf
+- ~/nginx/conf/conf.d/git.conf
 
 ```nginx
 server {
@@ -176,6 +176,9 @@ docker start gogs
 
 # 自动重启
 docker update --restart=always gogs
+
+# 进入gogs容器修改配置
+docker exec -it gogs bash
 
 # nginx proxy gogs conf
 see cref="install nginx"
