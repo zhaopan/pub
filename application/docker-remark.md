@@ -180,6 +180,9 @@ docker update --restart=always gogs
 # 进入gogs容器修改配置
 docker exec -it gogs bash
 
+# 配置文件
+vim /var/gogs/conf/app.ini
+
 # nginx proxy gogs conf
 see cref="install nginx"
 ```
