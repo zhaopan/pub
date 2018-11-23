@@ -24,6 +24,18 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
+## Create docker network
+
+```bash
+docker network create mynet
+# 步骤1: 创建自定义网络
+# 创建自定义网络，并且指定网段：172.18.0.0/16
+docker network create --subnet=172.18.0.0/16 mynetwork
+# 步骤2: 创建Docker容器
+# 示例：
+docker run -itd --name mysql --net mynetwork --ip 172.18.0.2 centos:latest /bin/bash
+```
+
 ## Install nginx
 
 - Default config nginx
@@ -51,6 +63,8 @@ docker rm -f tmp-nginx-container
 sudo docker run \
 --name nginx \
 --restart=always \
+--net mynetwork \
+--ip 172.18.0.3 \
 -p 80:80 \
 -v ~/nginx/html:/usr/share/nginx/html \
 -v ~/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro \
@@ -84,7 +98,6 @@ http {
     keepalive_timeout  65;
     include /etc/nginx/conf.d/*.conf;
 }
-
 ```
 
 - ~/nginx/conf/conf.d/default.conf
@@ -100,7 +113,6 @@ server {
         autoindex  on;
     }
 }
-
 ```
 
 - ~/nginx/conf/conf.d/git.conf
@@ -112,7 +124,7 @@ server {
     client_max_body_size 50m;
     location / {
         #一定要注意这里是docker容器的内网地址+端口,以"/"结尾,不然会报错。
-        proxy_pass http://172.17.0.3:3000/;
+        proxy_pass http://172.18.0.3:3000/;
         proxy_redirect default;
         proxy_buffer_size 64k;
         proxy_buffers 32 32k;
@@ -166,6 +178,7 @@ docker pull gogs/gogs
 sudo docker run \
 --name=gogs \
 --restart=always \
+--net mynetwork --ip 172.18.0.4 \
 -p 10022:22 \
 -p 10080:3000 \
 -v /var/gogs:/data \
@@ -185,17 +198,6 @@ vim /var/gogs/conf/app.ini
 
 # nginx proxy gogs conf
 see cref="install nginx"
-```
-
-## Create docker network
-
-```bash
-docker network create mynet
-# 步骤1: 创建自定义网络
-# 创建自定义网络，并且指定网段：172.17.0.0/16
-docker network create --subnet=172.17.0.0/16 mynetwork
-# 步骤2: 创建Docker容器
-docker run -itd --name mysql --net mynetwork --ip 172.17.0.2 centos:latest /bin/bash
 ```
 
 ## docker yml.file
