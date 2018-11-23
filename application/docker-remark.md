@@ -201,6 +201,10 @@ see cref="install nginx"
 ```
 
 ## docker yml.file
+```
+docker-compose up -d
+docker build -t nginx .
+```
 
 ## Dockerfile
 
