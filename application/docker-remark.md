@@ -27,7 +27,7 @@ docker-compose --version
 ## Create docker network
 
 ```bash
-docker network create mynet
+docker network create mynetwork
 # 步骤1: 创建自定义网络
 # 创建自定义网络，并且指定网段：172.18.0.0/16
 docker network create --subnet=172.18.0.0/16 mynetwork
@@ -36,13 +36,39 @@ docker network create --subnet=172.18.0.0/16 mynetwork
 docker run -itd --name mysql --net mynetwork --ip 172.18.0.2 centos:latest /bin/bash
 ```
 
+## Install php
+
+```bash
+
+# install php-fpm镜像
+docker pull bitnami/php-fpm
+
+# run docker-container
+docker run \
+--name php-fpm \
+--restart=always \
+--net mynetwork \
+--ip 172.18.0.4 \
+-v ~/nginx/html:/usr/share/nginx/html \
+-d docker.io/bitnami/php-fpm
+# -d : 该参数为后台运行之意
+# -v : 指定宿主机与容器的映射关系。/var/www/html为宿主机的项目目录（自定义的），/usr/share/nginx/html为nginx服务器项目默认的路径。
+
+```
+
 ## Install nginx
 
 - Default config nginx
 
 ```bash
-docker pull nginx
+# 创建配置文件目录
+mkdir -p ~/nginx/conf
+mkdir -p ~/nginx/conf/conf.d
+
+# 将默认的配置文件复制到配置文件目录,然后删掉该容器
 docker run --name tmp-nginx -p 80:80 -d nginx
+docker cp tmp-nginx:/etc/nginx/conf.d ~/nginx/conf
+docker cp tmp-nginx:/etc/nginx/nginx.conf ~/nginx/conf/nginx.conf
 docker start tmp-nginx
 docker rm -f tmp-nginx
 ```
@@ -50,15 +76,6 @@ docker rm -f tmp-nginx
 - Custom config nginx
 
 ```bash
-# 创建配置文件目录
-mkdir -p ~/nginx/conf
-
-# 将默认的配置文件复制到配置文件目录,然后删掉该容器
-docker run --name tmp-nginx-container -d nginx
-docker cp tmp-nginx-container:/etc/nginx/nginx.conf ~/nginx/conf/nginx.conf
-docker start tmp-nginx-container
-docker rm -f tmp-nginx-container
-
 # 运行自定义配置文件的nginx容器
 sudo docker run \
 --name nginx \
@@ -139,12 +156,6 @@ server {
 docker pull httpd
 ```
 
-## Install shadowsocks
-
-```bash
-docker run -dt --name shadowsocks -p 22354:22354 -p 22353:22353/udp mritd/shadowsocks -m "ss-server" -s "-s 0.0.0.0 -p 22354 -m chacha20-ietf -k 密码 --fast-open" -x -e "kcpserver" -k "-t 127.0.0.1:22354 -l :22353 -mode fast2 -dscp 46 -mtu 1350 -crypt salsa20 -datashard 7 -parityshard 3 -interval 10 -key kcp密码"
-```
-
 ## Install mysql
 
 ```bash
@@ -152,7 +163,16 @@ docker run -dt --name shadowsocks -p 22354:22354 -p 22353:22353/udp mritd/shadow
 docker pull mysql
 
 # Use `docker run` mysql for the first time
-sudo docker run --name=mysql -p 3306:3306 -e MYSQL\_ROOT\_PASSWORD=123456 -d mysql
+sudo docker run \
+--name=mysql \
+--restart=always \
+--net mynetwork \
+--ip 172.18.0.2 \
+-v ~/mysql/my.cnf:/etc/mysql/my.cnf:ro \
+-v ~/mysql/data:/var/lib/mysql \
+-p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=123456 \
+-d mysql
 
 # run docker mysql
 docker exec -it mysql mysql -uroot -p
@@ -200,6 +220,11 @@ vim /var/gogs/conf/app.ini
 see cref="install nginx"
 ```
 
+## Install shadowsocks
+
+```bash
+docker run -dt --name shadowsocks -p 22354:22354 -p 22353:22353/udp mritd/shadowsocks -m "ss-server" -s "-s 0.0.0.0 -p 22354 -m chacha20-ietf -k 密码 --fast-open" -x -e "kcpserver" -k "-t 127.0.0.1:22354 -l :22353 -mode fast2 -dscp 46 -mtu 1350 -crypt salsa20 -datashard 7 -parityshard 3 -interval 10 -key kcp密码"
+```
 ## docker yml.file
 ```
 docker-compose up -d
