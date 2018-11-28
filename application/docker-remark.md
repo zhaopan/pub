@@ -27,7 +27,6 @@ docker-compose --version
 ## Create docker network
 
 ```bash
-docker network create mynetwork
 # 步骤1: 创建自定义网络
 # 创建自定义网络，并且指定网段：172.18.0.0/16
 docker network create --subnet=172.18.0.0/16 mynetwork
@@ -64,6 +63,7 @@ docker run \
 # 创建配置文件目录
 mkdir -p ~/nginx/conf
 mkdir -p ~/nginx/conf/conf.d
+mkdir -p ~/nginx/html
 
 # 将默认的配置文件复制到配置文件目录,然后删掉该容器
 docker run --name tmp-nginx -p 80:80 -d nginx
@@ -159,6 +159,10 @@ docker pull httpd
 ## Install mysql
 
 ```bash
+# create mysql folder
+mkdir -p ~/mysql
+mkdir -p ~/mysql/data
+
 # Pull mysql image from Docker Hub
 docker pull mysql
 
@@ -189,7 +193,7 @@ docker update --restart=always mysql
 
 ```bash
 # Create local directory for volume
-mkdir -p /var/gogs
+mkdir -p ~/gogs
 
 # Pull gogs image from Docker Hub
 docker pull gogs/gogs
@@ -201,7 +205,7 @@ sudo docker run \
 --net mynetwork --ip 172.18.0.4 \
 -p 10022:22 \
 -p 10080:3000 \
--v /var/gogs:/data \
+-v ~/gogs:/data \
 -d gogs/gogs
 
 # Use `docker start` gogs if you have stopped it
@@ -214,7 +218,7 @@ docker update --restart=always gogs
 docker exec -it gogs bash
 
 # 配置文件
-vim /var/gogs/conf/app.ini
+vim ~/gogs/conf/app.ini
 
 # nginx proxy gogs conf
 see cref="install nginx"
