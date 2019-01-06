@@ -224,6 +224,13 @@ vim ~/gogs/conf/app.ini
 see cref="install nginx"
 ```
 
+## Install postgres
+
+```bash
+docker pull postgres
+docker run --name postgres -e POSTGRES_PASSWORD=password123 -p 54321:5432 -d postgres
+```
+
 ## Install shadowsocks
 
 ```bash
