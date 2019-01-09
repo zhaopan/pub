@@ -1,95 +1,97 @@
-# Docker Remark
+# docker
 
-## Install Docker
+<!-- TOC -->
 
-- aliyun docker mirror
+- [install docker](#install&nbsp;docker)
+- [create docker network](#create&nbsp;docker&nbsp;network)
+  - [docker network list](#docker&nbsp;network&nbsp;list)
+- [nginx](#nginx)
+- [mysql](#mysql)
+- [gogs](#gogs)
+- [php-fpm](#php-fpm)
+- [postgres](#postgres)
+- [shadowsocks](#shadowsocks)
+- [docker logs](#docker&nbsp;logs)
+- [docker cleanup](#docker&nbsp;cleanup)
+- [remark](#remark)
+
+<!-- /TOC -->
+
+## install docker
 
 ```bash
+# aliyun docker mirror
 curl -fsSL get.docker.com -o get-docker.sh
 sudo sh get-docker.sh --mirror Aliyun
-```
 
-- Auto start docker
-
-```bash
+# install docker systemctl
 sudo systemctl enable docker
 sudo systemctl start docker
-```
 
-- Install docker-compose
-
-```bash
+# install docker-compose
 sudo curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
-## Create docker network
+## create docker network
 
 ```bash
-# 步骤1: 创建自定义网络
-# 创建自定义网络，并且指定网段：172.18.0.0/16
+# create custom docker network
 docker network create --subnet=172.18.0.0/16 mynetwork
-# 步骤2: 创建Docker容器
-# 示例：
+
+# demo
 docker run -itd --name mysql --net mynetwork --ip 172.18.0.2 centos:latest /bin/bash
 ```
 
-## Install php
+## docker network list
 
 ```bash
+# nginx
+nginx 172.18.0.2
 
-# install php-fpm镜像
-docker pull bitnami/php-fpm
+# mysql
+mysql 172.18.0.3
 
-# run docker-container
-docker run \
---name php-fpm \
---restart=always \
---net mynetwork \
---ip 172.18.0.4 \
--v ~/nginx/html:/usr/share/nginx/html \
--d docker.io/bitnami/php-fpm
-# -d : 该参数为后台运行之意
-# -v : 指定宿主机与容器的映射关系。/var/www/html为宿主机的项目目录（自定义的），/usr/share/nginx/html为nginx服务器项目默认的路径。
+# gogs
+gogs 172.18.0.4
 
+# php-fpm
+php-fpm 172.18.0.5
+
+# postgres
+postgres 172.18.0.6
 ```
 
-## Install nginx
-
-- Default config nginx
+## nginx
 
 ```bash
-# 创建配置文件目录
+# Pull nginx image from Docker Hub
+docker pull nginx
+
+# Create local directory for volume
 mkdir -p ~/nginx/conf
 mkdir -p ~/nginx/conf/conf.d
 mkdir -p ~/nginx/html
 
-# 将默认的配置文件复制到配置文件目录,然后删掉该容器
+# run the default configuration of nginx to copy the configuration file
 docker run --name tmp-nginx -p 80:80 -d nginx
 docker cp tmp-nginx:/etc/nginx/conf.d ~/nginx/conf
 docker cp tmp-nginx:/etc/nginx/nginx.conf ~/nginx/conf/nginx.conf
 docker start tmp-nginx
 docker rm -f tmp-nginx
-```
 
-- Custom config nginx
-
-```bash
-# 运行自定义配置文件的nginx容器
-sudo docker run \
+# run nginx container
+docker run \
 --name nginx \
 --restart=always \
 --net mynetwork \
---ip 172.18.0.3 \
+--ip 172.18.0.2 \
 -p 80:80 \
 -v ~/nginx/html:/usr/share/nginx/html \
 -v ~/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro \
 -v ~/nginx/conf/conf.d:/etc/nginx/conf.d \
 -d nginx
-
-# 自动重启
-docker update --restart=always nginx
 ```
 
 - ~/nginx/conf/nginx.conf
@@ -140,8 +142,8 @@ server {
     server_name  git.***.com;
     client_max_body_size 50m;
     location / {
-        #一定要注意这里是docker容器的内网地址+端口,以"/"结尾,不然会报错。
-        proxy_pass http://172.18.0.3:3000/;
+        # 一定要注意这里是docker容器的内网地址+端口,以"/"结尾,不然会报错。
+        proxy_pass http://172.18.0.4:3000/;
         proxy_redirect default;
         proxy_buffer_size 64k;
         proxy_buffers 32 32k;
@@ -150,59 +152,51 @@ server {
 }
 ```
 
-## Install apache
+## mysql
 
 ```bash
-docker pull httpd
-```
-
-## Install mysql
-
-```bash
-# create mysql folder
-mkdir -p ~/mysql
-mkdir -p ~/mysql/data
-
 # Pull mysql image from Docker Hub
 docker pull mysql
 
-# Use `docker run` mysql for the first time
-sudo docker run \
+# create mysql's configuration folder
+mkdir -p ~/mysql
+mkdir -p ~/mysql/data
+
+# run mysql container
+docker run \
 --name=mysql \
 --restart=always \
 --net mynetwork \
---ip 172.18.0.2 \
+--ip 172.18.0.3 \
+-p 3306:3306 \
 -v ~/mysql/my.cnf:/etc/mysql/my.cnf:ro \
 -v ~/mysql/data:/var/lib/mysql \
--p 3306:3306 \
 -e MYSQL_ROOT_PASSWORD=123456 \
 -d mysql
 
-# run docker mysql
+# run mysql in container
 docker exec -it mysql mysql -uroot -p
 
-# Container Shell Access
+# container shell access
 docker exec -it mysql bash
 create database if not exists gogs default character set utf8 COLLATE utf8_general_ci
-
-# 自动重启
-docker update --restart=always mysql
 ```
 
-## Install gogs
+## gogs
 
 ```bash
-# Create local directory for volume
-mkdir -p ~/gogs
-
 # Pull gogs image from Docker Hub
 docker pull gogs/gogs
 
+# Create local directory for volume
+mkdir -p ~/gogs
+
 # Use `docker run` gogs for the first time
-sudo docker run \
+docker run \
 --name=gogs \
 --restart=always \
---net mynetwork --ip 172.18.0.4 \
+--net mynetwork \
+--ip 172.18.0.4 \
 -p 10022:22 \
 -p 10080:3000 \
 -v ~/gogs:/data \
@@ -211,49 +205,62 @@ sudo docker run \
 # Use `docker start` gogs if you have stopped it
 docker start gogs
 
-# 自动重启
-docker update --restart=always gogs
-
-# 进入gogs容器修改配置
-docker exec -it gogs bash
-
-# 配置文件
+# update gogs's configs
 vim ~/gogs/conf/app.ini
 
 # nginx proxy gogs conf
-see cref="install nginx"
+see cref="nginx"
 ```
 
-## Install postgres
+## php-fpm
 
 ```bash
-docker pull postgres
-docker run --name postgres -e POSTGRES_PASSWORD=password123 -p 54321:5432 -d postgres
+# Pull php-fpm image from Docker Hub
+docker pull bitnami/php-fpm
+
+# run php-frm container
+docker run \
+--name php-fpm \
+--restart=always \
+--net mynetwork \
+--ip 172.18.0.5 \
+-v ~/nginx/html:/usr/share/nginx/html \
+-d docker.io/bitnami/php-fpm
+# -d : 该参数为后台运行之意
+# -v : 指定宿主机与容器的映射关系。/var/www/html为宿主机的项目目录（自定义的）,/usr/share/nginx/html为nginx服务器项目默认的路径。
 ```
 
-## Install shadowsocks
+## postgres
+
+```bash
+# Pull postgres image from Docker Hub
+docker pull postgres
+
+# run postgres container
+docker run \
+--name postgres \
+--restart=always \
+--net mynetwork \
+--ip 172.18.0.6 \
+-p 54321:5432 \
+-e POSTGRES_PASSWORD=password123 \
+-d postgres
+```
+
+## shadowsocks
 
 ```bash
 docker run -dt --name shadowsocks -p 22354:22354 -p 22353:22353/udp mritd/shadowsocks -m "ss-server" -s "-s 0.0.0.0 -p 22354 -m chacha20-ietf -k 密码 --fast-open" -x -e "kcpserver" -k "-t 127.0.0.1:22354 -l :22353 -mode fast2 -dscp 46 -mtu 1350 -crypt salsa20 -datashard 7 -parityshard 3 -interval 10 -key kcp密码"
 ```
-## docker yml.file
-```
-docker-compose up -d
-docker build -t nginx .
-```
 
-## Dockerfile
-
-## Lookup docker logs
+## docker logs
 
 ```bash
 journalctl -u docker.service
 docker logs -f -t nginx
 ```
 
-## No done remark
-
-- docker cleanup
+## docker cleanup
 
 ```bash
 docker image prune
@@ -262,4 +269,26 @@ docker volume prune
 docker network prune
 docker system prune
 docker system prune --volumes
+```
+
+## remark
+
+```bash
+# docker-compose.yml
+docker-compose up -d
+
+# Dockerfile
+docker build -t nginx .
+
+# restart
+docker update --restart=always gogs
+
+# 1.停止所有容器
+docker stop $(docker ps -q)
+
+# 2.删除所有停止容器
+docker rm $(docker ps -aq)
+
+# 3.删除所有运行容器
+docker stop $(docker ps -q) & docker rm $(docker ps -aq)
 ```
