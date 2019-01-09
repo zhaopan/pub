@@ -282,4 +282,13 @@ docker build -t nginx .
 
 # restart
 docker update --restart=always gogs
+
+# 1.停止所有容器
+docker stop $(docker ps -q)
+
+# 2.删除所有停止容器
+docker rm $(docker ps -aq)
+
+# 3.删除所有运行容器
+docker stop $(docker ps -q) & docker rm $(docker ps -aq)
 ```
