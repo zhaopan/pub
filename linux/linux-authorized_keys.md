@@ -23,5 +23,5 @@ chmod 700 ~/.ssh
 chmod 644 ~/.ssh/authorized_keys
 
 ## 4.重启ssh
-sudo /etc/init.d/ssh restart
+systemctl restart sshd
 ```
