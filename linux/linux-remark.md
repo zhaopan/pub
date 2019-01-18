@@ -48,8 +48,10 @@ chmod 666 -R ./
 find ./ -type d -print|xargs chmod 755;
 #压缩
 zip -r all.zip .
+tar –czf all.tar.gz *.jpg
 #解压
 unzip all.zip
+tar -xzvf all.tar.gz
 #ERROR：高亮显示
 tail -f log.txt | perl -pe 's/(ERROR)/\e[1;31m$1\e[0m/g'
 #修改用户主目录的方法:
