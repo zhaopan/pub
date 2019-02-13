@@ -399,6 +399,9 @@ $ git archive
 # 快速本地保存密码
 $ echo -e "[credential] \n\thelper = store">> .git/config
 
+# git push 超限
+$ echo -e "[http] \n\tpostBuffer = 524288000">> .git/config
+
 # 拉取最新版本
 $ git reset --hard
 $ git pull
