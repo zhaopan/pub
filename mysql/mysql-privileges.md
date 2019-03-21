@@ -49,11 +49,18 @@ grant all privileges on *.* to root@"%";
 flush privileges;--刷新系统权限表
 
 -- 授权 root 用户的所有权限并设置远程访问,GRANT ALL ON 表示所有权限，% 表示通配所有 host，可以访问远程。
-GRANT ALL ON *.* TO 'root'@'%';
+grant all on *.* to 'root'@'%';
+flush privileges;--刷新系统权限表
+
+-- 撤销MYSQL 权限
+revoke all on *.* from 'root'@'localhost';
 flush privileges;--刷新系统权限表
 
 -- 修改加密规则
-ALTER USER 'root'@'localhost' IDENTIFIED BY '123456' PASSWORD EXPIRE NEVER;
-ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+alter user 'root'@'localhost' identified by '123456' password expire never;
+alter user 'root'@'%' identified with mysql_native_password by '123456';
 flush privileges;--刷新系统权限表
+
+
 ```
+
