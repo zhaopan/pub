@@ -83,6 +83,9 @@ docker cp tmp-nginx:/etc/nginx/nginx.conf ~/nginx/conf/nginx.conf
 docker start tmp-nginx
 docker rm -f tmp-nginx
 
+## reload nginx configs
+docker exec -it nginx nginx -s reload
+
 # run nginx container
 docker run \
 --name nginx \
