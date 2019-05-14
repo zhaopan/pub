@@ -44,6 +44,15 @@ services:
     volumes:
       - ~/gogs:/data
 
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    networks:
+      - core-network
+    ports:
+      - "6379:6379"
+
 networks:
   core-network:
     driver: bridge
