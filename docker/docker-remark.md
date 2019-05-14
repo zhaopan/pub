@@ -83,6 +83,9 @@ docker cp tmp-nginx:/etc/nginx/nginx.conf ~/nginx/conf/nginx.conf
 docker start tmp-nginx
 docker rm -f tmp-nginx
 
+## reload nginx configs
+docker exec -it nginx nginx -s reload
+
 # run nginx container
 docker run \
 --name nginx \
@@ -253,6 +256,16 @@ docker run \
 
 ```bash
 docker run -dt --name shadowsocks -p 22354:22354 -p 22353:22353/udp mritd/shadowsocks -m "ss-server" -s "-s 0.0.0.0 -p 22354 -m chacha20-ietf -k 密码 --fast-open" -x -e "kcpserver" -k "-t 127.0.0.1:22354 -l :22353 -mode fast2 -dscp 46 -mtu 1350 -crypt salsa20 -datashard 7 -parityshard 3 -interval 10 -key kcp密码"
+```
+## redis
+
+```bash
+docker search redis
+docker pull redis:3.2
+docker images
+docker run --name redis --restart=always -p 6379:6379 -d redis:3.2 redis-server
+docker ps
+docker exec -ti redis redis-cli
 ```
 
 ## docker logs

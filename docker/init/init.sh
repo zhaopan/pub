@@ -23,3 +23,6 @@ docker cp tmpmysql:/etc/mysql/conf.d ~/mysql
 
 # drop tmp-container
 docker rm -f tmpmysql tmpnginx
+
+# drop docker tmp-network
+docker network rm tmpnetwork
