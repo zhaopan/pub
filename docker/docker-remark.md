@@ -11,8 +11,10 @@
 - [php-fpm](#php-fpm)
 - [postgres](#postgres)
 - [shadowsocks](#shadowsocks)
+- [redis](#redis)
 - [docker logs](#docker&nbsp;logs)
 - [docker cleanup](#docker&nbsp;cleanup)
+- [docker configs](#docker&nbsp;configs)
 - [remark](#remark)
 
 <!-- /TOC -->
@@ -284,6 +286,16 @@ docker volume prune
 docker network prune
 docker system prune
 docker system prune --volumes
+```
+
+## docker configs
+
+```bash
+# windows
+%programdata%\docker\config\daemon.json
+
+# linux
+/etc/docker/daemon.json
 ```
 
 ## remark
