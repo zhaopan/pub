@@ -304,6 +304,9 @@ docker system prune --volumes
 # docker-compose.yml
 docker-compose up -d
 
+# docker-compose services build
+docker-compose up -d nginx
+
 # Dockerfile
 docker build -t nginx .
 
