@@ -25,9 +25,26 @@ services:
       - ~/mysql/my.cnf:/etc/mysql/my.cnf:ro
       - ~/mysql/data:/var/lib/mysql
     environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 123456
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "123456"
+      MYSQL_ROOT_PASSWORD: "123456"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+      - nginx
+    networks:
+      - core-network
+    ports:
+      - "20080:80"
+    environment:
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "123456"
+      MYSQL_ROOT_PASSWORD: "123456"
+      PMA_HOST: mysql
 
   gogs:
     image: gogs/gogs
