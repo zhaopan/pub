@@ -115,6 +115,9 @@ sudo apt-get install php5-mysql
 sudo apt-get install php5-gd
 #使用命令
 grep -rl 'abc' /
+#挂载磁盘
+fdisk -l
+mount /dev/vdb1 /mnt
 ```
 
 ## nohup
