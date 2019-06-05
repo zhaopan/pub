@@ -9,7 +9,7 @@
 use mysql;
 
 --创建数据库
-create database if not exists channel default character set utf8 collate utf8_general_ci;
+create database if not exists mysqldb default character set utf8 collate utf8_general_ci;
 ```
 
 ## 2.create user
@@ -36,21 +36,21 @@ flush privileges;
 --本地用户
 
 --所有权限
-grant all privileges on channel.* to 'dbroot'@localhost;
+grant all privileges on mysqldb.* to 'dbroot'@localhost;
 flush privileges;
 
 --部分权限
-grant select,delete,update,create,drop on channel.* to 'dbroot'@localhost;
+grant select,delete,update,create,drop on mysqldb.* to 'dbroot'@localhost;
 flush privileges;
 
 --远程用户
 
 --所有权限
-grant all privileges on channel.* to 'dbroot'@'%';
+grant all privileges on mysqldb.* to 'dbroot'@'%';
 flush privileges;
 
 --部分权限
-grant select,delete,update,create,drop on channel.* to 'dbroot'@'%';
+grant select,delete,update,create,drop on mysqldb.* to 'dbroot'@'%';
 flush privileges;
 ```
 
