@@ -1,5 +1,8 @@
 # mysql privileges
 
+
+***MYSQL Version:8.0+***
+
 ## 1.create database
 
 ```sql
@@ -43,7 +46,7 @@ flush privileges;
 --远程用户
 
 --所有权限
-grant all privileges on channel.* to 'root'@'%';
+grant all privileges on channel.* to 'dbroot'@'%';
 flush privileges;
 
 --部分权限
@@ -54,32 +57,22 @@ flush privileges;
 ## grant
 
 ```sql
---给root所有权限
-grant all privileges on *.* to 'root'@'%';
+--给dbroot所有权限
+grant all privileges on *.* to 'dbroot'@'%';
 flush privileges;
 
--- 授权 root 用户的所有权限并设置远程访问,grant all on 表示所有权限，% 表示通配所有 host，可以访问远程。
-grant all on *.* to 'root'@'%';
+-- 授权 dbroot 用户的所有权限并设置远程访问,grant all on 表示所有权限，% 表示通配所有 host，可以访问远程。
+grant all on *.* to 'dbroot'@'%';
 flush privileges;
 
 -- 撤销mysql 权限
-revoke all on *.* from 'root'@'localhost';
+revoke all on *.* from 'dbroot'@'localhost';
 flush privileges;
 
 -- 修改加密规则和密码
-alter user 'root'@'localhost' identified by '123456' password expire never;
-alter user 'root'@'%' identified with mysql_native_password by 'e';
+alter user 'dbroot'@'localhost' identified by '123456' password expire never;
+alter user 'dbroot'@'%' identified with mysql_native_password by '123456';
 flush privileges;
-
-
-
-create database if not exists spd_dev default character set utf8 COLLATE utf8_general_ci;
-create user 'dbroot'@'%' identified by 'qwe123..';
-grant select,delete,update,create,drop on spd_dev.* to 'dbroot'@'%';
---grant all on *.* to 'dbroot'@'%';
-alter user 'dbroot'@'%' identified with mysql_native_password by 'qwe123..';
-flush privileges;
-
 ```
 
 ## demo: create gogs database
@@ -90,4 +83,26 @@ create database gogs engine = innodb
 
 --create database character = utf8 collate utf8_general_ci
 create database if not exists gogs default character set utf8 collate utf8_general_ci
+```
+
+## demo: create dev database
+
+```sql
+--create database
+create database if not exists spd_dev default character set utf8 COLLATE utf8_general_ci;
+
+--create db user
+create user 'dbroot'@'%' identified by '123456';
+
+--privileges
+grant select,delete,update,create,drop on spd_dev.* to 'dbroot'@'%';
+
+--privileges(all)
+grant all on *.* to 'dbroot'@'%';
+
+--alter db user's password
+alter user 'dbroot'@'%' identified with mysql_native_password by '123456';
+
+--flush privileges
+flush privileges;
 ```
