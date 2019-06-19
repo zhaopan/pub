@@ -12,6 +12,7 @@
 - [postgres](#postgres)
 - [shadowsocks](#shadowsocks)
 - [redis](#redis)
+- [pure-ftp](#pure-ftp)
 - [docker logs](#docker&nbsp;logs)
 - [docker cleanup](#docker&nbsp;cleanup)
 - [docker configs](#docker&nbsp;configs)
@@ -268,6 +269,43 @@ docker images
 docker run --name redis --restart=always -p 6379:6379 -d redis:3.2 redis-server
 docker ps
 docker exec -ti redis redis-cli
+```
+
+## pure-ftp
+
+```bash
+# https://github.com/stilliard/docker-pure-ftpd
+
+# 1.用docker下载pure-ftp
+docker pull stilliard/pure-ftpd:hardened
+
+# 2.下载完后直接运行
+docker run -dt --name ftpd_server -p 21:21 -p 30000-30209:30000-30209 -e "PUBLICHOST=localhost" --privileged=true -v ~/nginx/html/robin:/home/ftpusers/www stilliard/pure-ftpd:hardened bash
+#使用绑定IP为192.168.1.66，如果是公开FTP的话，可以不写IP。这里只是本机测试
+#不使用官方教程的端口号30000-30009，因为30000-30009端口只能满足5个用户同时FTP登陆。计算方式为“(最大端口号-最小端口号) / 2”。所以我这里修改为可以满足100个用户同时连接登陆
+#做了个目录映射，把本机的/home/ftpusers/robin目录映射到pure-ftp的/home/ftpusers/www下
+
+
+# 3.登陆pure-ftp容器
+docker exec -it ftpd_server /bin/bash
+
+# 4.在容器内新建用户（用户名为：www）
+pure-pw useradd www -u ftpuser -d /home/ftpusers/www
+#运行这个命令后会让输入两次密码，即FTP用户（www）的登陆密码
+
+# 5.保存
+pure-pw mkdb
+#这个命令不可少，不然刚刚新建的用户就不生效了
+
+# 6.运行FTP
+/usr/sbin/pure-ftpd -c 100 -C 100 -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P $PUBLICHOST -p 30000:30209 &
+# -c 100为：允许同时连接的客户端数列100
+# -C 100为：同一IP最大的连接数100
+# 这两个数值与端口号30000:30209对应上
+
+# 7.防火墙设置
+firewall-cmd --permanent --zone=public --add-port=30000-30209/tcp
+firewall-cmd --reload
 ```
 
 ## docker logs
