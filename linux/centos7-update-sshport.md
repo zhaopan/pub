@@ -81,3 +81,8 @@ shutdown -r now
 ```bash
 netstat -lnp | grep 54321
 ```
+
+# 批量开启
+```bash
+firewall-cmd --permanent --zone=public --add-port=30000-30209/tcp
+```
