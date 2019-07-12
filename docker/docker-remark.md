@@ -281,7 +281,7 @@ docker exec -ti redis redis-cli
 docker pull stilliard/pure-ftpd:hardened
 
 # 2.下载完后直接运行
-docker run -dt --name ftpd_server -p 21:21 -p 30000-30209:30000-30209 -e "PUBLICHOST=localhost" --privileged=true -v ~/nginx/html/des:/home/ftpusers/www stilliard/pure-ftpd:hardened bash
+docker run -dt --name ftpd_server -p 21:21 -p 30000-30209:30000-30209 -e "PUBLICHOST=localhost" --privileged=true --restart=always -v ~/nginx/html/des:/home/ftpusers/www stilliard/pure-ftpd:hardened bash
 #使用绑定IP为192.168.1.66，如果是公开FTP的话，可以不写IP。这里只是本机测试
 #不使用官方教程的端口号30000-30009，因为30000-30009端口只能满足5个用户同时FTP登陆。计算方式为“(最大端口号-最小端口号) / 2”。所以我这里修改为可以满足100个用户同时连接登陆
 #做了个目录映射，把本机的/home/ftpusers/des目录映射到pure-ftp的/home/ftpusers/www下
