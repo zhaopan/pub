@@ -348,6 +348,9 @@ docker-compose up -d nginx
 # Dockerfile
 docker build -t nginx .
 
+# selected dockerfile build
+docker build -f xxxDockerfile.txt -t xxx:v1 .
+
 # restart
 docker update --restart=always gogs
 
