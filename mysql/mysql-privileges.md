@@ -1,6 +1,5 @@
 # mysql privileges
 
-
 ***MYSQL Version:8.0+***
 
 ## 1.create database
