@@ -15,15 +15,16 @@ create database if not exists mysqldb default character set utf8 collate utf8_ge
 
 ```sql
 --dbroot本地访问
-insert into mysql.user(host,user,password) values('%','dbroot',password('mysqlpassword'));
-
---dbroot用户远程访问
 insert into mysql.user(host,user,password) values('localhost','dbroot',password('mysqlpassword'));
+--dbroot远程访问
+insert into mysql.user(host,user,password) values('%','dbroot',password('mysqlpassword'));
 
 --OR--
 
-create user 'dbroot'@'%' identified by 'mysqlpassword';
+--dbroot本地访问
 create user 'dbroot'@'localhost' identified by 'mysqlpassword';
+--dbroot远程访问
+create user 'dbroot'@'%' identified by 'mysqlpassword';
 
 --刷新系统权限表
 flush privileges;
@@ -65,11 +66,13 @@ grant all on *.* to 'dbroot'@'%';
 flush privileges;
 
 -- 撤销mysql 权限
-revoke all on *.* from 'dbroot'@'localhost';
+revoke all on *.* from 'dbroot'@'%';
 flush privileges;
 
 -- 修改加密规则和密码
-alter user 'dbroot'@'localhost' identified by '123456' password expire never;
+alter user 'dbroot'@'%' identified by '123456' password expire never;
+
+--OR--
 alter user 'dbroot'@'%' identified with mysql_native_password by '123456';
 flush privileges;
 ```
