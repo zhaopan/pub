@@ -318,12 +318,12 @@ docker logs -f -t nginx
 ## docker cleanup
 
 ```bash
-docker image prune
-docker container prune
-docker volume prune
-docker network prune
-docker system prune
-docker system prune --volumes
+docker image prune -f
+docker container prune -f
+docker volume prune -f
+docker network prune -f
+docker system prune -f
+docker system prune --volumes -f
 ```
 
 ## docker configs
