@@ -28,3 +28,9 @@ setting => save => Edit in setting.json
 - Git Graph
 - Docker Explorer
 - Docker
+
+#
+```bash
+# 正则表达式去掉空行
+^\s*(?=\r?$)\n
+```
