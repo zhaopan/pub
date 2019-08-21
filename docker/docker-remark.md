@@ -363,3 +363,15 @@ docker rm $(docker ps -aq)
 # 3.删除所有运行容器
 docker stop $(docker ps -q) & docker rm $(docker ps -aq)
 ```
+
+## dotnet core 内存设置
+
+```xml
+<PropertyGroup>
+    <ServerGarbageCollection>false</ServerGarbageCollection>
+    <!---ServerGarbageCollection ： 服务器垃圾收集-->
+    <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+    <!---ServerGarbageCollection ： 并发垃圾收集-->
+</PropertyGroup>
+````
+
