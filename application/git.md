@@ -317,7 +317,7 @@ $ git remote set-url [shortname] [url]
 $ git pull [remote] [branch]
 
 # 上传本地当前分支到远程仓库
-git push [remote]
+$ git push [remote]
 
 # 上传本地指定分支到远程仓库
 $ git push [remote] [branch]
@@ -326,7 +326,35 @@ $ git push [remote] [branch]
 $ git push [remote] --all
 
 # 强行推送当前分支到远程仓库，即使有冲突
+### WARNING ###
 $ git push [remote] --force
+$ git push -f [origin] [master]
+```
+
+## 常规操作
+
+```bash
+# Git 单独某个仓库设置
+$ git config --local user.name "zhaopan"
+$ git config --local user.email "zhaopan@gmail.com"
+
+# 若创建新版本库
+$ git clone git@github.com:zhaopan/codesnippet.git
+$ cd ax
+$ touch README.md
+$ git add README.md
+$ git commit -m "add README"
+$ git push -u origin master
+
+# 若已存在的文件夹或 Git 仓库
+$ cd git_existing_folder
+$ git init
+$ git remote add origin git@github.com:zhaopan/codesnippet.git
+# or
+$ git remote set-url origin git@github.com:zhaopan/codesnippet.git 
+$ git add .
+$ git commit
+$ git push -u origin master
 ```
 
 ## 撤销
