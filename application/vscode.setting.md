@@ -3,33 +3,34 @@
 # 设置
 setting => save => Edit in setting.json
 ```json
-"git.autofetch": true,
-"workbench.activityBar.visible": true,
-"editor.renderWhitespace": "all",
-"window.zoomLevel": 0,
-"workbench.iconTheme": "material-icon-theme",
-"vsicons.presets.foldersAllDefaultIcon": true,
-"workbench.colorTheme": "Visual Studio Dark",
-"files.trimTrailingWhitespace": true,
-"files.insertFinalNewline": true
+{
+    "editor.renderWhitespace": "all",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "git.autofetch": true,
+    "window.zoomLevel": 0,
+}
 ```
 
 ## 插件
-- vscode-solution-explorer
-- vscode-pdf
-- vscode-icons
-- VSCode Great Icons
-- Sublime Text Keymap and Settings Importer
-- Slack Theme
-- Material Icon Theme
-- Markdown PDF
-- Horizon Theme
-- Git History
-- Git Graph
-- Docker Explorer
-- Docker
 
-#
+- `Docker`              Docker
+- `Docker Explorer`     Docker Explorer
+- `Git Graph`           Git Graph
+- `Git History`         Git History
+- `Markdown PDF`        Markdown To PDF
+- `Prettify JSON`       json Format
+- `Sublime Text Keymap and Settings Importer`
+- `Horizon Theme`       Theme
+- `Material Icon Theme` Theme
+- `Slack Theme`         Theme
+- `VSCode Great Icons`
+- `vscode-icons`
+- `vscode-pdf`
+- `vscode-solution-explorer`
+
+## remark
+
 ```bash
 # 正则表达式去掉空行
 ^\s*(?=\r?$)\n
