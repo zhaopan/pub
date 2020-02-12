@@ -351,7 +351,7 @@ $ cd git_existing_folder
 $ git init
 $ git remote add origin git@github.com:zhaopan/codesnippet.git
 # or
-$ git remote set-url origin git@github.com:zhaopan/codesnippet.git 
+$ git remote set-url origin git@github.com:zhaopan/codesnippet.git
 $ git add .
 $ git commit
 $ git push -u origin master
