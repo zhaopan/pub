@@ -1,3 +1,9 @@
-*.md linguist-language=markdown
-*.txt linguist-language=text
 *.cs linguist-language=csharp
+*.html linguist-language=html
+*.java linguist-language=java
+*.js linguist-language=javascropt
+*.json linguist-language=json
+*.md linguist-language=markdown
+*.txt linguist-language=txt
+*.xml linguist-language=xml
+*.yml linguist-language=yaml
