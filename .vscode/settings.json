@@ -1,0 +1,18 @@
+{
+    "editor.renderIndentGuides": true,
+    "editor.rulers": [
+        80,
+        160,
+    ],
+    "editor.formatOnSave": true,
+    "files.exclude": {
+        ".vscode": true,
+        ".editorconfig": true,
+        ".git": true,
+        ".gitattributes": true,
+        ".github": true,
+        ".gitignore": true,
+        "LICENSE": true,
+    },
+    "editor.renderControlCharacters": true
+}
