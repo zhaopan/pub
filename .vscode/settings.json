@@ -13,5 +13,6 @@
         ".github": true,
         ".gitignore": true,
         "LICENSE": true,
-    }
+    },
+    "editor.renderControlCharacters": true
 }
