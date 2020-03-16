@@ -148,7 +148,7 @@ bin\ngrok -config=conf\ngrok-git-api.yml -log=logs\ngrok_log.txt start api git
 ```bash
 iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 4443 -j ACCEPT
 iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 8000 -j ACCEPT
-iptables save
+service iptables save
 service iptables restart
 ```
 
