@@ -13,11 +13,14 @@ cat ~/.ssh/id_rsa.pub
 ```
 ssh-keygen -t rsa -C "xxxxx@xxxxx.com"
 ```
+
 这个指令会要求你提供一个位置和文件名去存放键值对和密码，你可以点击Enter键去使用默认值。
 
 用以下命令获取你生成的公钥：
 ```
 cat ~/.ssh/id_rsa.pub
+
+ssh -T git@github.com
 ```
 复制这个公钥放到你的个人设置中的SSH/My SSH Keys下，请完整拷贝从`ssh-`开始直到你的用户名和主机名为止的内容。
 
