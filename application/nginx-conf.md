@@ -33,6 +33,7 @@ server {
 ## error
 
 ```bash
+# eg:
 # centos7 nginx=>nginx
 # errorStr => failed (13: Permission denied) while connecting to upstream
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
