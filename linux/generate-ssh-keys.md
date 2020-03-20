@@ -39,7 +39,8 @@ pbcopy < ~/.ssh/id_rsa.pub
 xclip -sel clip < ~/.ssh/id_rsa.pub
 
 # 测试SSH候选连接安全性
-ssh -T git@github.com
+# -v显示详细信息
+ssh -vT git@github.com
 ```
 
 ## Applications
