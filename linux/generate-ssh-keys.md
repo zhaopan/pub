@@ -13,6 +13,8 @@ cat ~/.ssh/id_rsa.pub
 ```bash
 # 生成SSH.KEY
 ssh-keygen -t rsa -C "xxxxx@xxxxx.com"
+# 指定文件名
+ssh-keygen -t rsa -C "xxxxx@xxxxx.com" -f "github_id_rsa"
 ```
 
 这个指令会要求你提供一个位置和文件名去存放键值对和密码，你可以点击Enter键去使用默认值。
@@ -41,6 +43,7 @@ xclip -sel clip < ~/.ssh/id_rsa.pub
 # 测试SSH候选连接安全性
 # -v显示详细信息
 ssh -vT git@github.com
+
 ```
 
 ## Applications
