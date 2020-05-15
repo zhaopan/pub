@@ -39,6 +39,22 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
+## Docker Engine 与docker-compose version 之间的有以下关系
+
+|  Compose file format  | Docker Engine |
+| --------------------  | ------------- |
+| 1	                    | 1.9.0+        |
+| 2.0                   | 1.10.0+       |
+| 2.1	                | 1.12.0+       |
+| 2.2, 3.0, 3.1, 3.2	| 1.13.0+       |
+| 2.3, 3.3, 3.4, 3.5	| 17.06.0+      |
+| 2.4           	    | 17.12.0+      |
+| 3.6           	    | 18.02.0+      |
+| 3.7           	    | 18.06.0+      |
+
+- 项目地址：https://github.com/docker/compose
+- `文章可能不会实时更新，要获取最新的docker-compose，可以前往项目地址查看最新的release版本，在每个release下都会提示如何正确安装（直接给出curl和chmod命令）`
+
 ## create docker network
 
 ```bash
