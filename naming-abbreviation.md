@@ -1,7 +1,7 @@
 # 常用命名简写
 
-有些词可能共用一些缩写。带星号的缩写或词来源于PeopleSoft标准。
-The following standard word abbreviations should be used in naming records, fields, and SQRs:
+- 有些词可能共用一些缩写。带星号的缩写或词来源于PeopleSoft标准。
+- The following standard word abbreviations should be used in naming records, fields, and SQRs:
 >
 | Word(s) | Abbreviation | Description |
 | :-- | :-- | :-- |
