@@ -1,6 +1,22 @@
-# Visual Studio 扩展和更新
+# Visual Studio 2019
+
+## 插件
 
 - CodeMaid          必装插件
 - Code alignment    代码对齐插件
 - VSColorOutput     命令行插件
 - XAML Styler       XMAL Format
+
+
+## 重置vs2019
+
+```bash 
+#开始菜单-> Developer Command Prompt for VS 2019
+devenv.exe /setup /resetuserdata /resetsettingsop
+
+#删除下面文件夹
+#username，使用 vs 的用户
+c:\Users\username\AppData\Local\Microsoft\VisualStudio
+c:\Users\username\AppData\Local\Microsoft\VisualStudio Services
+c:\Users\username\AppData\Local\Microsoft\VSApplicationInsight
+```
