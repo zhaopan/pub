@@ -418,6 +418,29 @@ git stash list
 git clean -f -d
 ```
 
+## git 迁移
+
+```bash
+# 旧项目
+http://old.git.com/project.git
+
+# 新项目
+http://new.git.com/project.git
+
+git clone http://old.git.com/project.git
+cd project
+git remote set-url origin http://new.git.com/project.git
+
+# 期间可能存在分支
+git branch
+git checkout dev
+
+# 迁移命令
+git push -u origin master # 若new 中不存在分支
+git push --force origin master # 若new 中存在分支，则强制推送
+
+```
+
 ## 常规命令
 
 ```bash
