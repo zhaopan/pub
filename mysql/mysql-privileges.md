@@ -91,13 +91,13 @@ create database if not exists gogs default character set utf8 collate utf8_gener
 
 ```sql
 --create database
-create database if not exists wk_yishaadmin default character set utf8 COLLATE utf8_general_ci;
+create database if not exists wk_work default character set utf8 COLLATE utf8_general_ci;
 
 --create db user
 create user 'dbroot'@'%' identified by '123456';
 
 --privileges
-grant select,delete,update,create,drop on spd_dev.* to 'dbroot'@'%';
+grant select,delete,update,create,drop on wk_work.* to 'dbroot'@'%';
 
 --privileges(all)
 grant all on *.* to 'dbroot'@'%';
