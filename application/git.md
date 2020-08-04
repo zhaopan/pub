@@ -435,6 +435,7 @@ git remote set-url origin http://new.git.com/project.git
 git branch
 git checkout dev
 
+# 迁移命令
 git push -u origin master # 若new 中不存在分支
 git push --force origin master # 若new 中存在分支，则强制推送
 
