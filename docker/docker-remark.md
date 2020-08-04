@@ -166,7 +166,7 @@ server {
     client_max_body_size 50m;
     location / {
         # 一定要注意这里是docker容器的内网地址+端口,以"/"结尾,不然会报错。
-        proxy_pass http://172.18.0.4:3000/;
+        proxy_pass http://gogs:3000/;
         proxy_redirect default;
         proxy_buffer_size 64k;
         proxy_buffers 32 32k;

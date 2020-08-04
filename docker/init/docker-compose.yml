@@ -1,17 +1,17 @@
 version: "3"
 services:
-  tmpnginx:
+  nginx:
     image: nginx
-    container_name: tmpnginx
+    container_name: nginx
     restart: always
     ports:
-      - "18080:80"
+      - "80:80"
     networks:
-      - tmpnetwork
+      - default
 
-  tmpmysql:
+  mysql:
     image: mysql
-    container_name: tmpmysql
+    container_name: mysql
     restart: always
     ports:
       - "13306:3306"
@@ -20,8 +20,26 @@ services:
       MYSQL_PASSWORD: 123456
       MYSQL_ROOT_PASSWORD: 123456
     networks:
-      - tmpnetwork
+      - default
 
-networks:
-  tmpnetwork:
-    driver: bridge
+  gogs:
+    image: gogs/gogs
+    container_name: gogs
+    restart: always
+    depends_on:
+      - mysql
+      - nginx
+    networks:
+      - default
+    ports:
+      - "10022:22"
+      - "10080:3000"
+
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    networks:
+      - default
+    ports:
+      - "6379:6379"

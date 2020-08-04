@@ -3,26 +3,23 @@
 ##
 ## mkdir some container configs
 ##
-mkdir -p ~/nginx
-mkdir -p ~/nginx/html
-mkdir -p ~/mysql
-mkdir -p ~/mysql/data
-mkdir -p ~/gogs
+mkdir -p /mnt/nginx
+mkdir -p /mnt/nginx/html
+mkdir -p /mnt/mysql
+mkdir -p /mnt/mysql/data
+mkdir -p /mnt/gogs
 
 ##
-## cp tmp-container configs
+## cp container configs
 ##
 
 # nginx
-docker cp tmpnginx:/etc/nginx/nginx.conf ~/nginx/nginx.conf
-docker cp tmpnginx:/etc/nginx/conf.d ~/nginx
+docker cp nginx:/etc/nginx/nginx.conf /mnt/nginx/nginx.conf
+docker cp nginx:/etc/nginx/conf.d /mnt/nginx
 
 # mysql
-docker cp tmpmysql:/etc/mysql/my.cnf ~/mysql/my.cnf
-docker cp tmpmysql:/etc/mysql/conf.d ~/mysql
+docker cp mysql:/etc/mysql/my.cnf /mnt/mysql/my.cnf
+docker cp mysql:/etc/mysql/conf.d /mnt/mysql
 
-# drop tmp-container
-docker rm -f tmpmysql tmpnginx
-
-# drop docker tmp-network
-docker network rm root_tmpnetwork
+# drop container
+docker rm -f mysql nginx gogs redis
