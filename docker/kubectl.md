@@ -2,15 +2,18 @@
 
 ```bash
 # 查看所有 pod 列表,  -n 后跟 namespace, 查看指定的命名空间
+kubectl get nodes
 kubectl get pod
-kubectl get pod -n kube
-
+kubectl get pods -n kube-system
 
 # 查看 RC 和 service 列表， -o wide 查看详细信息
 kubectl get rc,svc
 kubectl get pod,svc -o wide
 kubectl get pod <pod-name> -o yaml
 
+# 查看 endpoint 列表
+kubectl get endpoints
+kubectl get namespace
 
 # 显示 Node 的详细信息
 kubectl describe node 192.168.0.212
@@ -34,11 +37,6 @@ kubectl delete namespace xxx
 
 # 删除所有 Pod
 kubectl delete pod --all
-
-# 查看 endpoint 列表
-kubectl get endpoints
-
-kubectl get namespace
 
 # 执行 pod 的 date 命令
 kubectl exec <pod-name> -- date
