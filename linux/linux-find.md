@@ -6,7 +6,7 @@
 
 ```bash
 # 在/etc下查找"*.log"的文件
-find /etc -name "*.log"
+find /etc -name "startup.sh"
 
 # 扩展，列出某个路径下所有文件，包括子目录
 find /etc -name "*"
