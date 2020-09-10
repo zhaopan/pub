@@ -453,6 +453,9 @@ echo -e "[credential] \n\thelper = store">> .git/config
 # git push 超限
 echo -e "[http] \n\tpostBuffer = 524288000">> .git/config
 
+# 删除git项目下的空文件夹
+git clean -fd
+
 # 拉取最新版本
 git reset --hard
 git pull
@@ -480,4 +483,45 @@ git config user.email
 # 修改用户名和邮箱地址
 git config --global user.name "xxx"
 git config --global user.email "xxx@gmail.com"
+```
+
+## 清理仓库
+
+```bash
+# 参考资料
+# https://www.cnblogs.com/shines77/p/3460274.html
+# https://blog.csdn.net/weixin_45115705/article/details/90604963
+
+# 从你的资料库中清除文件
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path-to-your-remove-file' --prune-empty --tag-name-filter cat -- --all
+
+# exp:
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch *.exe' --prune-empty --tag-name-filter cat -- --all
+
+
+#begin 若是移除大文件或指定文件--------------
+
+git verify-pack -v .git/objects/pack/pack-*.idx | sort -k 3 -g | tail -3
+#16779d71545f8b76faf02afffe5544ca87a4aaac blob 1102745 1102346 8459682
+#68f450adbce465995f52796f05956f4f1fe79429 blob 2081189 2081811 5111192
+#d0781e7d125599010f4885fa95802a1d7018cd44 blob 278367052 278045657 10601748
+git rev-list --objects --all | grep d0781e7d125599010f4885fa95802a1d7018cd44
+#d0781e7d125599010f4885fa95802a1d7018cd44 nginx/nginx.exe
+git log --pretty=oneline --branches -- nginx/nginx.exe
+git filter-branch --index-filter 'git rm --cached --ignore-unmatch nginx/nginx.exe' -- --all
+
+#--------------若是移除大文件或指定文件 end
+
+
+# 推送我们修改后的repo
+git push origin master --force
+
+# 清理和回收空间
+rm -rf .git/refs/original/
+rm -rf .git/logs/
+git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
+git push --force
+
 ```
