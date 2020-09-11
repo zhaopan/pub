@@ -5,6 +5,7 @@
 kubectl get nodes
 kubectl get pod
 kubectl get pods -n kube-system
+ps -ef|grep kubelet
 
 # 查看 RC 和 service 列表， -o wide 查看详细信息
 kubectl get rc,svc
