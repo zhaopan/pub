@@ -12,7 +12,6 @@ kubectl get rc,svc
 kubectl get pod,svc -o wide
 kubectl get pod <pod-name> -o yaml
 
-
 kubectl edit deployment/tjbb-weikebaba-com -n default
 
 kubectl describe pods tjbb-weikebaba-com-d594ccc98-658jz | tail
