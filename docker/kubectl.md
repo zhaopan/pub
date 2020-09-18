@@ -18,6 +18,7 @@ kubectl describe pods tjbb-weikebaba-com-d594ccc98-658jz | tail
 # 查看 endpoint 列表
 kubectl get endpoints
 kubectl get namespace
+kubectl get deployment
 
 # 显示 Node 的详细信息
 kubectl describe node 192.168.0.212
