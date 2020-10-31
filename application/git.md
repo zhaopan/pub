@@ -330,6 +330,12 @@ git push [remote] --all
 ### WARNING ###
 git push [remote] --force
 git push -f [origin] [master]
+
+# 强制获取并覆盖本地(丢掉本地仓库)
+### WARNING ###
+git fetch --all
+git reset --hard origin/master
+git pull
 ```
 
 ## 常规操作
