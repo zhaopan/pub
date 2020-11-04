@@ -425,6 +425,35 @@ git stash list
 git clean -f -d
 ```
 
+## sparse-checkout
+
+```bash
+mkdir models # 创建一个与要clone的仓库同名或不同命的目录
+cd models
+git init #初始化
+git remote add origin https://github.com/zhaopan/codesnippet.git # 增加远端的仓库地址
+git config core.sparsecheckout true # 设置Sparse Checkout 为true
+echo docker >> .git/info/sparse-checkout # 将要部分clone的目录相对根目录的路径写入配置文件
+git pull origin master #pull下来代码
+# 如果只想保留最新的文件而不要历史版本的文件，上例最后一行可以用git pull --dpeth 1命令，即“浅克隆”：
+git pull --depth 1 origin master
+
+# 如果需要添加目录，就增加sparse-checkout的配置，再checkout master
+echo application >> .git/info/sparse-checkout
+git checkout master
+
+# 后来上面方法遇到错误
+
+##error: Sparse checkout leaves no entry on working directory
+又找到另一种方法如下。最后发现，如果在shell里执行，sparse-checkout 里的路径需要最后加*，但是如果是git-prompt,则可以不需要最后的/*.
+
+git clone -n https://github.com/tensorflow/models
+cd tensorflow
+git config core.sparsecheckout true
+echo official/resnet/* >> .git/info/sparse-checkout
+git checkout master
+```
+
 ## git 迁移
 
 ```bash
