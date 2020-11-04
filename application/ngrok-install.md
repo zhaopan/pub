@@ -33,7 +33,7 @@ git clone https://github.com/inconshreveable/ngrok.git
 ## 设置你要绑定的域名
 
 ```bash
-export NGROK_DOMAIN="tunnel.xx.com" #设置你要绑定的域名
+export NGROK_DOMAIN="ngrok.website.com" #设置你要绑定的域名
 ```
 
 ```bash
@@ -81,12 +81,15 @@ cd ~/go/ngrok
 GOOS=windows GOARCH=amd64 make release-client
 ```
 
+# [ngrok for docker](https://github.com/zhaopan/docker-ngrok.git)
+- [github](https://github.com/zhaopan/docker-ngrok.git)
+
 ## 启动服务端
 
 ```bash
 #linux.sh
 
-ngrokd -log=ngrok_log.txt -domain="tunnel.xx.com" -httpAddr=":8000" #注意$NGROK_DOMAIN在系统重启后会释放这个值，所以用常量
+ngrokd -log=ngrok_log.txt -domain="ngrok.website.com" -httpAddr=":8000" #注意$NGROK_DOMAIN在系统重启后会释放这个值，所以用常量
 ```
 
 ## windows配置文件
@@ -95,13 +98,13 @@ ngrokd -log=ngrok_log.txt -domain="tunnel.xx.com" -httpAddr=":8000" #注意$NGRO
 
 ```bash
 #ngrok-test.yml 单独映射
-server_addr: "tunnel.xx.com:4443"
+server_addr: "ngrok.website.com:4443"
 trust_host_root_certs: false
 ```
 
 ```bash
 #ngrok-git-api.yml 批量映射
-server_addr: "tunnel.xx.com:4443"
+server_addr: "ngrok.website.com:4443"
 trust_host_root_certs: false
 tunnels:
   git:
@@ -131,7 +134,7 @@ start-git-api.bat #bat启动文件-批量启动
 
 ```bash
 #start-test.bat 单独启动
-bin\ngrok -config=ngrok-test.yml -log=logs\ngrok_log.txt -subdomain=test 80
+bin\ngrok -config=conf\ngrok-test.yml -log=logs\ngrok_log.txt -subdomain=test 80
 ```
 
 ```bash
@@ -172,10 +175,10 @@ service iptables restart
 
 ```xml
 <VirtualHost *:80>
-  ServerAdmin admin@xx.com
-  ServerAlias upal.tunnel.xx.com
-  ProxyPass / http://upal.tunnel.xx.com:8000/
-  ProxyPassReverse / http://upal.tunnel.xx.com:8000/
+  ServerAdmin admin@website.com
+  ServerAlias upal.ngrok.website.com
+  ProxyPass / http://upal.ngrok.website.com:8000/
+  ProxyPassReverse / http://upal.ngrok.website.com:8000/
   ErrorLog "/data/wwwlogs/ngrok_wx_error_apache.log"
   CustomLog "/data/wwwlogs/ngrok_wx_apache.log" common
 </VirtualHost>
