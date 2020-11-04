@@ -445,7 +445,7 @@ git checkout master
 # 后来上面方法遇到错误
 
 ##error: Sparse checkout leaves no entry on working directory
-，又找到另一种方法如下。最后发现，如果在shell里执行，sparse-checkout 里的路径需要最后加*，但是如果是git-prompt,则可以不需要最后的/*.
+又找到另一种方法如下。最后发现，如果在shell里执行，sparse-checkout 里的路径需要最后加*，但是如果是git-prompt,则可以不需要最后的/*.
 
 git clone -n https://github.com/tensorflow/models
 cd tensorflow
