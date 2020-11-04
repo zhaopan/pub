@@ -31,6 +31,12 @@ sudo sh get-docker.sh --mirror Aliyun
 sudo systemctl enable docker
 sudo systemctl start docker
 
+# tcloud
+yum update
+yum install epel-release -y
+yum clean all
+yum install docker-io -y
+
 # install docker-compose
 sudo curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
