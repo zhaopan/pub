@@ -25,5 +25,5 @@
 nuget pack
 
 # 删除
-nuget delete WK.UtilTest 3.0.0 -Apikey 123456 -Source http://123.207.69.117:7003/nuget
+nuget delete WK.UtilTest 3.0.0 -Apikey {KEY} -Source http://website/nuget
 ```
