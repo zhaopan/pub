@@ -17,7 +17,7 @@
     - [Global.asax.cs](#Global.asax.cs)
     - [Log4netHelper.cs](#Log4netHelper.cs)
     - [SQL.sql](#SQL.sql)
-    - [Web.config    ](#Web.config    )
+    - [Web.config](#Web.config)
     - [Config](#Config)
       - [log4net.config](#log4net.config)
 - [docker](#docker)
