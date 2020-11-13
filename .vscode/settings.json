@@ -6,12 +6,13 @@
     ],
     "editor.formatOnSave": true,
     "files.exclude": {
-        ".vscode": true,
         ".editorconfig": true,
         ".git": true,
         ".gitattributes": true,
         ".github": true,
         ".gitignore": true,
+        ".vscode": true,
+        "_config.yml": true,
         "LICENSE": true,
     },
     "editor.renderControlCharacters": true
