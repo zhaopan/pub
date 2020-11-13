@@ -13,7 +13,6 @@
 - D:\tools\nginx-1.12.2\nginx-service.exe install
 - 即可通过windows 服务窗口来管理nginx服务
 
-
 ps
 ```bash
 # 一般卸载后..刷新一下服务列表就会消失不见..但是也会偶尔碰上一些钉子户..
