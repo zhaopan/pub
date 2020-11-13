@@ -483,11 +483,11 @@ git push --force origin master # 若new 中存在分支，则强制推送
 # 生成一个可供发布的压缩包
 git archive
 
-# 快速本地保存密码
-echo -e "[credential] \n\thelper = store">> .git/config
+# 本地保存密码
+git config --global credential.helper store
 
 # git push 超限
-echo -e "[http] \n\tpostBuffer = 524288000">> .git/config
+git config --global http.postBuffer 524288000
 
 # 删除git项目下的空文件夹
 git clean -fd
