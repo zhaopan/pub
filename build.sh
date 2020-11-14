@@ -14,9 +14,7 @@ getdir(){
             echo "${SPACE_STR:0:$COUNT}- ["$ELEMENT"]("$URL"/tree/master/"$DIR_OR_FILE")" >> README.md
             COUNT=`expr $COUNT + 2`
             getdir $DIR_OR_FILE $COUNT
-            COUNT=0
-            #echo $COUNT
-            #echo ""
+            COUNT=$2
         else
             echo "${SPACE_STR:0:$COUNT}- ["$ELEMENT"]("$URL"/blob/master/"$DIR_OR_FILE")" >> README.md
         fi
