@@ -70,7 +70,7 @@
 *.java linguist-language=Java
 *.js linguist-language=JavaScript
 *.json linguist-language=JSON
-*.md linguist-language=Markdown
+*.md linguist-Documentation
 *.txt linguist-language=Text
 *.xml linguist-language=XML
 *.yml linguist-language=YAML
