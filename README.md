@@ -1,4 +1,5 @@
-# 个人代码片段整理 
+# 个人代码片段整理
+
 这些代码片段都是以前日常记录的，用于备忘和方便查询，防老年痴呆。
 
 <!-- TOC -->
@@ -71,6 +72,8 @@
     - [readme.md](https://github.com/zhaopan/codesnippet/blob/master/./05.sundry/power-designer/sqlite-add-AUTOINCREMENT/readme.md)
 - [LICENSE](https://github.com/zhaopan/codesnippet/blob/master/./LICENSE)
 - [README.md](https://github.com/zhaopan/codesnippet/blob/master/./README.md)
+- [_config.yml](https://github.com/zhaopan/codesnippet/blob/master/./_config.yml)
+- [build.sh](https://github.com/zhaopan/codesnippet/blob/master/./build.sh)
 - [intractable-disease.md](https://github.com/zhaopan/codesnippet/blob/master/./intractable-disease.md)
 - [naming-abbreviation.md](https://github.com/zhaopan/codesnippet/blob/master/./naming-abbreviation.md)
 
