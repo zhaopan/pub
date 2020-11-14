@@ -64,13 +64,13 @@
 # Set linguist language for .h files explicitly based on
 # https://github.com/github/linguist/issues/1626#issuecomment-401442069
 # this only affects the repo's language statistics
-*.h linguist-language=C
-*.cs linguist-language=C#
-*.html linguist-language=HTML
-*.java linguist-language=Java
-*.js linguist-language=JavaScript
-*.json linguist-language=JSON
-*.md linguist-Documentation
-*.txt linguist-language=Text
-*.xml linguist-language=XML
-*.yml linguist-language=YAML
+##*.h linguist-language=C
+##*.cs linguist-language=C#
+##*.html linguist-language=HTML
+##*.java linguist-language=Java
+##*.js linguist-language=JavaScript
+##*.json linguist-language=JSON
+##*.md linguist-Documentation
+##*.txt linguist-language=Text
+##*.xml linguist-language=XML
+##*.yml linguist-language=YAML
