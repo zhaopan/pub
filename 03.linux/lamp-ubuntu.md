@@ -69,3 +69,4 @@ sudo service apache2 restart
 # 结合PHP与mysql
 sudo apt-get install php5-mysql
 ```
+

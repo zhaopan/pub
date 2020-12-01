@@ -1,8 +1,9 @@
 # remark
 
 ## power-designer 在设计 Sqlite数据库模型时，无法设置自增主键
-power-designer-version：`16.5.5.4693-64-bit`
-解决办法如下
+
+power-designer-version：`16.5.5.4693-64-bit` 解决办法如下
+
 ```bash
 # sqlite 添加自增配置
 odbc3.xdb
@@ -21,3 +22,4 @@ odbc3.xdb
 # 2 用已经配置好的脚本覆盖到PD安装目录
 Copy odbc3.xdb To =>"PD安装目录\Resource Files\DBMS"
 ```
+

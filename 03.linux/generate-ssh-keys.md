@@ -1,15 +1,19 @@
 # generate-ssh-keys.md
 
 ## SSH keys
+
 SSH key 可以让你在你的电脑和Code服务器之间建立安全的加密连接。 先执行以下语句来判断是否已经存在本地公钥：
+
 ```bash
 cat ~/.ssh/id_rsa.pub
 ```
+
 如果你看到一长串以 `ssh-rsa`或 `ssh-dsa`开头的字符串, 你可以跳过 `ssh-keygen`的步骤。
 
 提示: 最好的情况是一个密码对应一个ssh key，但是那不是必须的。你完全可以跳过创建密码这个步骤。请记住设置的密码并不能被修改或获取。
 
 你可以按如下命令来生成ssh key：
+
 ```bash
 # 生成SSH.KEY
 ssh-keygen -t rsa -C "xxxxx@xxxxx.com"
@@ -43,14 +47,13 @@ xclip -sel clip < ~/.ssh/id_rsa.pub
 # 测试SSH候选连接安全性
 # -v显示详细信息
 ssh -vT git@github.com
-
 ```
 
 ## Applications
 
 ### Eclipse
 
-如何在Eclipse中添加ssh key: https://wiki.eclipse.org/EGit/User_Guide#Eclipse_SSH_Configuration
+如何在Eclipse中添加ssh key: [https://wiki.eclipse.org/EGit/User\_Guide\#Eclipse\_SSH\_Configuration](https://wiki.eclipse.org/EGit/User_Guide#Eclipse_SSH_Configuration)
 
 ### Tip: Non-default OpenSSH key file names or locations
 
@@ -64,3 +67,4 @@ Host my-git.company.com
 RSAAuthentication yes
 IdentityFile ~/my-ssh-key-directory/company-com-private-key-filename
 ```
+

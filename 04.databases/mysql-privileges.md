@@ -1,6 +1,6 @@
 # mysql privileges
 
-***MYSQL Version:8.0+***
+_**MYSQL Version:8.0+**_
 
 ## 1.create database
 
@@ -108,3 +108,4 @@ alter user 'dbroot'@'%' identified with mysql_native_password by '123456';
 --flush privileges
 flush privileges;
 ```
+

@@ -1,4 +1,6 @@
-# kubectl remark
+# kubectl
+
+## kubectl remark
 
 ```bash
 # 查看所有 pod 列表,  -n 后跟 namespace, 查看指定的命名空间
@@ -68,9 +70,10 @@ eg:
 log_pod release-xxxx 10000 > xxxx.txt
 ```
 
-# K8s安装步骤
+## K8s安装步骤
 
-## 常用命令
+### 常用命令
+
 ```bash
 #查看当前yum里面的Kubernetes版本
 yum info kubernetes
@@ -121,8 +124,8 @@ kubectl get pods -n kube-system |grep -v Running
 kubectl describe pod kubernetes-dashboard-5c469b58b8-bltsw -n kube-system
 ```
 
+### 1.查看版本号
 
-## 1.查看版本号
 ```bash
 # cat /etc/redhat-release
 CentOS Linux release 7.5.1804 (Core)
@@ -130,12 +133,14 @@ CentOS Linux release 7.5.1804 (Core)
 3.10.0-862.9.1.el7.x86_64
 ```
 
-## 2.设置主机名称(非必须)
+### 2.设置主机名称\(非必须\)
+
 ```bash
 hostnamectl set-hostname DowayDocker
 ```
 
-## 3.准备环境
+### 3.准备环境
+
 ```bash
 # 关闭防火墙
 $ systemctl stop firewalld
@@ -163,15 +168,16 @@ $ sysctl --system
 # 加载内核模块
 modprobe br_netfilter
 lsmod | grep br_netfilter
-
 ```
 
-## 4.所有节点安琥藏Docker/kubeadm/kubelet
+### 4.所有节点安琥藏Docker/kubeadm/kubelet
+
 ```bash
 Kubernetes默认CRI（容器运行时）为Docker，因此先安装Docker。
 ```
 
-## 5.设置yum源(Docker-18.6 K8S-1.14.0)
+### 5.设置yum源\(Docker-18.6 K8S-1.14.0\)
+
 ```bash
 # base repo
 cd /etc/yum.repos.d
@@ -199,7 +205,8 @@ yum makecache
 yum repolist
 ```
 
-## 6.安装Docker(最好指定版本号)
+### 6.安装Docker\(最好指定版本号\)
+
 ```bash
 # 安装Docker
 yum install docker-ce-18.06.3.ce
@@ -211,14 +218,16 @@ systemctl enable docker --now
 systemctl status docker
 ```
 
-## 7.安装kubeadm，kubelet和kubectl(指定版本号)
+### 7.安装kubeadm，kubelet和kubectl\(指定版本号\)
+
 ```bash
 # 安装kubeadm，kubelet和kubectl
 $ yum install -y kubelet-1.14.0 kubeadm-1.14.0 kubectl-1.14.0
 $ systemctl enable kubelet
 ```
 
-## 8.部署Kubernetes Master
+### 8.部署Kubernetes Master
+
 ```bash
 kubeadm init \
   --apiserver-advertise-address=172.19.91.28 \
@@ -239,12 +248,14 @@ cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-## 9.安装网络插件
+### 9.安装网络插件
+
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml
 ```
 
-## 10.部署Dashboard
+### 10.部署Dashboard
+
 ```bash
 # 下载kubernetes-dashboard.yaml文件
 
@@ -289,7 +300,8 @@ kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | aw
 # 通过token登陆
 ```
 
-## 11 Pod调度到Master节点
+### 11 Pod调度到Master节点
+
 ```bash
 # 1.如何将Master也当作Node使用
 kubectl taint node master node-role.kubernetes.io/master-
@@ -297,3 +309,4 @@ kubectl taint node master node-role.kubernetes.io/master-
 # 2.将Master恢复成Master Only状态
 kubectl taint node master node-role.kubernetes.io/master="":NoSchedule
 ```
+

@@ -1,8 +1,8 @@
 # 前言：关于find命令
 
-由于find具有强大的功能，所以它的选项也很多，其中大部分选项都值得我们花时间来了解一下。即使系统中含有网络文件系统( NFS)，find命令在该文件系统中同样有效，只你具有相应的权限。
+由于find具有强大的功能，所以它的选项也很多，其中大部分选项都值得我们花时间来了解一下。即使系统中含有网络文件系统\( NFS\)，find命令在该文件系统中同样有效，只你具有相应的权限。
 
-在运行一个非常消耗资源的find命令时，很多人都倾向于把它放在后台执行，因为遍历一个大的文件系统可能会花费很长的时间(这里是指30G字节以上的文件系统)。
+在运行一个非常消耗资源的find命令时，很多人都倾向于把它放在后台执行，因为遍历一个大的文件系统可能会花费很长的时间\(这里是指30G字节以上的文件系统\)。
 
 ```bash
 # 在/etc下查找"*.log"的文件
@@ -101,8 +101,7 @@ $find . -type f -exec ls -l {  } \;
 -rw-r--r--    1 root     root          180 2003-02-25  ./conf.d/README
 ```
 
-上面的例子中，find命令匹配到了当前目录下的所有普通文件，并在-exec选项中使用ls -l命令将它们列出。
-在/logs目录中查找更改时间在5日以前的文件并删除它们：
+上面的例子中，find命令匹配到了当前目录下的所有普通文件，并在-exec选项中使用ls -l命令将它们列出。 在/logs目录中查找更改时间在5日以前的文件并删除它们：
 
 ```bash
 $find logs -type f -mtime +5 -exec rm {  } \;
@@ -121,8 +120,7 @@ $find . -name "*.conf"  -mtime +5 -ok rm {  } \;
 
 任何形式的命令都可以在-exec选项中使用。
 
-在下面的例子中我们使用grep命令。find命令首先匹配所有文件名为"passwd*"的文件，
-例如passwd、passwd.old、passwd.bak，然后执行grep命令看看在这些文件中是否存在一个sam用户。
+在下面的例子中我们使用grep命令。find命令首先匹配所有文件名为"passwd\*"的文件， 例如passwd、passwd.old、passwd.bak，然后执行grep命令看看在这些文件中是否存在一个sam用户。
 
 ```bash
 $find /etc -name "passwd*" -exec grep "sam" {  } \;
@@ -160,7 +158,7 @@ $find /dev/rmt -print
 
 ## 三、xargs
 
-- [linux-xargs](linux-xargs.md)
+* [linux-xargs](https://github.com/zhaopan/codesnippet/tree/9e3ed1f713fb0004b2e8e01446e3ca05470889bd/03.linux/linux-xargs.md)
 
 ## 四、find 命令的参数
 
@@ -357,3 +355,4 @@ $find / -name "CON.FILE" -depth -print
 #从当前目录开始查找位于本文件系统中文件名以XC结尾的文件：
 $find . -name "*.XC" -mount -print
 ```
+
