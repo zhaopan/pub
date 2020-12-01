@@ -1,6 +1,7 @@
 # mssql remark
 
 ## 附录 A：SQL Server 2008 R2相关内容URL地址
+
 ```bash
 # 1:SQL SERVER 2008 R2的硬件、软件环境要求及支持信息
 http://technet.microsoft.com/zh-cn/library/ms143506.aspx
@@ -41,6 +42,7 @@ http://technet.microsoft.com/zh-cn/library/ms189595.aspx
 ```
 
 ## 解决SQL Server 2008提示评估期已过
+
 ```bash
 # 解决步骤
 
@@ -62,6 +64,7 @@ SQL Server 2008 Enterprise：JD8Y6-HQG69-P9H84-XDTPG-34MBB
 ```
 
 ## 常用SQL
+
 ```sql
 declare @val nvarchar(200)
 declare my_cursor cursor local static read_only forward_only for
@@ -75,3 +78,4 @@ end
 close my_cursor
 deallocate my_cursor
 ```
+

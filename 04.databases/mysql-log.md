@@ -1,4 +1,6 @@
-﻿# MYSQL log
+# mysql-log
+
+\# MYSQL log
 
 ## 基础查询
 
@@ -47,27 +49,17 @@ slave start;
 show slave status\G;
 ```
 
-二进制文件一般用来做replication同步，当查看slave上同步正确，或者是同步已经完成了，这时如果硬盘空间又不是很大的话，那我们可以手动去清理这些binary文件。
-很简单：
+二进制文件一般用来做replication同步，当查看slave上同步正确，或者是同步已经完成了，这时如果硬盘空间又不是很大的话，那我们可以手动去清理这些binary文件。 很简单：
 
 ```bash
 reset master;
 ```
 
-----------------------
-
 ### MYSQL启用日志和查看日志
 
-mysql有以下几种日志：
-错误日志：-log-err
-查询日志：-log
-慢查询日志：-log-slow-queries
-更新日志：-log-update
-二进制日志：-log-bin
+mysql有以下几种日志： 错误日志：-log-err 查询日志：-log 慢查询日志：-log-slow-queries 更新日志：-log-update 二进制日志：-log-bin
 
-show variables like 'log_%'; #是否启用了日志
-show master status; #当前的日志状态
-show master logs; #展示二进制日志数目
+show variables like 'log\_%'; \#是否启用了日志 show master status; \#当前的日志状态 show master logs; \#展示二进制日志数目
 
 看二进制日志文件
 
@@ -77,16 +69,13 @@ shell>mysqlbinlog mail-bin.000001
 shell>mysqlbinlog mail-bin.000001 | tail
 ```
 
-在配置文件中指定log的输出位置.
-Windows：Windows 的配置文件为 my.ini，一般在 MySQL 的安装目录下或者 c:\Windows 下。
-Linux：Linux 的配置文件为 my.cnf ，一般在 /etc 下。
+在配置文件中指定log的输出位置. Windows：Windows 的配置文件为 my.ini，一般在 MySQL 的安装目录下或者 c:\Windows 下。 Linux：Linux 的配置文件为 my.cnf ，一般在 /etc 下。
 
-在linux下：
-Sql代码
+在linux下： Sql代码
 
-## 在[mysqld] 中输入
+## 在\[mysqld\] 中输入
 
-```conf
+```text
 # log
 log-error=/usr/local/mysql/log/error.log
 log=/usr/local/mysql/log/mysql.log
@@ -94,8 +83,5 @@ long_query_time=2
 log-slow-queries= /usr/local/mysql/log/slowquery.log
 ```
 
-开启慢查询
-long_query_time =2 --是指执行超过多久的sql会被log下来，这里是2秒
-log-slow-queries= /usr/local/mysql/log/slowquery.log --将查询返回较慢的语句进行记录
-log-queries-not-using-indexes = nouseindex.log --log下没有使用索引的query
-log=mylog.log --对所有执行语句进行记录
+开启慢查询 long\_query\_time =2 --是指执行超过多久的sql会被log下来，这里是2秒 log-slow-queries= /usr/local/mysql/log/slowquery.log --将查询返回较慢的语句进行记录 log-queries-not-using-indexes = nouseindex.log --log下没有使用索引的query log=mylog.log --对所有执行语句进行记录
+

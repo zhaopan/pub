@@ -1,6 +1,6 @@
 # vsftpd-conf
 
-```conf
+```text
 #禁用匿名用户登陆
 anonymous_enable=NO
 
@@ -47,3 +47,4 @@ userlist_enable=YES
 #记录允许本地登陆用户名的文件
 userlist_file=/etc/vsftpd/allowed_users
 ```
+

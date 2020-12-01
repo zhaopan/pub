@@ -1,4 +1,6 @@
-﻿# linux-remark
+# linux-remark
+
+\# linux-remark
 
 ## 常规命令
 
@@ -180,3 +182,4 @@ http://www.ibm.com/developerworks/cn/linux/l-cn-nohup/
 http://www.ourunix.org/post/282.html
 http://layokb.blog.163.com/blog/static/20796118020125171181651/
 ```
+

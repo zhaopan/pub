@@ -1,10 +1,10 @@
 # Nginx Configs
 
-- version: nginx-1.12.2
+* version: nginx-1.12.2
 
 ## nginx/conf.d/xx.conf
 
-```conf
+```text
 server {
     listen       80;
     server_name  git.xx.com;
@@ -39,3 +39,4 @@ server {
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
 setsebool -P httpd_can_network_connect 1
 ```
+
