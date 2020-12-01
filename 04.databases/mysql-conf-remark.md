@@ -2,7 +2,7 @@
 
 ## service conf
 
-```conf
+```text
 #conf syn data
 server-id=1 #主数据库一般都是id为1
 log-bin=mysql-bin #必须的
@@ -18,7 +18,7 @@ replicate-do-db=oto_shop_server #需要同步的文件，记入二进制日志�
 
 ## client conf
 
-```conf
+```text
 #conf syn data
 server-id=243 #建议门店编号(整型)
 expire_logs_days=15 #为避免日志文件过大，设置过期时间为15天
@@ -46,15 +46,15 @@ replicate_do_table=oto_shop_client.GoodsType
 
 ## client slave setting
 
-```conf
+```text
 # client start slave
 stop slave;
 change master to master_host='127.0.0.1',master_user='root',master_password='pwd***';
 start slave;
 #end client start slave
 
-show slave status\G;	#检查服务是否启动
-change master to master_host='';	#客户端取消主从
+show slave status\G;    #检查服务是否启动
+change master to master_host='';    #客户端取消主从
 ```
 
 ## 不完全解决办法
@@ -64,3 +64,4 @@ slave stop;
 set global sql_slave_skip_counter=1;
 slave start;
 ```
+

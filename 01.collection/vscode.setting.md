@@ -1,8 +1,12 @@
 # vscode.setting
 
-# 设置
-setting => save => Edit in setting.json
-```json
+## vscode.setting
+
+## 设置
+
+setting =&gt; save =&gt; Edit in setting.json
+
+```javascript
 {
     "editor.renderWhitespace": "all",
     "files.insertFinalNewline": true,
@@ -12,26 +16,27 @@ setting => save => Edit in setting.json
 }
 ```
 
-## 插件
+### 插件
 
-- `Docker`              Docker
-- `Docker Explorer`     Docker Explorer
-- `Git Graph`           Git Graph
-- `Git History`         Git History
-- `Markdown PDF`        Markdown To PDF
-- `Prettify JSON`       json Format
-- `Sublime Text Keymap and Settings Importer`
-- `Horizon Theme`       Theme
-- `Material Icon Theme` Theme
-- `Slack Theme`         Theme
-- `VSCode Great Icons`
-- `vscode-icons`
-- `vscode-pdf`
-- `vscode-solution-explorer`
+* `Docker`              Docker
+* `Docker Explorer`     Docker Explorer
+* `Git Graph`           Git Graph
+* `Git History`         Git History
+* `Markdown PDF`        Markdown To PDF
+* `Prettify JSON`       json Format
+* `Sublime Text Keymap and Settings Importer`
+* `Horizon Theme`       Theme
+* `Material Icon Theme` Theme
+* `Slack Theme`         Theme
+* `VSCode Great Icons`
+* `vscode-icons`
+* `vscode-pdf`
+* `vscode-solution-explorer`
 
-## remark
+### remark
 
 ```bash
 # 正则表达式去掉空行
 ^\s*(?=\r?$)\n
 ```
+

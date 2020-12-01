@@ -1,4 +1,6 @@
-﻿# Windows remark
+# windows
+
+\# Windows remark
 
 ## 常用命令
 
@@ -23,7 +25,9 @@ netsh interface portproxy show v4tov4
 
 ![git](http://cdn.fkwar.com/813569BB-E5A9-494C-AE24-03F76B9D8C89.png)
 
-***解决方法***
-- 1.运行 gpedit.msc
-- 2.计算机配置>管理模板>系统>凭据分配>加密Oracle修正
-- 3.选择启用并选择易受攻击。
+_**解决方法**_
+
+* 1.运行 gpedit.msc
+* 2.计算机配置&gt;管理模板&gt;系统&gt;凭据分配&gt;加密Oracle修正
+* 3.选择启用并选择易受攻击。
+

@@ -1,4 +1,4 @@
-# ENV(Dockerfile-docker-compose).md
+# ENV\(Dockerfile-docker-compose\).md
 
 ## Dockerfile
 
@@ -8,7 +8,7 @@ eg:
 
 `docker run -e VARIABLE=VALUE ...`
 
-```yml
+```text
 web:
   image: "webapp:${TAG}"
 ```
@@ -19,19 +19,19 @@ eg:
 
 `docker run -e VARIABLE ...`
 
-```yml
+```text
 web:
   environment:
     - DEBUG=1
 ```
 
-### 3、可以通过env_file传入多个变量
+### 3、可以通过env\_file传入多个变量
 
 eg:
 
 `docker run --env-file=FILE ...`
 
-```yml
+```text
 web:
   env_file:
     - web-variables.env
@@ -48,6 +48,7 @@ docker-compose run -e DEBUG=1 web python console.py
 ```
 
 也可以传入shell里的值，而不用先赋值
+
 ```bash
 docker-compose run -e DEBUG web python console.py
 ```
@@ -57,9 +58,10 @@ docker-compose run -e DEBUG web python console.py
 [docker-compose run用法](https://docs.docker.com/compose/reference/run/)
 
 ### 2、通过.env文件传入
+
 可以设置docker-compose文件默认读取的变量配置文件.env
 
-```yml
+```text
 $ cat .env
 TAG=v1.5
 
@@ -91,10 +93,10 @@ Dockerfile
 
 # 5
 Variable is not defined
-
 ```
 
 ### 3、运行docker-compose build命令时，通过–build-arg variable传入参数
+
 以下是简单例子，docker build 也可以通过此方法传入：
 
 ```bash
@@ -106,4 +108,5 @@ Variable is not defined
 
 注意：如果是root可以不加-E，如果是普通用户sudo要加上
 
-仅当没有用于环境或env_file的Docker Compose条目时，才能在Dockerfile中设置任何ARG或ENV设置
+仅当没有用于环境或env\_file的Docker Compose条目时，才能在Dockerfile中设置任何ARG或ENV设置
+

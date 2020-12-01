@@ -1,6 +1,8 @@
-# ngrok 自定义安装
+# ngrok.install
 
-## golang[下载地址](http://www.golangtc.com/download)
+## ngrok 自定义安装
+
+### golang[下载地址](http://www.golangtc.com/download)
 
 ```bash
 cd ~/
@@ -8,7 +10,7 @@ wget http://www.golangtc.com/static/go/1.8/go1.8.linux-amd64.tar.gz
 tar -C /usr/local -xzf go1.8.linux-amd64.tar.gz
 ```
 
-## 环境变量设置
+### 环境变量设置
 
 ```bash
 mkdir $HOME/go
@@ -18,19 +20,19 @@ echo 'export PATH=$PATH:$GOROOT/bin'>> ~/.bashrc
 source $HOME/.bashrc
 ```
 
-## go语言安装环境
+### go语言安装环境
 
 ```bash
 yum install mercurial git bzr subversion
 ```
 
-## 下载最新的ngrok，不需要修改任何代码
+### 下载最新的ngrok，不需要修改任何代码
 
 ```bash
 git clone https://github.com/inconshreveable/ngrok.git
 ```
 
-## 设置你要绑定的域名
+### 设置你要绑定的域名
 
 ```bash
 export NGROK_DOMAIN="ngrok.website.com" #设置你要绑定的域名
@@ -48,43 +50,44 @@ cp device.crt assets/server/tls/snakeoil.crt -i
 cp device.key assets/server/tls/snakeoil.key -i
 ```
 
-## 编译linux服务端
+### 编译linux服务端
 
 ```bash
 GOOS=linux GOARCH=amd64 make release-server
 ```
 
-## 编译linux客户端
+### 编译linux客户端
 
 ```bash
 GOOS=linux GOARCH=amd64 make release-client
 ```
 
-## 解决下面的错误
+### 解决下面的错误
 
 ```bash
 cd /usr/local
 cp -rf go go1.4
 ```
 
-## 编译windows客户端之前的go配置
+### 编译windows客户端之前的go配置
 
 ```bash
 cd go/src
 GOOS=windows GOARCH=amd64 CGO_ENABLED=0 ./make.bash
 ```
 
-## 编译windows客户端
+### 编译windows客户端
 
 ```bash
 cd ~/go/ngrok
 GOOS=windows GOARCH=amd64 make release-client
 ```
 
-# [ngrok for docker](https://github.com/zhaopan/docker-ngrok.git)
-- [github](https://github.com/zhaopan/docker-ngrok.git)
+## [ngrok for docker](https://github.com/zhaopan/docker-ngrok.git)
 
-## 启动服务端
+* [github](https://github.com/zhaopan/docker-ngrok.git)
+
+### 启动服务端
 
 ```bash
 #linux.sh
@@ -92,7 +95,7 @@ GOOS=windows GOARCH=amd64 make release-client
 ngrokd -log=ngrok_log.txt -domain="ngrok.website.com" -httpAddr=":8000" #注意$NGROK_DOMAIN在系统重启后会释放这个值，所以用常量
 ```
 
-## windows配置文件
+### windows配置文件
 
 `示例:windows配置文件`
 
@@ -117,7 +120,7 @@ tunnels:
       http: 8000
 ```
 
-## 启动windows客户端
+### 启动windows客户端
 
 `示例:windows启动`
 
@@ -157,23 +160,23 @@ service iptables restart
 
 **阿里云安全组设置**:
 
-- 添加->8000 入口
-- 添加<-4443 出口
+* 添加-&gt;8000 入口
+* 添加&lt;-4443 出口
 
 **本地端口检查**:
 
-- 1：检查端口占用</br>
-- 2：开启端口:->80</br>
-- 3：开启端口:<-4443</br>
+* 1：检查端口占用&lt;/br&gt;
+* 2：开启端口:-&gt;80&lt;/br&gt;
+* 3：开启端口:&lt;-4443&lt;/br&gt;
 
 **代理转发-支持80端口**:
 
 **apache代理转发**:
 
-- 若只有自己使用，在apache添加如下;</br>
-- 没必要去折腾成nginx，虽然理论上支持无限个二级域名；
+* 若只有自己使用，在apache添加如下;&lt;/br&gt;
+* 没必要去折腾成nginx，虽然理论上支持无限个二级域名；
 
-```xml
+```markup
 <VirtualHost *:80>
   ServerAdmin admin@website.com
   ServerAlias upal.ngrok.website.com
@@ -184,9 +187,9 @@ service iptables restart
 </VirtualHost>
 ```
 
-***nginx代理转发请看*** [cxz001](https://my.oschina.net/cxz001/blog/784620)
+_**nginx代理转发请看**_ [cxz001](https://my.oschina.net/cxz001/blog/784620)
 
-## 参考链接
+### 参考链接
 
 [golang](https://github.com/golang/go)
 
@@ -197,3 +200,4 @@ service iptables restart
 [bbear](http://bbear.me/shi-yong-a-li-yun-da-jian-zi-ji-de-ngrokfu-wu)
 
 [cxz001](https://my.oschina.net/cxz001/blog/784620)
+

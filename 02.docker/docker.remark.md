@@ -1,24 +1,20 @@
 # docker-remark
 
-<!-- TOC -->
-
-- [install docker](#install&nbsp;docker)
-- [create docker network](#create&nbsp;docker&nbsp;network)
-  - [docker network list](#docker&nbsp;network&nbsp;list)
-- [nginx](#nginx)
-- [mysql](#mysql)
-- [gogs](#gogs)
-- [php-fpm](#php-fpm)
-- [postgres](#postgres)
-- [shadowsocks](#shadowsocks)
-- [redis](#redis)
-- [pure-ftp](#pure-ftp)
-- [docker logs](#docker&nbsp;logs)
-- [docker cleanup](#docker&nbsp;cleanup)
-- [docker configs](#docker&nbsp;configs)
-- [remark](#remark)
-
-<!-- /TOC -->
+* [install docker](docker.remark.md#install&nbsp;docker)
+* [create docker network](docker.remark.md#create&nbsp;docker&nbsp;network)
+  * [docker network list](docker.remark.md#docker&nbsp;network&nbsp;list)
+* [nginx](docker.remark.md#nginx)
+* [mysql](docker.remark.md#mysql)
+* [gogs](docker.remark.md#gogs)
+* [php-fpm](docker.remark.md#php-fpm)
+* [postgres](docker.remark.md#postgres)
+* [shadowsocks](docker.remark.md#shadowsocks)
+* [redis](docker.remark.md#redis)
+* [pure-ftp](docker.remark.md#pure-ftp)
+* [docker logs](docker.remark.md#docker&nbsp;logs)
+* [docker cleanup](docker.remark.md#docker&nbsp;cleanup)
+* [docker configs](docker.remark.md#docker&nbsp;configs)
+* [remark](docker.remark.md#remark)
 
 ## install docker
 
@@ -47,18 +43,19 @@ docker-compose --version
 
 ## Compose file format compatibility matrix
 
-|  Compose file format  | Docker Engine |
-| --------------------  | ------------- |
-| 1	                    | 1.9.0+        |
-| 2.0                   | 1.10.0+       |
-| 2.1	                | 1.12.0+       |
-| 2.2, 3.0, 3.1, 3.2	| 1.13.0+       |
-| 2.3, 3.3, 3.4, 3.5	| 17.06.0+      |
-| 2.4           	    | 17.12.0+      |
-| 3.6           	    | 18.02.0+      |
-| 3.7           	    | 18.06.0+      |
-- [Compatibility matrix](https://docs.docker.com/compose/compose-file/compose-versioning/)
-- [github](https://github.com/docker/compose)
+| Compose file format | Docker Engine |
+| :--- | :--- |
+| 1 | 1.9.0+ |
+| 2.0 | 1.10.0+ |
+| 2.1 | 1.12.0+ |
+| 2.2, 3.0, 3.1, 3.2 | 1.13.0+ |
+| 2.3, 3.3, 3.4, 3.5 | 17.06.0+ |
+| 2.4 | 17.12.0+ |
+| 3.6 | 18.02.0+ |
+| 3.7 | 18.06.0+ |
+
+* [Compatibility matrix](https://docs.docker.com/compose/compose-file/compose-versioning/)
+* [github](https://github.com/docker/compose)
 
 ## create docker network
 
@@ -123,9 +120,9 @@ docker run \
 -d nginx
 ```
 
-- ~/nginx/conf/nginx.conf
+* ~/nginx/conf/nginx.conf
 
-```nginx
+```text
 user  nginx;
 worker_processes  1;
 error_log  /var/log/nginx/error.log warn;
@@ -148,9 +145,9 @@ http {
 }
 ```
 
-- ~/nginx/conf/conf.d/default.conf
+* ~/nginx/conf/conf.d/default.conf
 
-```nginx
+```text
 server {
     listen       80;
     server_name  localhost;
@@ -163,9 +160,9 @@ server {
 }
 ```
 
-- ~/nginx/conf/conf.d/git.conf
+* ~/nginx/conf/conf.d/git.conf
 
-```nginx
+```text
 server {
     listen       80;
     server_name  git.***.com;
@@ -387,12 +384,13 @@ docker stop $(docker ps -q) & docker rm $(docker ps -aq)
 
 ## dotnet core 内存设置
 
-```xml
+```markup
 <PropertyGroup>
     <ServerGarbageCollection>false</ServerGarbageCollection>
     <!---ServerGarbageCollection ： 服务器垃圾收集-->
     <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
     <!---ServerGarbageCollection ： 并发垃圾收集-->
 </PropertyGroup>
-````
+`
+```
 

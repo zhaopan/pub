@@ -1,4 +1,4 @@
-# linux-authorized_keys
+# linux-authorized\_keys
 
 ```bash
 # 1.生成私钥
@@ -25,3 +25,4 @@ chmod 644 ~/.ssh/authorized_keys
 ## 4.重启ssh
 systemctl restart sshd
 ```
+

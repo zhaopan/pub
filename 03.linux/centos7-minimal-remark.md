@@ -9,7 +9,9 @@ $ip addr
 ```
 
 ## install htop
+
 ```bash
 yum install epel-release -y
 yum install htop -y
 ```
+
