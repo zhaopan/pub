@@ -1,6 +1,6 @@
 # windows
 
-\# Windows remark
+# Windows remark
 
 ## 常用命令
 
