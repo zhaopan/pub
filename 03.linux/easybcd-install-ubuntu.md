@@ -1,7 +1,5 @@
 # easybcd-install-ubuntu
 
-\# easybcd-install-ubuntu
-
 `sudo apt-get update-grub`
 
 ## Desktop
@@ -47,4 +45,3 @@ mount -o loop /mnt/ubuntu-12.04.1-server-amd64.iso /cdrom # 加载虚拟光驱
 退出命令界面继续安装吧；
 
 安装完毕，老规矩，给root密码：sudo passwd root；
-
