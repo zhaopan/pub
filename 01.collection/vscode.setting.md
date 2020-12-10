@@ -39,4 +39,3 @@ setting =&gt; save =&gt; Edit in setting.json
 # 正则表达式去掉空行
 ^\s*(?=\r?$)\n
 ```
-
