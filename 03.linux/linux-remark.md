@@ -164,6 +164,40 @@ lsof -i tcp@ohaha.ks.edu.tw:ftp -r
 lsof -i tcp@ohaha.ks.edu.tw:ftp -n
 ```
 
+## 解决Ubuntu系统启动出现黑屏及光标闪动现象
+
+__问题描述__
+
+- 发生时间：2020年12月11日
+- 系统版本：Ubuntu20.04
+- 安装方法：完完全全按照百度经验进行安装
+- 问题描述：安装完成重启之后，出现了黑屏现象，而且屏幕左上角一直有白色光标闪动，等了很久没有变化。
+
+
+__解决方法__
+
+- 1、将刚刚安装系统用过的Ubuntu启动盘插在电脑上，电脑开机，从这个启动盘启动，方法和安装系统时一样；
+
+- 2、这次不是选在安装Ubuntu，而是选择试用Ubuntu；
+
+- 3、进入Ubuntu之后，Ctrl+Alt+T 打开一个终端；
+
+- 4、输入如下命令：
+
+    ```bash
+    # 找到你的Ubuntu安装分区（boot），以下假设为/dev/sda3
+    fdisk -l
+
+    sudo mount /dev/sda3 /mnt
+
+    # 注意dev前面有空格
+    sudo grub-install --boot-directory=/mnt/ /dev/sda
+    ```
+
+- 5、重启电脑，这次从拥有Ubuntu安装分区的硬盘启动，即dev/sda对应的硬盘。
+
+- 6、搞定
+
 ## 参考连接
 
 ```bash
