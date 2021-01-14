@@ -12,6 +12,7 @@
   * [vscode.setting](01.collection/vscode.setting.md)
   * [Git Remark](01.collection/git.md)
   * [vs2019配置菜单发布nuget包](01.collection/vs2019.nuget.publish.md)
+  * [vs2019\(vs2017\)配置菜单发布nuget包](01.collection/vs2019.nuget.publish.md)
 * [02.docker](02.docker/README.md)
   * [CentOS7安装.Net Core2.2](02.docker/centos7.install.netcore2.2.md)
   * [env.dockerfile.docker.compose](02.docker/env.dockerfile.docker.compose.md)
@@ -51,3 +52,4 @@
     * [install-nginx-windows-server](05.sundry/install-nginx-windows-server/install-nginx-windows-server.md)
 * [疑难杂症菜谱](intractable-disease.md)
 * [常用命名简写](naming-abbreviation.md)
+

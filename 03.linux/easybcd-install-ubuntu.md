@@ -1,5 +1,7 @@
 # easybcd-install-ubuntu
 
+\# easybcd-install-ubuntu
+
 `sudo apt-get update-grub`
 
 ## Desktop
