@@ -335,7 +335,7 @@ git push -f [origin] [master]
 # 强制获取并覆盖本地(丢掉本地仓库)
 ### WARNING ###
 git fetch --all
-git reset --hard origin/master
+git reset --hard original/[master/beta/dev]
 git pull
 ```
 
@@ -548,7 +548,6 @@ git filter-branch --index-filter 'git rm --cached --ignore-unmatch nginx/nginx.e
 
 #--------------若是移除大文件或指定文件 end
 
-
 # 推送我们修改后的repo
 git push origin master --force
 
@@ -560,4 +559,3 @@ git gc --prune=now
 git gc --aggressive --prune=now
 git push --force
 ```
-
