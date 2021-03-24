@@ -40,7 +40,7 @@ grant all privileges on mysqldb.* to 'dbroot'@localhost;
 flush privileges;
 
 --部分权限
-grant select,delete,update,create,drop on mysqldb.* to 'dbroot'@localhost;
+grant select,delete,update,insert,create,drop on mysqldb.* to 'dbroot'@localhost;
 flush privileges;
 
 --远程用户
@@ -50,7 +50,7 @@ grant all privileges on mysqldb.* to 'dbroot'@'%';
 flush privileges;
 
 --部分权限
-grant select,delete,update,create,drop on mysqldb.* to 'dbroot'@'%';
+grant select,delete,update,insert,create,drop on mysqldb.* to 'dbroot'@'%';
 flush privileges;
 ```
 
@@ -97,7 +97,7 @@ create database if not exists work default character set utf8 COLLATE utf8_gener
 create user 'dbroot'@'%' identified by '123456';
 
 --privileges
-grant select,delete,update,create,drop on work.* to 'dbroot'@'%';
+grant select,delete,update,insert,create,drop on work.* to 'dbroot'@'%';
 
 --privileges(all)
 grant all on *.* to 'dbroot'@'%';
