@@ -8,7 +8,9 @@
 
 ![git](https://cdn.fkwar.com/05D5C85E-4DF0-4EE4-A33E-42E8788380F7.png)
 
-## 下面整理的 Git 命令清单。几个专业名词的译名如下。
+## 专业名词
+
+下面整理的 Git 命令清单。几个专业名词的译名如下。
 
 * Workspace：工作区
 * Index / Stage：暂存区

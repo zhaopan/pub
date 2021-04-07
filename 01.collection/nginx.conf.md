@@ -1,6 +1,6 @@
 # Nginx Configs
 
-* version: nginx-1.12.2
+Tip：version: nginx-1.12.2
 
 ## nginx/conf.d/xx.conf
 

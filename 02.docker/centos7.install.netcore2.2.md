@@ -33,7 +33,9 @@ sudo yum update
 sudo yum install dotnet-sdk-2.2
 ```
 
-### 执行 dotnet --version 命令，如果正常显示dotne版本号，则说明安装成功。
+### 检查安装情况
+
+执行 dotnet --version 命令，如果正常显示dotne版本号，则说明安装成功。
 
 ```text
 dotnet --version
