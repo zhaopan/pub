@@ -1,6 +1,7 @@
-# sublime.setting
+# sublime
 
-```javascript
+## user.setting
+```json
 {
     "auto_find_in_selection": true,
     "bold_folder_labels": true,
@@ -21,7 +22,7 @@
 }
 ```
 
-## 插件
+## extensions
 
 * `DeleteBlankLines`    删除空白行
 * `DocBlockr`           注释
