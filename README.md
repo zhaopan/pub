@@ -85,6 +85,5 @@
 - [LICENSE](https://github.com/zhaopan/codesnippet/blob/master/LICENSE)
 - [naming-abbreviation.md](https://github.com/zhaopan/codesnippet/blob/master/naming-abbreviation.md)
 - [README.md](https://github.com/zhaopan/codesnippet/blob/master/README.md)
-- [SUMMARY.md](https://github.com/zhaopan/codesnippet/blob/master/SUMMARY.md)
 
 <!-- /TOC -->
