@@ -426,6 +426,10 @@ git stash list
 
 # 移除工作目录中所有未跟踪的文件及口口那个的子目录，不会移除.gitiignore忽略的文件
 git clean -f -d
+
+# 删除本地分支并重新获取
+git branch -D master
+git checkout origin/master -b master
 ```
 
 ## sparse-checkout
@@ -477,6 +481,18 @@ git checkout dev
 # 迁移命令
 git push -u origin master # 若new 中不存在分支
 git push --force origin master # 若new 中存在分支，则强制推送
+```
+
+## Github进行fork后如何与原仓库同步
+
+```bash
+# 重新fork很省事，但不如反复练习版本合并
+https://github.com/selfteaching/the-craft-of-selfteaching/issues/67
+
+# 分享一个命令，直接强制同步源仓库（upstream），就不用删了。
+# git push -f确实是很粗暴，这种方法也只适用于不用保存自己的版本的情况而已
+git fetch upstream && git reset --hard upstream/master && git push -f
+
 ```
 
 ## 常规命令

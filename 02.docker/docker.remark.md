@@ -11,6 +11,7 @@
 * [shadowsocks](docker.remark.md#shadowsocks)
 * [redis](docker.remark.md#redis)
 * [pure-ftp](docker.remark.md#pure-ftp)
+* [rabbitmq](docker.remark.md#rabbitmq)
 * [docker logs](docker.remark.md#docker&nbsp;logs)
 * [docker cleanup](docker.remark.md#docker&nbsp;cleanup)
 * [docker configs](docker.remark.md#docker&nbsp;configs)
@@ -325,6 +326,45 @@ pure-pw mkdb
 firewall-cmd --permanent --zone=public --add-port=30000-30009/tcp
 firewall-cmd --reload
 ```
+
+## rabbitmq
+
+```bash
+# mangement的版本,包含web管理页面
+docker pull rabbitmq:management
+
+# exp:1
+docker run -d
+--name myrabbitmq
+-p 5672:5672
+-p 15672:15672
+-v /d/docker/data:/var/lib/rabbitmq
+-e RABBITMQ_DEFAULT_VHOST=my_vhost
+-e RABBITMQ_DEFAULT_USER=admin
+-e RABBITMQ_DEFAULT_PASS=admin
+rabbitmq:management
+
+# -d 后台运行
+# –name 指定RabbitMQ容器名称
+# -p 映射端口
+# -v 数据卷映射位置
+# RABBITMQ_DEFAULT_USER 指定用户账号
+# RABBITMQ_DEFAULT_PASS 指定账号密码
+# RABBITMQ_DEFAULT_VHOST 指定虚拟主机名称
+
+# exp:2
+docker run -d -p 5672:5672 -p 15672:15672 \
+-e RABBITMQ_DEFAULT_USER=admin \
+-e RABBITMQ_DEFAULT_PASS=rbmq \
+-v ${your host rabbitmq-content}/data:/var/lib/rabbitmq  \
+-v ${your host rabbitmq-content}/conf/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf \
+-v ${your host rabbitmq-content}/logs/:/var/log/rabbitmq/log/ \
+--name ${your Instance name} ${rabbitmq-image}:${tag}
+
+docker cp ${your container-name}:/etc/rabbitmq/rabbitmq.conf ${your host rabbitmq-content}/conf/
+docker cp ${your container-name}:/var/log/rabbitmq/log/ ${your host rabbitmq-content}/logs/
+```
+
 
 ## docker logs
 

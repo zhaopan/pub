@@ -1,6 +1,6 @@
-# vscode.setting
+# vscode
 
-## vscode.setting
+## user.setting
 
 ```json
 {
@@ -20,20 +20,6 @@ code --list-extensions | xargs -L 1 echo code --install-extension
 
 ### list-extensions-installed
 
-* `Docker`              Docker
-* `Docker Explorer`     Docker Explorer
-* `Git Graph`           Git Graph
-* `Git History`         Git History
-* `Markdown PDF`        Markdown To PDF
-* `Prettify JSON`       json Format
-* `Sublime Text Keymap and Settings Importer`
-* `Horizon Theme`       Theme
-* `Material Icon Theme` Theme
-* `Slack Theme`         Theme
-* `VSCode Great Icons`
-* `vscode-icons`
-* `vscode-pdf`
-* `vscode-solution-explorer`
 - code --install-extension `benawad.VSinder`
 - code --install-extension `bierner.markdown-mermaid`
 - code --install-extension `bpruitt-goddard.mermaid-markdown-syntax-highlighting`
