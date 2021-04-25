@@ -426,6 +426,10 @@ git stash list
 
 # 移除工作目录中所有未跟踪的文件及口口那个的子目录，不会移除.gitiignore忽略的文件
 git clean -f -d
+
+# 删除本地分支并重新获取
+git branch -D master
+git checkout origin/master -b master
 ```
 
 ## sparse-checkout
