@@ -4,8 +4,6 @@
 
 这些代码片段都是以前日常记录的，用于备忘和方便查询，防老年痴呆。
 
-[![wakatime](https://wakatime.com/badge/github/zhaopan/codesnippet.svg)](https://wakatime.com/badge/github/zhaopan/codesnippet)
-
 <!-- TOC -->
 
 - [_config.yml](https://github.com/zhaopan/codesnippet/blob/master/_config.yml)
