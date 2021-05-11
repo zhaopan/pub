@@ -1,5 +1,7 @@
 # 个人代码片段整理
 
+[![wakatime](https://wakatime.com/badge/github/zhaopan/codesnippet.svg)](https://wakatime.com/badge/github/zhaopan/codesnippet)
+
 这些代码片段都是以前日常记录的，用于备忘和方便查询，防老年痴呆。
 
 <!-- TOC -->
@@ -19,7 +21,6 @@
   - [vscode.setting.md](https://github.com/zhaopan/codesnippet/blob/master/01.collection/vscode.setting.md)
   - [windows.md](https://github.com/zhaopan/codesnippet/blob/master/01.collection/windows.md)
 - [02.docker](https://github.com/zhaopan/codesnippet/tree/master/02.docker)
-  - [README.md](https://github.com/zhaopan/codesnippet/blob/master/02.docker/README.md)
   - [centos7.install.netcore2.2.md](https://github.com/zhaopan/codesnippet/blob/master/02.docker/centos7.install.netcore2.2.md)
   - [docker.remark.md](https://github.com/zhaopan/codesnippet/blob/master/02.docker/docker.remark.md)
   - [env.dockerfile.docker.compose.md](https://github.com/zhaopan/codesnippet/blob/master/02.docker/env.dockerfile.docker.compose.md)
@@ -29,14 +30,17 @@
   - [cenos6.5-iptables.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/cenos6.5-iptables.md)
   - [centos7-minimal-remark.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/centos7-minimal-remark.md)
   - [centos7-update-sshport.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/centos7-update-sshport.md)
+  - [centos7.install.netcore2.2.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/centos7.install.netcore2.2.md)
   - [easybcd-install-ubuntu.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/easybcd-install-ubuntu.md)
   - [generate-ssh-keys.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/generate-ssh-keys.md)
   - [lamp-ubuntu.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/lamp-ubuntu.md)
   - [linux-authorized_keys.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/linux-authorized_keys.md)
+  - [linux-bash.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/linux-bash.md)
   - [linux-command-line-shortcuts.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/linux-command-line-shortcuts.md)
   - [linux-find-xargs.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/linux-find-xargs.md)
   - [linux-find.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/linux-find.md)
   - [linux-gae-code.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/linux-gae-code.md)
+  - [linux-history.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/linux-history.md)
   - [linux-power-remark.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/linux-power-remark.md)
   - [linux-remark.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/linux-remark.md)
   - [pure-ftpd.md](https://github.com/zhaopan/codesnippet/blob/master/03.linux/pure-ftpd.md)
@@ -81,10 +85,7 @@
       - [odbc3-old.xdb](https://github.com/zhaopan/codesnippet/blob/master/05.sundry/power-designer/sqlite-add-AUTOINCREMENT/odbc3-old.xdb)
       - [odbc3.xdb](https://github.com/zhaopan/codesnippet/blob/master/05.sundry/power-designer/sqlite-add-AUTOINCREMENT/odbc3.xdb)
       - [sqlite-add-autoincrement.md](https://github.com/zhaopan/codesnippet/blob/master/05.sundry/power-designer/sqlite-add-AUTOINCREMENT/sqlite-add-autoincrement.md)
-- [LICENSE](https://github.com/zhaopan/codesnippet/blob/master/LICENSE)
-- [README.md](https://github.com/zhaopan/codesnippet/blob/master/README.md)
-- [SUMMARY.md](https://github.com/zhaopan/codesnippet/blob/master/SUMMARY.md)
-- [_config.yml](https://github.com/zhaopan/codesnippet/blob/master/_config.yml)
+  - [README.md](https://github.com/zhaopan/codesnippet/blob/master/05.sundry/README.md)
 - [build.sh](https://github.com/zhaopan/codesnippet/blob/master/build.sh)
 - [intractable-disease.md](https://github.com/zhaopan/codesnippet/blob/master/intractable-disease.md)
 - [naming-abbreviation.md](https://github.com/zhaopan/codesnippet/blob/master/naming-abbreviation.md)
