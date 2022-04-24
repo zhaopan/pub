@@ -349,7 +349,7 @@ git config --local user.name "zhaopan"
 git config --local user.email "zhaopan@gmail.com"
 
 # 若创建新版本库
-git clone git@github.com:zhaopan/codesnippet.git
+git clone git@github.com:zhaopan/pub.git
 cd ax
 touch README.md
 git add README.md
@@ -359,9 +359,9 @@ git push -u origin master
 # 若已存在的文件夹或 Git 仓库
 cd git_existing_folder
 git init
-git remote add origin git@github.com:zhaopan/codesnippet.git
+git remote add origin git@github.com:zhaopan/pub.git
 # or
-git remote set-url origin git@github.com:zhaopan/codesnippet.git
+git remote set-url origin git@github.com:zhaopan/pub.git
 git add .
 git commit
 git push -u origin master
@@ -438,7 +438,7 @@ git checkout origin/master -b master
 mkdir models # 创建一个与要clone的仓库同名或不同命的目录
 cd models
 git init #初始化
-git remote add origin https://github.com/zhaopan/codesnippet.git # 增加远端的仓库地址
+git remote add origin https://github.com/zhaopan/pub.git # 增加远端的仓库地址
 git config core.sparsecheckout true # 设置Sparse Checkout 为true
 echo docker >> .git/info/sparse-checkout # 将要部分clone的目录相对根目录的路径写入配置文件
 git pull origin master #pull下来代码

@@ -158,7 +158,7 @@ $find /dev/rmt -print
 
 ## 三、xargs
 
-* [linux-xargs](https://github.com/zhaopan/codesnippet/tree/9e3ed1f713fb0004b2e8e01446e3ca05470889bd/03.linux/linux-xargs.md)
+* [linux-xargs](https://github.com/zhaopan/pub/tree/9e3ed1f713fb0004b2e8e01446e3ca05470889bd/03.linux/linux-xargs.md)
 
 ## 四、find 命令的参数
 

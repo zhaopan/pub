@@ -1,5 +1,4 @@
 {
-    "editor.renderIndentGuides": true,
     "editor.rulers": [
         80,
         160,
@@ -15,5 +14,6 @@
         "_config.yml": true,
         "LICENSE": true,
     },
-    "editor.renderControlCharacters": true
+    "editor.renderControlCharacters": true,
+    "editor.guides.indentation": true
 }
