@@ -67,4 +67,3 @@ Host my-git.company.com
 RSAAuthentication yes
 IdentityFile ~/my-ssh-key-directory/company-com-private-key-filename
 ```
-
