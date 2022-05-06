@@ -154,6 +154,9 @@ rm {  } \;
 $find . -type d | sort
 # 为了查找系统中所有的rmt磁带设备
 $find /dev/rmt -print
+
+osx find rm
+$find . -name "*-e" -exec rm '{}' \;
 ```
 
 ## 三、xargs
