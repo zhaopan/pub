@@ -14,9 +14,9 @@ kubectl get rc,svc
 kubectl get pod,svc -o wide
 kubectl get pod <pod-name> -o yaml
 
-kubectl edit deployment/tjbb-weikebaba-com -n default
+kubectl edit deployment/<pod-name>-n default
 
-kubectl describe pods tjbb-weikebaba-com-d594ccc98-658jz | tail
+kubectl describe pods <pod-name> | tail
 # 查看 endpoint 列表
 kubectl get endpoints
 kubectl get namespace
@@ -41,6 +41,9 @@ kubectl delete -f pod.yaml
 kubectl delete pod,svc -l name=<label-name>
 
 kubectl delete namespace xxx
+
+# 删除已驱逐的pods
+kubectl get pods |grep Evicted |awk '{print $1}' |xargs kubectl delete pod
 
 # 编辑
 kubectl edit {deploy}/{deployname} -n {namespacename}
@@ -309,4 +312,3 @@ kubectl taint node master node-role.kubernetes.io/master-
 # 2.将Master恢复成Master Only状态
 kubectl taint node master node-role.kubernetes.io/master="":NoSchedule
 ```
-

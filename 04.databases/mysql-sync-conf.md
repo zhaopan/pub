@@ -1,7 +1,5 @@
 # mysql-sync-conf
 
-\# mysql-sync-conf
-
 ## 备份
 
 ```bash
@@ -104,4 +102,3 @@ sudo cp /mnt/backup/conf/mysqld /etc/init.d/mysqld
 sudo cp /a/apps/mysql-5.1.73/etc/my.cnfbackup /a/apps/mysql-5.1.73/etc/my.cnf
 sudo cp /etc/init.d/mysqldbackup /etc/init.d/mysqld
 ```
-

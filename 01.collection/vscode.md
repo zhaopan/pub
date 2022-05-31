@@ -6,6 +6,7 @@
 {
     "editor.renderWhitespace": "all",
     "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "git.autofetch": true,
     "window.zoomLevel": 0,

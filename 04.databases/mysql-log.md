@@ -1,7 +1,5 @@
 # mysql-log
 
-\# MYSQL log
-
 ## 基础查询
 
 ```bash
@@ -84,4 +82,3 @@ log-slow-queries= /usr/local/mysql/log/slowquery.log
 ```
 
 开启慢查询 long\_query\_time =2 --是指执行超过多久的sql会被log下来，这里是2秒 log-slow-queries= /usr/local/mysql/log/slowquery.log --将查询返回较慢的语句进行记录 log-queries-not-using-indexes = nouseindex.log --log下没有使用索引的query log=mylog.log --对所有执行语句进行记录
-
