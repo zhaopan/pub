@@ -46,3 +46,30 @@ scutil --proxy # 获取当前已启用的代理配置，是对 system_profiler �
 # 批量删除 .DS_Store
 find . -name ".DS_Store"  -exec rm -f '{}' \;
 ```
+
+## SSH相关
+
+```bash
+# 检查ssh是否运行
+sudo launchctl list | grep sshd
+
+# 开启 SSH 服务
+sudo launchctl load -w /System/Library/LaunchDeamons/ssh.plist
+
+# 关闭 SSH 服务
+sudo launchctl unload -w /System/Library/LaunchDeamons/ssh.plist
+
+
+
+# SSH 登陆配置
+vim /etc/ssh/sshd_config 
+
+# 找到 #Authentication，将 PermitRootLogin 参数修改为 yes
+PermitRootLogin yes
+
+# SSH pem权限问题
+chmod ～/.ssh 700 .
+chmod ～/.ssh 700 ./*
+
+chmod -R ~/Dropbox/.ssh 600
+```
