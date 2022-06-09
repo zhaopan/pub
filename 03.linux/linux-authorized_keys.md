@@ -21,6 +21,7 @@ AuthorizedKeysFile ~/.ssh/authorized_keys
 chmod 755 ~
 chmod 700 ~/.ssh
 chmod 644 ~/.ssh/authorized_keys
+chmod 600 ~/Dropbox/.ssh
 
 ## 4.重启ssh
 systemctl restart sshd

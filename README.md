@@ -128,6 +128,7 @@
   - [linux-history.md](https://github.com/zhaopan/pub/blob/master/03.linux/linux-history.md)
   - [linux-power-remark.md](https://github.com/zhaopan/pub/blob/master/03.linux/linux-power-remark.md)
   - [linux-remark.md](https://github.com/zhaopan/pub/blob/master/03.linux/linux-remark.md)
+  - [php.md](https://github.com/zhaopan/pub/blob/master/03.linux/php.md)
   - [pure-ftpd.md](https://github.com/zhaopan/pub/blob/master/03.linux/pure-ftpd.md)
   - [vim-command-line.md](https://github.com/zhaopan/pub/blob/master/03.linux/vim-command-line.md)
   - [vsftpd-conf.md](https://github.com/zhaopan/pub/blob/master/03.linux/vsftpd-conf.md)
