@@ -3,9 +3,7 @@
 # the original source
 https://registry.npmjs.org/
 
-
-
-# 方案: 使用nrm
+# 方案1: 使用nrm
 
 # 安装
 npm install -g nrm
@@ -17,8 +15,7 @@ nrm ls
 nrm use taobao
 
 
-
-# 方案: 改变全局的注册
+# 方案2: 改变全局的注册
 
 # 设置成淘宝源
 npm config set registry https://registry.npm.taobao.org
@@ -30,16 +27,15 @@ https://registry.npm.taobao.org/
 npm info underscore
 
 
-
-# 方案: 在命令行里指定源(个人推荐)
+# 方案:3 在命令行里指定源(个人推荐)
 npm --registry https://registry.npm.taobao.org install [name]
 
 
-# 方案: 修改 ~/.npmrc
+# 方案4: 修改 ~/.npmrc
 registry = https://registry.npm.taobao.org
 
 
-# 方案: 使用cnpm
+# 方案5: 使用cnpm
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm install [name]
 ```

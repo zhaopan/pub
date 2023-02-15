@@ -1,5 +1,7 @@
 # macOS
 
+## fk-proxy
+
 若终端是zsh,则vim ~/.zshrc;反之则vim ~/.bashrc,再source .bashrc
 
 ```bash
@@ -46,7 +48,7 @@ scutil --proxy # 获取当前已启用的代理配置，是对 system_profiler �
 
 ```bash
 # 批量删除 .DS_Store
-find . -name ".DS_Store"  -exec rm -f '{}' \;
+find . -name ".DS_Store"  -depth -exec rm -f '{}' \;
 ```
 
 ## SSH相关
@@ -68,10 +70,10 @@ vim /etc/ssh/sshd_config
 PermitRootLogin yes
 
 # SSH pem权限问题
-chmod ～/.ssh 700 .
-chmod ～/.ssh 700 ./*
-
-chmod 600 ~/Dropbox/.ssh
+chmod 700 ~/.ssh
+chmod 644 ~/.ssh/config
+chmod 644 ~/.ssh/known_hosts
+chmod 600 ~/Dropbox/.ssh/*.pem
 ```
 
 ## 显卡切换
@@ -100,5 +102,102 @@ gpuswitch对应值，0是集成显卡，1是独立显卡，2是自动切换
 ## macOS修改命令行电脑名
 
 ```bash
+# 命令行标题
+# Last login: Thu Feb 16 01:16:49 on ttys000
+# zpx@iMac ~ %
 
+# 获取hostname
+scutil --get HostName
+> iMac
+
+# 设置hostname为zpx@iMac
+scutil --set HostName iMac
+>
+
+# 获取LocalHostName
+scutil --get LocalHostName
+> iMac.local
+
+# 设置LocalHostName
+scutil --set LocalHostName xxx
+>
+```
+
+## 查看端口号
+
+```bash
+netstat -atp tcp | grep -i "listen"
+
+sudo lsof -i -P | grep -i "listen"
+
+sudo lsof -i | grep LISTEN
+
+netstat -ap tcp
+```
+
+## Finder 显示隐藏文件和文件夹
+
+```bash
+# 第一 步：打开「终端」应用程序。
+
+# 第二步：输入如下命令：
+defaults write com.apple.finder AppleShowAllFiles -boolean true
+
+killall Finder
+
+# 第三步：按下「Return」键确认。
+
+# 现在你将会在 Finder 窗口中看到那些隐藏的文件和文件夹了。
+
+# 如果你想再次隐藏原本的隐藏文件和文件夹的话，将上述命令替换成
+defaults write com.apple.finder AppleShowAllFiles -boolean false
+
+killall Finder
+```
+
+## .DS_Store
+
+```bash
+# 禁止生成
+#打开 “终端” ，复制黏贴下面的命令，回车执行，重启 Mac 即可生效。
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+
+# 恢复生成
+defaults delete com.apple.desktopservices DSDontWriteNetworkStores
+
+# 删除
+find / -name ".DS_Store" -depth -exec rm {} \;
+# 或者
+find <your path> -name ".DS_Store" -depth -exec rm {} \;
+```
+
+## 快捷键 shortcuts
+
+本文仅列出常用的快捷键，详细请参考官网 [Mac 键盘快捷键](https://support.apple.com/zh-cn/HT201236)
+
+```bash
+`cmd-z`     # 撤销
+`cmd-shift-z`   # 重做
+`cmd-x`     # 拷贝
+`cmd-c`     # 拷贝
+`cmd-v`     # 粘贴
+`cmd-a`     # 全选
+`cmd-s`     # 保存
+`cmd-f`     # 查找
+`cmd-q`     # 退出
+`cmd-alt-esc`   # 强制退出应用程序
+`cmd-m`         # 最小化当前应用程序窗口
+`cmd-h`         # 隐藏当前应用程序窗口
+`cmd-alt-h`     # 隐藏其他应用程序窗口
+`cmd-shift-3`   # 截取全部屏幕
+`cmd-shift-4`   # 截取部分屏幕
+```
+
+## 修改 hosts 文件
+```bash
+# hosts 文件地址
+/private/etc/hosts
+
+# 刷新 DNS 缓存
+sudo killall -HUP mDNSResponder
 ```
