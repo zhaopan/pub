@@ -6,10 +6,16 @@
 {
     "editor.renderWhitespace": "all",
     "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "git.autofetch": true,
-    "window.zoomLevel": 0,
+    "remote.SSH.showLoginTerminal": true,
+    "workbench.colorTheme": "GitHub Dark",
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 1,
+    "gitHistory.showEditorTitleMenuBarIcons": false,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false,
 }
 ```
 

@@ -180,6 +180,7 @@
   - [02.git.standard.md](https://github.com/zhaopan/pub/blob/master/06.git/02.git.standard.md)
   - [03.git.commit.md](https://github.com/zhaopan/pub/blob/master/06.git/03.git.commit.md)
   - [04.git.workflow.md](https://github.com/zhaopan/pub/blob/master/06.git/04.git.workflow.md)
+  - [05.git.global.user.setting.md](https://github.com/zhaopan/pub/blob/master/06.git/05.git.global.user.setting.md)
 - [CODE_OF_CONDUCT.md](https://github.com/zhaopan/pub/blob/master/CODE_OF_CONDUCT.md)
 - [CONTRIBUTING.md](https://github.com/zhaopan/pub/blob/master/CONTRIBUTING.md)
 - [LICENSE](https://github.com/zhaopan/pub/blob/master/LICENSE)
