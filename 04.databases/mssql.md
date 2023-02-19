@@ -1,4 +1,4 @@
-# mssql remark
+# mssql
 
 ## 附录 A：SQL Server 2008 R2相关内容URL地址
 
@@ -66,6 +66,7 @@ SQL Server 2008 Enterprise：JD8Y6-HQG69-P9H84-XDTPG-34MBB
 ## 常用SQL
 
 ```sql
+--游标
 declare @val nvarchar(200)
 declare my_cursor cursor local static read_only forward_only for
 select order_num from transportquarantinecert
@@ -78,4 +79,3 @@ end
 close my_cursor
 deallocate my_cursor
 ```
-

@@ -63,7 +63,7 @@ show variables like 'log\_%'; \#是否启用了日志 show master status; \#当�
 
 ```bash
 shell>mysqlbinlog mail-bin.000001
-或者
+# 或者
 shell>mysqlbinlog mail-bin.000001 | tail
 ```
 
@@ -73,7 +73,7 @@ shell>mysqlbinlog mail-bin.000001 | tail
 
 ## 在\[mysqld\] 中输入
 
-```text
+```yml
 # log
 log-error=/usr/local/mysql/log/error.log
 log=/usr/local/mysql/log/mysql.log

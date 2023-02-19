@@ -13,15 +13,20 @@
 mkdir -p /service/tools
 mkdir /application
 cd /service/tools/
+
 # 下载二进制包(wget -c 断点续传)
 wget -c http://mirrors.163.com/mysql/Downloads/MySQL-5.1/mysql-5.1.73-linux-x86_64-glibc23.tar.gz
+
 #解压
 tar xf mysql-5.1.73-linux-x86_64-glibc23.tar.gz
+
 #移动
 mv mysql-5.1.73-linux-x86_64-glibc23 /application/mysql5.1.73
+
 #创建软链接
 ln -s /application/mysql5.1.73 /application/mysql
 ll /application/
+
 #创建mysql用户
 useradd -M -s /sbin/nologin -r -u 90 mysql
 ```
@@ -61,12 +66,15 @@ yum-y install autoconf
 # 查看文件类型
 file support-files/mysql.server
 support-files/mysql.server: POSIX shell script text executable
+
 # 拷贝启动脚本到/etc/init.d目录，便于启动
 cp support-files/mysql.server /etc/init.d/mysqld
+
 # 修改启动脚本46和47行指定basedir和datadir
 vim /etc/init.d/mysqld
 basedir=/application/mysql
 datadir=/application/mysql/data
+
 # 拷贝配置文件
 cp support-files/my-default.cnf /etc/my.cnf
 ```
@@ -78,10 +86,12 @@ cp support-files/my-default.cnf /etc/my.cnf
 >
 Starting MySQL.Logging to '/application/mysql/data/db01.err'.
 ... SUCCESS!
+
 # 3306端口
 netstat -lntup|grep 3306
 >
 tcp        0      0 :::3306                     :::*                        LISTEN      2197/mysql
+
 # ps -ef
 ps -ef|grep mysql
 >

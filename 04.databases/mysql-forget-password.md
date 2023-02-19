@@ -9,7 +9,7 @@
 
 ## 2.Change mySQL settings
 
-```bash
+```yml
 vim /etc/my.cnf
 
 [mysqld]
@@ -30,14 +30,14 @@ skip-grant-tables
 
 ```sql
 USE mysql;
-UPDATE user SET authentication_string = password ('pwd***') WHERE User = 'root';
+UPDATE user SET authentication_string = password ('<your password>') WHERE User = 'root';
 flush privileges;
 quit;
 ```
 
 ## 5.Change mySQL settings back
 
-```bash
+```yml
 vim /etc/my.cnf
 
 [mysqld]

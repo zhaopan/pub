@@ -3,7 +3,9 @@
 # the original source
 https://registry.npmjs.org/
 
-# 方案1: 使用nrm
+###
+### 方案1: 使用nrm
+###
 
 # 安装
 npm install -g nrm
@@ -14,8 +16,9 @@ nrm ls
 # 使用淘宝源
 nrm use taobao
 
-
-# 方案2: 改变全局的注册
+###
+### 方案2: 改变全局的注册
+###
 
 # 设置成淘宝源
 npm config set registry https://registry.npm.taobao.org
@@ -26,22 +29,26 @@ https://registry.npm.taobao.org/
 # 测试一下
 npm info underscore
 
-
-# 方案:3 在命令行里指定源(个人推荐)
+###
+### 方案:3 在命令行里指定源(个人推荐)
+###
 npm --registry https://registry.npm.taobao.org install [name]
 
-
-# 方案4: 修改 ~/.npmrc
+###
+### 方案4: 修改 ~/.npmrc
+###
 registry = https://registry.npm.taobao.org
 
-
-# 方案5: 使用cnpm
+###
+### 方案5: 使用cnpm
+###
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm install [name]
 ```
 
 ```bash
 # 创建 package.json 文件
+
 npm init
 # 以默认配置创建 package.json 文件
 npm init -y
@@ -77,4 +84,3 @@ npm get registry
 # 设置在线仓库地址(设置淘宝仓库镜像地址)
 npm set registry https://registry.npm.taobao.org
 ```
-

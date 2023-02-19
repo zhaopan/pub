@@ -1,4 +1,4 @@
-# xargs
+# find-xargs
 
 `xargs - build and execute command lines from standard input`
 
@@ -63,4 +63,3 @@ $find . -name \* -type f -print | xargs grep "hostnames"
 注意，在上面的例子中， \用来取消find命令中的\*在shell中的特殊含义。
 
 find命令配合使用exec和xargs可以使用户对所匹配到的文件执行几乎所有的命令。
-

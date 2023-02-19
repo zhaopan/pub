@@ -20,4 +20,3 @@ dev_appserver.py --php_executable_path=/usr/bin/php-cgi $PWD
 ```bash
 gcloud app deploy app.yaml
 ```
-
