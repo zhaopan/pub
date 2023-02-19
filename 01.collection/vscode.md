@@ -1,5 +1,12 @@
 # vscode
 
+## 常用命令
+
+```bash
+# 正则表达式去掉空行
+^\s*(?=\r?$)\n
+```
+
 ## user.setting
 
 ```json
@@ -25,7 +32,7 @@
 code --list-extensions | xargs -L 1 echo code --install-extension
 ```
 
-### list-extensions-installed
+## list-extensions-installed
 
 - code --install-extension `benawad.VSinder`
 - code --install-extension `bierner.markdown-mermaid`
@@ -54,11 +61,3 @@ code --list-extensions | xargs -L 1 echo code --install-extension
 - code --install-extension `vstirbu.vscode-mermaid-preview`
 - code --install-extension `WakaTime.vscode-wakatime`
 - code --install-extension `yzane.markdown-pdf`
-
-
-### remark
-
-```bash
-# 正则表达式去掉空行
-^\s*(?=\r?$)\n
-```

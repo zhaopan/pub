@@ -337,7 +337,7 @@ firewall-cmd --reload
 # mangement的版本,包含web管理页面
 docker pull rabbitmq:management
 
-# exp:1
+# eg:
 docker run -d
 --name myrabbitmq
 -p 5672:5672
@@ -356,7 +356,7 @@ rabbitmq:management
 # RABBITMQ_DEFAULT_PASS 指定账号密码
 # RABBITMQ_DEFAULT_VHOST 指定虚拟主机名称
 
-# exp:2
+# eg:
 docker run -d -p 5672:5672 -p 15672:15672 \
 -e RABBITMQ_DEFAULT_USER=admin \
 -e RABBITMQ_DEFAULT_PASS=rbmq \
@@ -368,7 +368,6 @@ docker run -d -p 5672:5672 -p 15672:15672 \
 docker cp ${your container-name}:/etc/rabbitmq/rabbitmq.conf ${your host rabbitmq-content}/conf/
 docker cp ${your container-name}:/var/log/rabbitmq/log/ ${your host rabbitmq-content}/logs/
 ```
-
 
 ## docker logs
 

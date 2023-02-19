@@ -22,7 +22,7 @@
        --preserve-root     #fail to operate recursively on '/'
        --reference=RFILE   #use RFILE's mode instead of MODE values
   -R, --recursive          #change files and directories recursively （以递归的方式对目前目录下的所有档案与子目录进行相同的权限变更)
-       --help           #显示此帮助信息
+       --help              #显示此帮助信息
        --version           #显示版本信息
 mode ：
 权限设定字串，详细格式如下 ：
@@ -46,7 +46,9 @@ file...
 
 ```bash
 chmod ugo+r a.sh
-或
+
+# 或
+
 chmod a+r  a.conf
 ```
 
@@ -193,19 +195,19 @@ r-- = 100 = 4
 ```bash
 -rw------- =  600
 -rw-rw-rw- =  666
--rwxrwxrwx = 777
+-rwxrwxrwx =  777
 ```
 
 **关于第一位最高位的解释：** 上面我们说到了权限表示中后九位的含义，剩下的第一位代表的是文件的类型，类型可以是下面几个中的一个：
 
 ```bash
-d代表的是目录(directroy)
--代表的是文件(regular file)
-s代表的是套字文件(socket)
-p代表的管道文件(pipe)或命名管道文件(named pipe)
-l代表的是符号链接文件(symbolic link)
-b代表的是该文件是面向块的设备文件(block-oriented device file)
-c代表的是该文件是面向字符的设备文件(charcter-oriented device file)
+d    # 代表的是目录(directroy)
+-    # 代表的是文件(regular file)
+s    # 代表的是套字文件(socket)
+p    # 代表的管道文件(pipe)或命名管道文件(named pipe)
+l    # 代表的是符号链接文件(symbolic link)
+b    # 代表的是该文件是面向块的设备文件(block-oriented device file)
+c    # 代表的是该文件是面向字符的设备文件(charcter-oriented device file)
 ```
 
 ### 十二位权限（Linux附加权限）
@@ -226,10 +228,10 @@ suid/sgid是为了使“没有取得特权用户要完成一项必须要有特�
 如果一个文件被设置了suid或sgid位，会分别表现在所有者或同组用户的权限的可执行位上；如果文件设置了suid还设置了x（执行）位，则相应的执行位表示为s\(小写\)。但是，如果没有设置x位，它将表示为S\(大写\)。如：
 
 ```bash
-1、-rwsr-xr-x 表示设置了suid，且拥有者有可执行权限
-2、-rwSr--r-- 表示suid被设置，但拥有者没有可执行权限
-3、-rwxr-sr-x 表示sgid被设置，且群组用户有可执行权限
-4、-rw-r-Sr-- 表示sgid被设置，但群组用户没有可执行权限
+-rwsr-xr-x     # 表示设置了suid，且拥有者有可执行权限
+-rwSr--r--     # 表示suid被设置，但拥有者没有可执行权限
+-rwxr-sr-x     # 表示sgid被设置，且群组用户有可执行权限
+-rw-r-Sr--     # 表示sgid被设置，但群组用户没有可执行权限
 ```
 
 **设置方式：**
@@ -237,10 +239,10 @@ suid/sgid是为了使“没有取得特权用户要完成一项必须要有特�
 SET位权限可以通过chmod命令设置，给文件加suid和sgid的命令如下\(类似于上面chmod赋予一般权限的命令\)：
 
 ```bash
-chmod u+s filename     设置suid位
-chmod u-s filename     去掉suid设置
-chmod g+s filename     设置sgid位
-chmod g-s filename     去掉sgid设置
+chmod u+s filename     # 设置suid位
+chmod u-s filename     # 去掉suid设置
+chmod g+s filename     # 设置sgid位
+chmod g-s filename     # 去掉sgid设置
 ```
 
 **粘滞位权限：**
@@ -252,8 +254,8 @@ chmod g-s filename     去掉sgid设置
 一个文件或目录被设置了粘滞位权限，会表现在其他组用户的权限的可执行位上。如果文件设置了sticky还设置了x（执行）位，其他组用户的权限的可执行位为t\(小写\)。但是，如果没有设置x位，它将表示为T\(大写\)。如：
 
 ```bash
-1、-rwsr-xr-t 表示设置了粘滞位且其他用户组有可执行权限
-2、-rwSr--r-T 表示设置了粘滞位但其他用户组没有可执行权限
+-rwsr-xr-t     # 表示设置了粘滞位且其他用户组有可执行权限
+-rwSr--r-T     # 表示设置了粘滞位但其他用户组没有可执行权限
 ```
 
 设置方式：
@@ -332,7 +334,6 @@ chmod 755 netlogin
 chmod 4755 netlogin
 ```
 
-chmod 4755与chmod 755对比多了附加权限值4，这个4表示其他用户执行文件时，具有与所有者同样的权限（设置了SUID）。
+chmod 4755 与 chmod 755对比多了附加权限值4，这个4表示其他用户执行文件时，具有与所有者同样的权限（设置了SUID）。
 
 > 为什么要设置4755 而不是 755？ 假设netlogin是root用户创建的一个上网认证程序，如果其他用户要上网也要用到这个程序，那就需要root用户运行chmod 755 netlogin命令使其他用户也能运行netlogin。但假如netlogin执行时需要访问一些只有root用户才有权访问的文件，那么其他用户执行netlogin时可能因为权限不够还是不能上网。这种情况下，就可以用 chmod 4755 netlogin 设置其他用户在执行netlogin也有root用户的权限，从而顺利上网。
-

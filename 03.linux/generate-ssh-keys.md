@@ -17,6 +17,7 @@ cat ~/.ssh/id_rsa.pub
 ```bash
 # 生成SSH.KEY
 ssh-keygen -t rsa -C "xxxxx@xxxxx.com"
+
 # 指定文件名
 ssh-keygen -t rsa -C "xxxxx@xxxxx.com" -f "github_id_rsa"
 ```
@@ -44,8 +45,7 @@ pbcopy < ~/.ssh/id_rsa.pub
 # GNU/Linux (requires xclip)
 xclip -sel clip < ~/.ssh/id_rsa.pub
 
-# 测试SSH候选连接安全性
-# -v显示详细信息
+# eg: Test github ssh connection
 ssh -vT git@github.com
 ```
 
@@ -59,11 +59,34 @@ ssh -vT git@github.com
 
 如果，不管你有什么理由，当你决定去用一个非默认的位置或文件名去存放你的ssh key。你必须配置好你的ssh客户端以找到你的ssh私钥去连接Code服务器，对于OpenSSH客户端，这个通常是在`~/.ssh/config`类似的位置配置的：
 
+
 ```bash
+###
+### eg:
+###
+
 #
 # Our company's internal GitLab server
 #
 Host my-git.company.com
 RSAAuthentication yes
 IdentityFile ~/my-ssh-key-directory/company-com-private-key-filename
+
+#
+# git
+#
+Host github.com
+HostName github.com
+PreferredAuthentications publickey
+IdentityFile ~/github_id_rsa
+User git
+
+#
+# linux/unix
+#
+Host ts01
+HostName 193.112.72.198
+Port 22
+IdentityFile ~/ts01.pem
+User root
 ```

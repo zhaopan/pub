@@ -2,15 +2,18 @@
 
 ```bash
 # 1.生成私钥
+    #
+    # linux
+    #
+    ssh-keygen -t rsa
+    cat id_rsa.pub >> authorized_keys
 
-`linux`
-ssh-keygen -t rsa
-cat id_rsa.pub >> authorized_keys
-
-`Windows`
-#windows端使用puttygen加载id_rsa，另存为.ppk
-conection->data->auto-login，设置默认用户名
-ssh->auth->加载私钥(*.ppk)
+    #
+    # Windows
+    #
+    # windows端使用puttygen加载id_rsa，另存为.ppk
+    conection->data->auto-login，设置默认用户名
+    ssh->auth->加载私钥(*.ppk)
 
 ## 2.修改Linux配置
 sudo vim /etc/ssh/sshd_config
@@ -26,4 +29,3 @@ chmod 600 ~/Dropbox/.ssh
 ## 4.重启ssh
 systemctl restart sshd
 ```
-

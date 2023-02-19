@@ -1,6 +1,6 @@
 # macOS
 
-## fk-proxy
+## shell-proxy
 
 若终端是zsh,则vim ~/.zshrc;反之则vim ~/.bashrc,再source .bashrc
 
@@ -25,6 +25,7 @@ function proxy_off() {
 ```
 
 其他
+
 ```bash
 # 启动代理
 proxy_on
@@ -167,7 +168,9 @@ defaults delete com.apple.desktopservices DSDontWriteNetworkStores
 
 # 删除
 find / -name ".DS_Store" -depth -exec rm {} \;
+#
 # 或者
+#
 find <your path> -name ".DS_Store" -depth -exec rm {} \;
 ```
 

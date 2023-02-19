@@ -1,6 +1,6 @@
 # kubectl
 
-## kubectl remark
+## 常用命令
 
 ```bash
 # 查看所有 pod 列表,  -n 后跟 namespace, 查看指定的命名空间
@@ -112,8 +112,10 @@ kubectl describe pod kubernetes-dashboard-5c469b58b8-bltsw -n kube-system
 #升级集群到新的版本
 kubeadm upgrage
 kubeadm reset
+
 #管理token
 kubeadm token
+
 #版本
 kubeadm version
 
@@ -139,7 +141,7 @@ CentOS Linux release 7.5.1804 (Core)
 ### 2.设置主机名称\(非必须\)
 
 ```bash
-hostnamectl set-hostname DowayDocker
+hostnamectl set-hostname ts01
 ```
 
 ### 3.准备环境
@@ -168,6 +170,7 @@ net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 EOF
 $ sysctl --system
+
 # 加载内核模块
 modprobe br_netfilter
 lsmod | grep br_netfilter
