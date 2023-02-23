@@ -197,10 +197,30 @@ find <your path> -name ".DS_Store" -depth -exec rm {} \;
 ```
 
 ## 修改 hosts 文件
+
 ```bash
 # hosts 文件地址
 /private/etc/hosts
 
 # 刷新 DNS 缓存
 sudo killall -HUP mDNSResponder
+```
+
+## macOS 设置环境变量（推荐方式）
+
+```bash
+#
+# eg: 设置github-cli的环境变量
+#
+
+# 1.添加paths.d 的配置文件
+sudo touch /etc/paths.d/github-cli
+
+# 2.将github-cli的bin目录设置到该环境变量文件
+sudo vim /etc/paths.d/github-cli
+>
+/User/xxx/xxx/gh_2.23.0_macOS_amd64/bin     # 注意这里需要设置成绝对路径
+
+# 3.在任何命令行都能直接使用gh命令
+gh --help
 ```
