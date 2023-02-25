@@ -17,6 +17,7 @@ ps -aux
 
 # 全部查看
 ps -aux | more
+
 # 系统进程内存占用排序
 ps -aux | sort -gr -k 4 | head -n 5
 
