@@ -58,6 +58,7 @@ docker-compose --version
 | 2.4                 | 17.12.0+      |
 | 3.6                 | 18.02.0+      |
 | 3.7                 | 18.06.0+      |
+| 3.8                 | 19.03.0+      |
 
 * [Compatibility matrix](https://docs.docker.com/compose/compose-file/compose-versioning/)
 * [github](https://github.com/docker/compose)
