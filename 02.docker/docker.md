@@ -1,21 +1,25 @@
 # docker
 
-* [install docker](docker.remark.md#install&nbsp;docker)
-* [create docker network](docker.remark.md#create&nbsp;docker&nbsp;network)
-* [docker network list](docker.remark.md#docker&nbsp;network&nbsp;list)
-* [nginx](docker.remark.md#nginx)
-* [mysql](docker.remark.md#mysql)
-* [gogs](docker.remark.md#gogs)
-* [php-fpm](docker.remark.md#php-fpm)
-* [postgres](docker.remark.md#postgres)
-* [shadowsocks](docker.remark.md#shadowsocks)
-* [redis](docker.remark.md#redis)
-* [pure-ftp](docker.remark.md#pure-ftp)
-* [rabbitmq](docker.remark.md#rabbitmq)
-* [docker logs](docker.remark.md#docker&nbsp;logs)
-* [docker cleanup](docker.remark.md#docker&nbsp;cleanup)
-* [docker configs](docker.remark.md#docker&nbsp;configs)
-* [remark](docker.remark.md#remark)
+- [docker](#docker)
+  - [install docker](#install-docker)
+  - [install docker-compose](#install-docker-compose)
+  - [compose file format compatibility matrix](#compose-file-format-compatibility-matrix)
+  - [create docker network](#create-docker-network)
+- [docker network list](#docker-network-list)
+  - [nginx](#nginx)
+  - [mysql](#mysql)
+  - [gogs](#gogs)
+  - [php-fpm](#php-fpm)
+  - [postgres](#postgres)
+  - [shadowsocks](#shadowsocks)
+  - [redis](#redis)
+  - [pure-ftp](#pure-ftp)
+  - [rabbitmq](#rabbitmq)
+  - [docker logs](#docker-logs)
+  - [docker cleanup](#docker-cleanup)
+  - [docker configs](#docker-configs)
+  - [remark](#remark)
+  - [dotnet core 内存设置](#dotnet-core-内存设置)
 
 ![docker](https://cdn.fkwar.com/77C5FC6E-21CF-46F7-96B2-A18F254D295A.png)
 
@@ -38,15 +42,31 @@ yum install epel-release -y
 yum clean all
 yum install docker-io -y
 
-# install docker-compose
-sudo curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-
-sudo chmod +x /usr/local/bin/docker-compose
-
-docker-compose --version
+# test install
+docker  -v
 ```
 
-## Compose file format compatibility matrix
+## install docker-compose
+
+```bash
+# 1.下载 docker-compose
+# 推荐使用daocloud安装
+sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+#
+#or
+#
+
+sudo curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+# 2.安装 docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+# 3.test install
+docker-compose -v
+```
+
+## compose file format compatibility matrix
 
 | Compose file format | Docker Engine |
 | :------------------ | :------------ |
@@ -61,6 +81,7 @@ docker-compose --version
 | 3.8                 | 19.03.0+      |
 
 * [Compatibility matrix](https://docs.docker.com/compose/compose-file/compose-versioning/)
+
 * [github](https://github.com/docker/compose)
 
 ## create docker network
