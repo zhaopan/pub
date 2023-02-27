@@ -1,0 +1,19 @@
+name: Mirror to Gitee
+on:
+    push:
+        branches:
+            - master
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Mirror the Github organization repos to Gitee.
+          uses: yikun/hub-mirror-action@master
+          with:
+            src: github/zhaopan
+            dst: gitee/xare
+            dst_key: ${{ secrets.SSH_GITEE_PRIVATE_KEY }}
+            dst_token: ${{ secrets.GITEE_TOKEN }}
+            static_list: "pub"
+            timeout: '1h'
+            clone_style: "ssh"
