@@ -32,19 +32,48 @@
 curl -fsSL get.docker.com -o get-docker.sh
 sudo sh get-docker.sh --mirror Aliyun
 
+#
+# or
+#
+curl -sSL https://get.daocloud.io/docker | sh
+
 # install docker systemctl
 sudo systemctl enable docker
 sudo systemctl start docker
 
-# tcloud
+### eg: centos9 Install docker
+
+# Uninstall old versions
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+
+# Set up the repository
+sudo yum install -y yum-utils
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+# Install Docker Engine
+sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+### end centos9 Install docker
+
+# qcloud centos7/8
 yum update
 yum install epel-release -y
 yum clean all
 yum install docker-io -y
 
-# test install
+# Test install
 docker  -v
 ```
+
 
 ## install docker-compose
 
@@ -68,6 +97,10 @@ docker-compose -v
 
 ## compose file format compatibility matrix
 
+* [Compatibility matrix](https://docs.docker.com/compose/compose-file/compose-versioning/)
+
+* [Github matrix](https://github.com/docker/compose)
+
 | Compose file format | Docker Engine |
 | :------------------ | :------------ |
 | 1                   | 1.9.0+        |
@@ -79,10 +112,6 @@ docker-compose -v
 | 3.6                 | 18.02.0+      |
 | 3.7                 | 18.06.0+      |
 | 3.8                 | 19.03.0+      |
-
-* [Compatibility matrix](https://docs.docker.com/compose/compose-file/compose-versioning/)
-
-* [github](https://github.com/docker/compose)
 
 ## create docker network
 
@@ -149,7 +178,7 @@ docker run \
 
 * ~/nginx/conf/nginx.conf
 
-```text
+```yml
 user  nginx;
 worker_processes  1;
 error_log  /var/log/nginx/error.log warn;
@@ -174,7 +203,7 @@ http {
 
 * ~/nginx/conf/conf.d/default.conf
 
-```text
+```yml
 server {
     listen       80;
     server_name  localhost;
@@ -189,7 +218,7 @@ server {
 
 * ~/nginx/conf/conf.d/git.conf
 
-```text
+```yml
 server {
     listen       80;
     server_name  git.***.com;
@@ -449,7 +478,7 @@ docker stop $(docker ps -q) & docker rm $(docker ps -aq)
 
 ## dotnet core 内存设置
 
-```markup
+```xml
 <PropertyGroup>
     <ServerGarbageCollection>false</ServerGarbageCollection>
     <!---ServerGarbageCollection ： 服务器垃圾收集-->
