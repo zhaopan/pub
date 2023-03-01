@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# 将文件置于.git/hooks/下, 去掉.sh后缀，并修改权限为755
+
 while read line
 do
   oldrev=$(echo $line | awk '{print $1}')
@@ -48,7 +50,7 @@ do
               (example scopes: Travis, Circle, BrowserStack, SauceLabs)
 
 EOF
-  echo -e "Please read https://github.com/zhaopan/pub/blob/master/06.git/02.git.commit.md"
+  echo -e "Please read https://github.com/zhaopan/pub/blob/master/06.git/03.git.commit.md"
   echo
 
   exit 1

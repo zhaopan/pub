@@ -40,7 +40,7 @@ Available types and what it mean are list here
             (example scopes: Travis, Circle, BrowserStack, SauceLabs)
 
 EOF
-echo -e "Please read https://github.com/zhaopan/pub/blob/master/06.git/02.git.commit.md"
+echo -e "Please read https://github.com/zhaopan/pub/blob/master/06.git/03.git.commit.md"
 echo
 
 exit 1
