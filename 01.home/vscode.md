@@ -9,22 +9,7 @@
 
 ## user.setting
 
-```json
-{
-    "editor.renderWhitespace": "all",
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
-    "git.autofetch": true,
-    "remote.SSH.showLoginTerminal": true,
-    "workbench.colorTheme": "GitHub Dark",
-    "explorer.confirmDelete": false,
-    "window.zoomLevel": 1,
-    "gitHistory.showEditorTitleMenuBarIcons": false,
-    "gitlens.codeLens.enabled": false,
-    "gitlens.codeLens.authors.enabled": false,
-    "gitlens.codeLens.recentChange.enabled": false,
-}
-```
+[vscode-user-setting](vscode-setting.md#user.setting)
 
 ## lookup extensions-list
 
@@ -61,3 +46,16 @@ code --list-extensions | xargs -L 1 echo code --install-extension
 - code --install-extension `vstirbu.vscode-mermaid-preview`
 - code --install-extension `WakaTime.vscode-wakatime`
 - code --install-extension `yzane.markdown-pdf`
+
+### 插件
+
+* `Docker`              Docker
+* `Git Graph`           Git Graph
+* `Git History`         Git History
+* `Markdown PDF`        Markdown To PDF
+* `Prettify JSON`       json Format
+* `Sublime Text Keymap and Settings Importer`
+* `VSCode Great Icons`
+* `vscode-icons`
+* `vscode-pdf`
+* `vscode-solution-explorer`

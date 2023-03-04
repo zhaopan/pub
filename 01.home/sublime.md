@@ -1,6 +1,7 @@
 # sublime
 
 ## user.setting
+
 ```json
 {
     "auto_find_in_selection": true,

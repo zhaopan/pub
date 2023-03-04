@@ -71,10 +71,11 @@ vim /etc/ssh/sshd_config
 PermitRootLogin yes
 
 # SSH pem权限问题
+chmod 755 ~
 chmod 700 ~/.ssh
-chmod 644 ~/.ssh/config
-chmod 644 ~/.ssh/known_hosts
-chmod 600 ~/Dropbox/.ssh/*.pem
+chmod 644 ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/*id_rsa
+chmod 600 ~/Dropbox/.ssh/*id_rsa
 ```
 
 ## 显卡切换
@@ -194,6 +195,7 @@ find <your path> -name ".DS_Store" -depth -exec rm {} \;
 `cmd-alt-h`     # 隐藏其他应用程序窗口
 `cmd-shift-3`   # 截取全部屏幕
 `cmd-shift-4`   # 截取部分屏幕
+`cmd-shift-.`   # 显示隐藏文件
 ```
 
 ## 修改 hosts 文件
