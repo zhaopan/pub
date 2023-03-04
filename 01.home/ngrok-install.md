@@ -1,4 +1,4 @@
-# ngrok.install
+# ngrok-install
 
 ## ngrok 自定义安装
 
