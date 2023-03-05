@@ -1,5 +1,17 @@
 # 01.collection
 
+- [macOS.md](01.home/macOS.md)
+- [nginx.md](01.home/nginx.md)
+- [nginx-conf.md](01.home/nginx-conf.md)
+- [vs2019.md](01.home/vs2019.md)
+- [vs2019-nuget.md](01.home/vs2019-nuget.md)
+- [vs2019-template.md](01.home/vs2019-template.md)
+- [vscode.md](01.home/vscode.md)
+- [vscode-setting.md](01.home/vscode-setting.md)
+- [ngrok-install.md](01.home/ngrok-install.md)
+- [sublime.md](01.home/sublime.md)
+- [windows.md](01.home/windows.md)
+
 ## 程序员好习惯
 
 摘录至互联网

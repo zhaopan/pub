@@ -2,13 +2,75 @@
 
 Tip：version: nginx-1.12.2
 
-## nginx/conf.d/xx.conf
+- [Nginx Configs](#nginx-configs)
+  - [nginx/conf/nginx.conf](#nginxconfnginxconf)
+  - [nginx/conf/conf.d/default.conf](#nginxconfconfddefaultconf)
+  - [nginx/conf.d/gogs.xx.conf](#nginxconfdgogsxxconf)
+  - [error](#error)
 
-```text
+## nginx/conf/nginx.conf
+
+```bash
+user  nginx;
+worker_processes  1;
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+    sendfile        on;
+    keepalive_timeout  65;
+    include /etc/nginx/conf.d/*.conf;
+}
+```
+
+## nginx/conf/conf.d/default.conf
+
+```bash
 server {
     listen       80;
-    server_name  git.xx.com;
-    access_log logs/git.xx.com.log;
+    server_name  localhost;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+        autoindex  on;
+    }
+}
+```
+
+## nginx/conf.d/gogs.xx.conf
+
+```bash
+# 简单配置
+server {
+    listen       80;
+    server_name  gogs.xx.com;
+    client_max_body_size 50m;
+    location / {
+        # 一定要注意这里是docker容器的内网地址+端口,以"/"结尾,不然会报错。
+        proxy_pass http://gogs:3000/;
+        proxy_redirect default;
+        proxy_buffer_size 64k;
+        proxy_buffers 32 32k;
+        proxy_busy_buffers_size 128k;
+    }
+}
+
+# 复杂配置
+server {
+    listen       80;
+    server_name  gogs.xx.com;
+    access_log logs/gogs.xx.com.log;
     location / {
         #一定要注意这里是docker容器的内网地址+端口,以"/"结尾,不然会报错。
         proxy_pass http://172.18.0.3:3000/;
@@ -39,4 +101,3 @@ server {
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
 setsebool -P httpd_can_network_connect 1
 ```
-

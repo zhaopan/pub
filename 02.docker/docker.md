@@ -4,8 +4,6 @@
   - [install docker](#install-docker)
   - [install docker-compose](#install-docker-compose)
   - [compose file format compatibility matrix](#compose-file-format-compatibility-matrix)
-  - [create docker network](#create-docker-network)
-- [docker network list](#docker-network-list)
   - [nginx](#nginx)
   - [mysql](#mysql)
   - [gogs](#gogs)
@@ -17,8 +15,7 @@
   - [rabbitmq](#rabbitmq)
   - [docker logs](#docker-logs)
   - [docker cleanup](#docker-cleanup)
-  - [docker configs](#docker-configs)
-  - [remark](#remark)
+  - [docker daemon](#docker-daemon)
   - [dotnet core 内存设置](#dotnet-core-内存设置)
 
 ![docker](https://cdn.fkwar.com/77C5FC6E-21CF-46F7-96B2-A18F254D295A.png)
@@ -74,7 +71,6 @@ yum install docker-io -y
 docker  -v
 ```
 
-
 ## install docker-compose
 
 ```bash
@@ -113,35 +109,6 @@ docker-compose -v
 | 3.7                 | 18.06.0+      |
 | 3.8                 | 19.03.0+      |
 
-## create docker network
-
-```bash
-# create custom docker network
-docker network create --subnet=172.18.0.0/16 mynetwork
-
-# demo
-docker run -itd --name mysql --net mynetwork --ip 172.18.0.2 centos:latest /bin/bash
-```
-
-## docker network list
-
-```bash
-# nginx
-nginx 172.18.0.2
-
-# mysql
-mysql 172.18.0.3
-
-# gogs
-gogs 172.18.0.4
-
-# php-fpm
-php-fpm 172.18.0.5
-
-# postgres
-postgres 172.18.0.6
-```
-
 ## nginx
 
 ```bash
@@ -178,61 +145,15 @@ docker run \
 
 * ~/nginx/conf/nginx.conf
 
-```yml
-user  nginx;
-worker_processes  1;
-error_log  /var/log/nginx/error.log warn;
-pid        /var/run/nginx.pid;
-events {
-    worker_connections  1024;
-}
-
-http {
-    include       /etc/nginx/mime.types;
-    default_type  application/octet-stream;
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                      '$status $body_bytes_sent "$http_referer" '
-                      '"$http_user_agent" "$http_x_forwarded_for"';
-
-    access_log  /var/log/nginx/access.log  main;
-    sendfile        on;
-    keepalive_timeout  65;
-    include /etc/nginx/conf.d/*.conf;
-}
-```
+    [default.conf](../01.home/nginx-conf.md#nginxconfnginxconf)
 
 * ~/nginx/conf/conf.d/default.conf
 
-```yml
-server {
-    listen       80;
-    server_name  localhost;
-
-    location / {
-        root   /usr/share/nginx/html;
-        index  index.html index.htm;
-        autoindex  on;
-    }
-}
-```
+    [default.conf](../01.home/nginx-conf.md#nginxconfconfddefaultconf)
 
 * ~/nginx/conf/conf.d/git.conf
 
-```yml
-server {
-    listen       80;
-    server_name  git.***.com;
-    client_max_body_size 50m;
-    location / {
-        # 一定要注意这里是docker容器的内网地址+端口,以"/"结尾,不然会报错。
-        proxy_pass http://gogs:3000/;
-        proxy_redirect default;
-        proxy_buffer_size 64k;
-        proxy_buffers 32 32k;
-        proxy_busy_buffers_size 128k;
-    }
-}
-```
+    [gogs.xx.conf](../01.home/nginx-conf.md#nginxconfdgogsxxconf)
 
 ## mysql
 
@@ -332,17 +253,18 @@ docker run \
 ## shadowsocks
 
 ```bash
+docker pull mritd/shadowsocks
+
 docker run -dt --name shadowsocks --restart=always -p 22354:22354 -p 22353:22353/udp mritd/shadowsocks -m "ss-server" -s "-s 0.0.0.0 -p 22354 -m chacha20-ietf-poly1305 -k <YOUR_SSR_PWD> --fast-open" -x -e "kcpserver" -k "-t 127.0.0.1:22354 -l :22353 -mode fast2 -dscp 46 -mtu 1350 -crypt salsa20 -datashard 7 -parityshard 3 -interval 10 -key <YOUR_SSR_PWD>"
 ```
 
 ## redis
 
 ```bash
-docker search redis
 docker pull redis:3.2
-docker images
+
 docker run --name redis --restart=always -p 6379:6379 -d redis:3.2 redis-server
-docker ps
+
 docker exec -ti redis redis-cli
 ```
 
@@ -438,7 +360,7 @@ docker system prune -f
 docker system prune --volumes -f
 ```
 
-## docker configs
+## docker daemon
 
 ```bash
 # windows
@@ -446,34 +368,6 @@ docker system prune --volumes -f
 
 # linux
 /etc/docker/daemon.json
-```
-
-## remark
-
-```bash
-# docker-compose.yml
-docker-compose up -d
-
-# docker-compose services build
-docker-compose up -d nginx
-
-# Dockerfile
-docker build -t nginx .
-
-# selected dockerfile build
-docker build -f xxxDockerfile.txt -t xxx:v1 .
-
-# restart
-docker update --restart=always gogs
-
-# 1.停止所有容器
-docker stop $(docker ps -q)
-
-# 2.删除所有停止容器
-docker rm $(docker ps -aq)
-
-# 3.删除所有运行容器
-docker stop $(docker ps -q) & docker rm $(docker ps -aq)
 ```
 
 ## dotnet core 内存设置
