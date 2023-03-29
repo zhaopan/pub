@@ -1,8 +1,61 @@
 # macOS
 
+## time-line
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchOrder': 2,'mainBranchName': 'tag'}} }%%
+gitGraph
+    branch System
+    commit id: "System 1~7"
+    branch MacOS
+    commit id: "Mac OS 8~9"
+    branch MacOSX
+    commit id: "Mac OS X 10.0 Cheetah"
+    commit id: "Mac OS X 10.1 Puma"
+    commit id: "Mac OS X 10.2 Jaguar"
+    commit id: "Mac OS X 10.3 Panther"
+    commit id: "Mac OS X 10.4 Tiger"
+    commit id: "Mac OS X 10.5 Leopard"
+    commit id: "Mac OS X 10.6 Snow Leopard"
+    commit id: "Mac OS X 10.7 Lion"
+    branch OSX
+    commit id: "OS X 10.8 Mountain Lion（去掉久远的Mac，体现Mac与iOS的融合）"
+    commit id: "OS X 10.9 Mavericks"
+    commit id: "OS X 10.10 Yosemite"
+    commit id: "OS X 10.11 El Capitan"
+    branch macOS
+    commit id: "macOS 10.12 Sierra"
+    commit id: "macOS 10.13 High Sierra"
+    commit id: "macOS 10.14 Mojave"
+    commit id: "macOS 10.15 Catalina"
+    commit id: "macOS 11.0 Big Sur"
+    commit id: "macOS 12.0 Monterey"
+    commit id: "macOS Ventura 13.3"
+```
+
+## .bashrc .zshrc
+
+`Catalina+` 把 `.bashrc` 换到了 `.zshrc`
+
+若没有 `.zshrc`, 则需要手动创建 ; 反之手动创建 `.bashrc` , 最后再 `source .zshrc或.bashrc`
+
+```bash
+touch ~/.zshrc      # Catalina+
+# or
+touch ~/.bashrc
+
+vim ~/.zshrc :wq    # Catalina+
+# or
+vim ~/.bashrc :wq
+
+source .zshrc       # Catalina+
+# or
+source .bashrc
+```
+
 ## shell-proxy
 
-若终端是zsh,则vim ~/.zshrc;反之则vim ~/.bashrc,再source .bashrc
+vim ~/.zshrc `or` vim ~/.bashrc
 
 ```bash
 function proxy_on() {
@@ -44,6 +97,19 @@ networksetup -getwebproxy Wi-Fi # 获取特定网络设备的系统代理配置
 
 scutil --proxy # 获取当前已启用的代理配置，是对 system_profiler 的封装
 ```
+
+## 自定义 alias
+
+vim ~/.zshrc `or` vim ~/.bashrc
+
+eg:
+
+```bash
+alias py3='python3 manage.py'
+alias foo='~/tools/foo.sh'
+alias bar='~/tools/bar.sh'
+```
+
 
 ## 常用命令
 
