@@ -34,7 +34,6 @@ sequenceDiagram
     end
 ```
 
-
 ## gantt
 ```mermaid
 gantt
@@ -45,7 +44,6 @@ section Section
     Parallel 2   :         des4, after des1, 1d
     Parallel 3   :         des5, after des3, 1d
     Parallel 4   :         des6, after des4, 1d
-
 ```
 
 ## classDiagram
