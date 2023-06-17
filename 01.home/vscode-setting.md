@@ -23,16 +23,22 @@
     "editor.formatOnSave": true,
     // vscode默认启用了根据文件类型自动设置tabsize的选项
     "editor.detectIndentation": true,
+    "editor.codeLens": false,
+    "editor.fontFamily": "IntelOne Mono",
     // 文件路径导航
     "breadcrumbs.enabled": true,
-    "remote.SSH.showLoginTerminal": true,
-    "workbench.colorTheme": "GitHub Dark",
+    "workbench.colorTheme": "GitHub Light Default",
     "explorer.confirmDelete": true,
     "gitHistory.showEditorTitleMenuBarIcons": false,
     // codeLens
-    "editor.codeLens": false,
     "gitlens.codeLens.enabled": false,
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.views.commitDetails.files.layout": "list",
+    "markdown-pdf.displayHeaderFooter": false,
+    "remote.SSH.showLoginTerminal": true,
+    "remote.SSH.remotePlatform": {
+        "ts01": "linux"
+    },
 }
 ```
