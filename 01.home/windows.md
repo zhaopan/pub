@@ -28,3 +28,16 @@ _**解决方法**_
 * 1.运行 gpedit.msc
 * 2.计算机配置&gt;管理模板&gt;系统&gt;凭据分配&gt;加密Oracle修正
 * 3.选择启用并选择易受攻击。
+
+
+## Windows Bash Proxy
+
+```bash
+## 设置代理
+set http_proxy=http://127.0.0.1:7890
+set https_proxy=http://127.0.0.1:7890
+
+## 取消代理
+set http_proxy=
+set https_proxy=
+```
