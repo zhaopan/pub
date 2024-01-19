@@ -108,6 +108,9 @@ eg:
 alias py3='python3 manage.py'
 alias foo='~/tools/foo.sh'
 alias bar='~/tools/bar.sh'
+
+alias mysql=/usr/local/mysql/bin/mysql
+alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 ```
 
 
