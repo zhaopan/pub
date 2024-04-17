@@ -27,6 +27,7 @@
   - [docker-compose-cli-eg.md](02.docker/docker-compose-cli-eg.md)
   - [docker-compose.md](02.docker/docker-compose.md)
   - [docker.md](02.docker/docker.md)
+  - [docker_mysql.md](02.docker/docker_mysql.md)
   - [kubectl.md](02.docker/kubectl.md)
 - [03.linux](03.linux)
   - [README.md](03.linux/README.md)
