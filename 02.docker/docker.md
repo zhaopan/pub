@@ -50,6 +50,15 @@ sudo yum remove docker \
                   docker-logrotate \
                   docker-engine
 
+### eg: debian9 install docker
+
+apt update
+apt upgrade
+sudo apt install apt-transport-https ca-certificates curl software-properties-common gnupg2
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+apt install docker-ce
+systemctl status docker
+
 # Set up the repository
 sudo yum install -y yum-utils
 sudo yum-config-manager \
