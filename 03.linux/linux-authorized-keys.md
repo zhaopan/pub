@@ -40,6 +40,9 @@ ssh-agent bash
 ssh-add -l
 ssh-add github_id_rsa
 ssh-add -l
+# 直接用密钥登陆
+ssh -i github_id_rsa root@remote_host
+
 
 ## eg: Test github ssh connection
 ssh -vT git@github.com
@@ -78,4 +81,19 @@ HostName 193.112.72.198
 Port 22
 IdentityFile ~/ts01.pem
 User root
+```
+
+### 若 windows ssh 报错 WARNING: UNPROTECTED PRIVATE KEY FILE!
+
+```bash
+###
+### 当您在Windows上使用SSH连接远程服务器时，出现
+### WARNING: UNPROTECTED PRIVATE KEY FILE!
+
+# 这通常是由于私钥文件的权限设置过于开放导致的。以下是解决该问题的步骤：
+
+# 1.右键点击私钥文件（例如 github_id_rsa），选择“属性”
+# 2.进入“安全”选项卡，点击“高级”按钮
+# 3.在“高级安全设置”窗口中，点击“禁用继承”按钮，然后选择“从此对象中删除所有继承的权限”
+# 4.确保只有当前用户有读写权限。点击“添加”按钮，选择“主体”，输入当前用户名，然后选择“完全控制”
 ```
