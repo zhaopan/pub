@@ -274,7 +274,9 @@ docker pull redis:3.2
 
 docker run --name redis --restart=always -p 6379:6379 -d redis:3.2 redis-server
 
-docker exec -ti redis redis-cli
+docker exec -it redis redis-cli
+
+docker exec -it redis redis-cli CONFIG GET *
 ```
 
 ## pure-ftp
