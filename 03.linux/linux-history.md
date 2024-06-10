@@ -162,7 +162,7 @@ source ~/.bash_profile
 
 ```bash
 echo "export HISTFILE=/data/backup/chopin.bash_history" >> ~/.bash_profile
-souce ~/.bash_profile
+source ~/.bash_profile
 ```
 
 ### 禁用历史记录
