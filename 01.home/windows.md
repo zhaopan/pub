@@ -21,7 +21,7 @@ netsh interface portproxy show v4tov4
 
 ## CredSSP加密Oracle修正
 
-![CredSSP](https://oss-cn-beijing.aliyuncs.com/813569BB-E5A9-494C-AE24-03F76B9D8C89.png)
+![CredSSP](https://fkwar.oss-cn-beijing.aliyuncs.com/813569BB-E5A9-494C-AE24-03F76B9D8C89.png)
 
 _**解决方法**_
 

@@ -9,7 +9,7 @@
 
 ## 基本原理
 
-![history](https://oss-cn-beijing.aliyuncs.com/28644F8D-0483-4DDD-8868-777BCDCAB7ED.png)
+![history](https://fkwar.oss-cn-beijing.aliyuncs.com/28644F8D-0483-4DDD-8868-777BCDCAB7ED.png)
 
 `Linux` 命令的历史记录，会持久化存储，默认位置是当前用户家目录的 `.bash_history` 文件。
 
