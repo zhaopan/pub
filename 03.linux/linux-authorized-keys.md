@@ -1,5 +1,7 @@
 # linux-authorized-keys
 
+## 生成SSH私钥
+
 ```bash
 # 1.生成私钥
 
@@ -48,7 +50,7 @@ ssh -i github_id_rsa root@remote_host
 ssh -vT git@github.com
 ```
 
-### ssh key file names or locations
+## ssh key file names or locations
 
 `~/.ssh/config`
 
@@ -83,7 +85,9 @@ IdentityFile ~/ts01.pem
 User root
 ```
 
-### 若 windows ssh 报错 WARNING: UNPROTECTED PRIVATE KEY FILE!
+## windows
+
+### UNPROTECTED PRIVATE KEY FILE
 
 ```bash
 ###
@@ -97,3 +101,5 @@ User root
 # 3.在“高级安全设置”窗口中，点击“禁用继承”按钮，然后选择“从此对象中删除所有继承的权限”
 # 4.确保只有当前用户有读写权限。点击“添加”按钮，选择“主体”，输入当前用户名，然后选择“完全控制”
 ```
+
+### Permission denied (publickey,gssapi-keyex,gssapi-with-mic)

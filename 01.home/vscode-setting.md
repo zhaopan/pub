@@ -24,21 +24,47 @@
     // vscode默认启用了根据文件类型自动设置tabsize的选项
     "editor.detectIndentation": true,
     "editor.codeLens": false,
-    "editor.fontFamily": "IntelOne Mono",
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.unicodeHighlight.nonBasicASCII": false,
     // 文件路径导航
     "breadcrumbs.enabled": true,
-    "workbench.colorTheme": "GitHub Light Default",
-    "explorer.confirmDelete": true,
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.startupEditor": "none",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
     "gitHistory.showEditorTitleMenuBarIcons": false,
     // codeLens
     "gitlens.codeLens.enabled": false,
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.codeLens.recentChange.enabled": false,
     "gitlens.views.commitDetails.files.layout": "list",
-    "markdown-pdf.displayHeaderFooter": false,
+    // diffEditor
+    "diffEditor.experimental.showMoves": true,
+    "diffEditor.renderSideBySide": true,
+    "diffEditor.useInlineViewWhenSpaceIsLimited": false,
+    // remote
     "remote.SSH.showLoginTerminal": true,
     "remote.SSH.remotePlatform": {
-        "ts01": "linux"
+        "ts01": "linux",
+        "ts02": "linux",
+        "ts03": "linux"
     },
+    // proxy
+    "http.proxy": "http://127.0.0.1:7890",
+    "http.proxyAuthorization": null,
+    "http.proxySupport": "on",
+    "http.proxyStrictSSL": false,
+    // terminal
+    "terminal.integrated.fontFamily": "JetBrains Mono",
+    // markdown
+    "markdown-pdf.displayHeaderFooter": false,
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "files.associations": {
+        "*.md": "markdown"
+    },
+    "markdown-pdf.executablePath": "C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe",
 }
+
 ```
