@@ -61,13 +61,31 @@ code --list-extensions | xargs -L 1 echo code --install-extension
 
 ### 插件
 
-* `Docker`              Docker
-* `Git Graph`           Git Graph
-* `Git History`         Git History
-* `Markdown PDF`        Markdown To PDF
-* `Prettify JSON`       json Format
-* `Sublime Text Keymap and Settings Importer`
-* `VSCode Great Icons`
-* `vscode-icons`
-* `vscode-pdf`
-* `vscode-solution-explorer`
+- `Docker`              Docker
+- `Git Graph`           Git Graph
+- `Git History`         Git History
+- `Markdown PDF`        Markdown To PDF
+- `Prettify JSON`       json Format
+- `Sublime Text Keymap and Settings Importer`
+- `VSCode Great Icons`
+- `vscode-icons`
+- `vscode-pdf`
+- `vscode-solution-explorer`
+
+### markdown 转 PDF
+
+安装插件 `Markdown PDF`
+
+若点击转PDF失败，需要添加配置
+
+> windows
+
+```yml
+"markdown-pdf.executablePath": "C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe"
+```
+
+> macOS
+
+```yml
+"markdown-pdf.executablePath": "/GoogleChrome/Application/chrome"
+```
