@@ -53,4 +53,3 @@ socket=/var/lib/mysql/mysql.sock
 # Restart mysqld
 /etc/init.d/mysqld restart
 ```
-

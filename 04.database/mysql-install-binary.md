@@ -6,6 +6,7 @@
 - 软件版本: mysql-5.1.73-linux-x86_64-glibc23
 
 ## 1、安装
+
 采用二进制方式安装（绿色版，解压就能用）
 
 ```bash
@@ -49,6 +50,7 @@ ibdata1  ib_logfile0  ib_logfile1  mysql  performance_schema  test
 成功后有两个OK，实例化需要用到tmp目录，若tmp目录权限不是1777，则无法实例化，恢复继续实例化需要先执行命令删除rm -rf /application/mysql/data实例化产生的目录
 
 Centos7在实例化时若报错
+
 ```bash
 >
 FATAL ERROR: please install the following Perl modules before executing /usr/local/mysql/scripts/mysql_install_db:
@@ -57,11 +59,13 @@ Data::Dumper
 ```
 
 解决方法
+
 ```bash
 yum-y install autoconf
 ```
 
 ## 3、配置
+
 ```bash
 # 查看文件类型
 file support-files/mysql.server
@@ -80,6 +84,7 @@ cp support-files/my-default.cnf /etc/my.cnf
 ```
 
 ## 4、启动
+
 ```bash
 # 启动
 /etc/init.d/mysqld start

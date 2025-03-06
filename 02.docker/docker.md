@@ -102,9 +102,9 @@ docker-compose -v
 
 ## compose file format compatibility matrix
 
-* [Compatibility matrix](https://docs.docker.com/compose/compose-file/compose-versioning/)
+- [Compatibility matrix](https://docs.docker.com/compose/compose-file/compose-versioning/)
 
-* [Github matrix](https://github.com/docker/compose)
+- [Github matrix](https://github.com/docker/compose)
 
 | Compose file format | Docker Engine |
 | :------------------ | :------------ |
@@ -152,15 +152,15 @@ docker run \
 -d nginx
 ```
 
-* ~/nginx/conf/nginx.conf
+- `~/nginx/conf/nginx.conf`
 
     [default.conf](../01.home/nginx-conf.md#nginxconfnginxconf)
 
-* ~/nginx/conf/conf.d/default.conf
+- `~/nginx/conf/conf.d/default.conf`
 
     [default.conf](../01.home/nginx-conf.md#nginxconfconfddefaultconf)
 
-* ~/nginx/conf/conf.d/git.conf
+- `~/nginx/conf/conf.d/git.conf`
 
     [gogs.xx.conf](../01.home/nginx-conf.md#nginxconfdgogsxxconf)
 

@@ -9,7 +9,7 @@ show binlog events in 'mysql-bin.000008' from 1919\G
 show variables like '%log%'; #find variables in mysql\G
 ```
 
-## MYSQL binlog日志定期清除：
+## MYSQL binlog日志定期清除
 
 ### 方法1.修改配置文件
 
