@@ -1,5 +1,5 @@
 
-# linux history 可以这么强大！
+# linux history 可以这么强大
 
 当我们频繁使用 `Linux` 命令行时，有效地使用历史记录，可以大大提高工作效率。
 
@@ -95,6 +95,7 @@ curl www.sina.com.cn
 ```bash
 (reverse-i-search)`sina': echo sina
 ```
+
 可以看到，我输入了 `sina` 后，就自动匹配到最近一次和 `sina` 匹配的命令，这时按下回车就可以执行该命令。
 
 ### 重复执行上条命令
@@ -110,6 +111,7 @@ curl www.sina.com.cn
 ### 显示时间戳
 
 有时候需要对 Linux 系统做审计，那为历史记录添加时间戳，显示非常有用。
+
 ```bash
 export HISTTIMEFORMAT='%F %T '
 
