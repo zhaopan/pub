@@ -1,4 +1,7 @@
-设置npm源的几种方式
+# npm
+
+## 设置npm源的几种方式
+
 ```bash
 # the original source
 https://registry.npmjs.org/
