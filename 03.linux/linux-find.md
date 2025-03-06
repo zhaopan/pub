@@ -18,13 +18,13 @@ $find /etc -name "*" | xargs grep "hello abcserver" > /cqtest.txt
 
 ## 一、find 命令格式
 
-### 1、find命令的一般形式为；
+### 1、find命令的一般形式为
 
 ```bash
 $find pathname -options [-print -exec -ok ...]
 ```
 
-### 2、find命令的参数；
+### 2、find命令的参数
 
 ```bash
 pathname:   # find命令所查找的目录路径。例如用.来表示当前目录，用/来表示系统根目录。

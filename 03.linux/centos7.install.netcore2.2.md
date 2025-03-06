@@ -44,4 +44,3 @@ dotnet --version
 ### 更多内容详细官方链接
 
 [https://dotnet.microsoft.com/download](https://dotnet.microsoft.com/download)
-

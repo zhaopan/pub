@@ -18,7 +18,7 @@ mysql -u root -p DATABASE<ALL.sql
 mysql -h 127.0.0.0 -u root -p
 ```
 
-# 常见错误
+## 常见错误
 
 ```bash
 # 常见错误

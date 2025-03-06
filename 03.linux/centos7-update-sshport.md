@@ -72,4 +72,3 @@ netstat -lnp | grep 54321
 # 批量开启端口
 firewall-cmd --permanent --zone=public --add-port=30000-30209/tcp
 ```
-
