@@ -8,6 +8,7 @@
     "bold_folder_labels": true,
     "draw_white_space": "all",
     "ensure_newline_at_eof_on_save": true,
+    "font_face":"JetBrains Mono",
     "font_size": 14,
     "highlight_line": true,
     "highlight_modified_tabs": true,
@@ -25,13 +26,13 @@
 
 ## extensions
 
-* `DeleteBlankLines`    删除空白行
-* `DocBlockr`           注释
-* `JsFormst`            JS格式化
-* `PrettyJson`          json格式化
-* `SFTP`                FTP同步
-* `theme-Afterglow`     主题样式
-* `sublimerge `         文件对比
+- `DeleteBlankLines`    删除空白行
+- `DocBlockr`           注释
+- `JsFormst`            JS格式化
+- `PrettyJson`          json格式化
+- `SFTP`                FTP同步
+- `theme-Afterglow`     主题样式
+- `sublimerge`         文件对比
 
 ## install package control
 
