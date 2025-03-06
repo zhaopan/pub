@@ -73,7 +73,7 @@ gzip_vary           on;
 
   什么类型的页面或文档启用压缩。
 
-###  强制使用 https (http 跳转到 https)
+### 强制使用 https (http 跳转到 https)
 
 将所有的 http 请求通过 rewrite 重写到 https
 
@@ -87,7 +87,7 @@ server {
 
 ### 使用 proxy_pass 反向代理时，cookie 丢失的问题
 
-1. 如果只是host、端口转换，则cookie不会丢失。例如：
+1.如果只是host、端口转换，则cookie不会丢失。例如：
 
 ```bash
 location /project {
@@ -95,15 +95,19 @@ location /project {
 }
 ```
 
-通过浏览器访问http://127.0.0.1/project时，浏览器的cookie内有jsessionid。再次访问时，浏览器会发送当前的cookie。
+通过浏览器访问 `http://127.0.0.1/project` 时，浏览器的cookie内有jsessionid。再次访问时，浏览器会发送当前的cookie。
 
-2. 如果路径也变化了，则需要设置cookie的路径转换，nginx.conf的配置如下
-    location /proxy_path {
-        proxy_pass   http://127.0.0.1:8080/project;
-    }
+2.如果路径也变化了，则需要设置cookie的路径转换，nginx.conf的配置如下
 
-通过浏览器访问http://127.0.0.1/proxy_path时，浏览器的cookie内没有jsessionid。再次访问时，后台当然无法获取到cookie了。
-详细看了文档：http://nginx.org/en/docs/http/ngx_http_proxy_module.html?&_ga=1.161910972.1696054694.1422417685#proxy_cookie_path
+```yml
+location /proxy_path {
+    proxy_pass   http://127.0.0.1:8080/project;
+}
+```
+
+[通过浏览器访问] `http://127.0.0.1/proxy_path` 时，浏览器的cookie内没有jsessionid。再次访问时，后台当然无法获取到cookie了。
+
+[详细看了文档](http://nginx.org/en/docs/http/ngx_http_proxy_module.html?&_ga=1.161910972.1696054694.1422417685#proxy_cookie_path)
 
 加上路径转换：`proxy_cookie_path  /project /proxy_path`;
 
