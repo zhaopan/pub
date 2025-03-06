@@ -24,8 +24,7 @@ cd /mnt/sdk
 tar -xzvf go1.18.linux-amd64.tar.gz
 ```
 
-
-# 设置环境变量
+## 设置环境变量(方式一)
 
 ```bash
 ###
@@ -48,7 +47,8 @@ source .zshrc
 go version
 ```
 
-## 设置环境变量
+## 设置环境变量(方式二)
+
 ```bash
 # go v1.13之后默认开启 go module
 go env -w GO111MODULE=on

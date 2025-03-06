@@ -3,6 +3,7 @@
 Markdown - [mermaid](https://mermaid.js.org/intro/)
 
 ## flowchart
+
 ```mermaid
 flowchart TD
     A-->B;
@@ -12,6 +13,9 @@ flowchart TD
 ```
 
 ## sequenceDiagram
+
+>1
+
 ```mermaid
 sequenceDiagram
     Alice->>John: Hello John, how are you?
@@ -24,7 +28,8 @@ sequenceDiagram
     Bob-->>John: Jolly good!
 ```
 
-## sequenceDiagram
+>2
+
 ```mermaid
 sequenceDiagram
     Client ->> +Service : 发送请求
@@ -35,6 +40,7 @@ sequenceDiagram
 ```
 
 ## gantt
+
 ```mermaid
 gantt
 section Section
@@ -47,6 +53,7 @@ section Section
 ```
 
 ## classDiagram
+
 ```mermaid
 classDiagram
     Class01 <|-- AveryLongClass : Cool
@@ -67,6 +74,7 @@ classDiagram
 ```
 
 ## pie
+
 ```mermaid
 pie showData
     title Key elements in Product X
@@ -77,6 +85,7 @@ pie showData
 ```
 
 ## graph
+
 ```mermaid
 graph TD
     start([开始]) --> 赋值arr[赋值arr]

@@ -29,7 +29,6 @@ _**解决方法**_
 * 2.计算机配置&gt;管理模板&gt;系统&gt;凭据分配&gt;加密Oracle修正
 * 3.选择启用并选择易受攻击。
 
-
 ## Windows Bash Proxy
 
 ```bash
@@ -43,6 +42,7 @@ set https_proxy=
 ```
 
 ## 端口查询
+
 ```shell
 # 查找所有运行的端
 netstat -ano
