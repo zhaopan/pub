@@ -26,6 +26,13 @@ PubkeyAuthentication yes
 AuthorizedKeysFile ~/.ssh/authorized_keys
 
 ## 3.设置权限
+
+# 客户端设置
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/config
+chmod 600 ~/.ssh/_authorized_keys
+chmod 400 ~/.ssh/*_id_rsa
+# OR
 chmod 755 ~
 chmod 700 ~/.ssh
 chmod 644 ~/.ssh/authorized_keys
@@ -44,7 +51,6 @@ ssh-add github_id_rsa
 ssh-add -l
 # 直接用密钥登陆
 ssh -i github_id_rsa root@remote_host
-
 
 ## eg: Test github ssh connection
 ssh -vT git@github.com
