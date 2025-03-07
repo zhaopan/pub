@@ -56,6 +56,7 @@
     "http.proxyStrictSSL": false,
     // terminal
     "terminal.integrated.fontFamily": "JetBrains Mono",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
     // markdown
     "markdown-pdf.displayHeaderFooter": false,
     "[markdown]": {
