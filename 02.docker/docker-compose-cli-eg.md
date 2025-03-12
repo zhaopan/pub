@@ -34,6 +34,8 @@ docker network create --subnet=172.19.0.0/16 devops_proxy
 
 docker-compose.yml
 
+创建网络
+
 ```yml
 version: "3.8"
 services:
@@ -50,10 +52,53 @@ networks:
     ipam:
       config:
         - subnet: ${SUBNET}
-  # 使用已存在的网络
+```
+
+加入已经存在的网络
+
+```yml
+version: "3.8"
+services:
+  nginx:
+    image: nginx
+    networks:
+      backend:
+        ipv4_address: ${NGINX_IP}
+
+networks:
+  # 已经存在的网络 <backend>
   backend:
+    external: true
+
+# OR
+
+version: "3.8"
+services:
+  nginx:
+    image: nginx
+    networks:
+      backend:
+        ipv4_address: ${NGINX_IP}
+networks:
+  backend:
+    # 已经存在的网络 <devops_proxy>
     name: devops_proxy
     external: true
+
+# OR
+
+version: "3.8"
+services:
+  nginx:
+    image: nginx
+    networks:
+      ipv4_address: ${NGINX_IP}
+networks:
+  # 默认网络
+  default:
+    external:
+      # 已经存在的网络 <devops_proxy>
+      name: devops_proxy
 ```
 
 ## docker-compose.yml + Dockerfile + env
@@ -84,7 +129,7 @@ LABEL maintainer=${MAINTAINER}
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-CMD [ "redis-server"]
+CMD ["redis-server"]
 
 EXPOSE 6379
 ```
