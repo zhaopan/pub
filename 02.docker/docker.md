@@ -93,6 +93,12 @@ sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.2/doc
 
 sudo curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
+#
+#or 最新版
+#
+
+sudo curl -L https://github.com/docker/compose/releases/download/v2.33.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
 # 2.安装 docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
@@ -101,6 +107,8 @@ docker-compose -v
 ```
 
 ## compose file format compatibility matrix
+
+- [Compose file versions and upgrading](https://docker-docs.uclv.cu/compose/compose-file/compose-versioning)
 
 - [Compatibility matrix](https://docs.docker.com/compose/compose-file/compose-versioning/)
 
