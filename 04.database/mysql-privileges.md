@@ -8,7 +8,7 @@ _**MYSQL Version:8.0+**_
 use mysql;
 
 --创建数据库
-create database if not exists mysqldb default character set utf8 collate utf8_general_ci;
+create database if not exists mysqldb default character set utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 ## 2.create user
@@ -90,15 +90,15 @@ flush privileges;
 --create database engine = innodb
 create database gogs engine = innodb
 
---create database character = utf8 collate utf8_general_ci
-create database if not exists gogs default character set utf8 collate utf8_general_ci
+--create database character = utf8mb4 COLLATE utf8mb4_unicode_ci
+create database if not exists gogs default character set utf8mb4 COLLATE utf8mb4_unicode_ci
 ```
 
 ## demo: create dev database
 
 ```sql
 --create database
-create database if not exists work default character set utf8 COLLATE utf8_general_ci;
+create database if not exists work default character set utf8mb4mb4 COLLATE utf8mb4_unicode_ci;
 
 --create db user
 create user 'dbroot'@'%' identified by '123456';
