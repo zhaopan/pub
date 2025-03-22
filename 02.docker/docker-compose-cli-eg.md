@@ -192,6 +192,24 @@ docker-compose down
 docker-compose down --rmi all
 ```
 
+## restart重启策略
+
+eg
+
+```yml
+services:
+  redis:
+    container_name: redis
+    restart: always # 重启策略
+```
+
+- no：默认选项，表示服务退出后不会自动重启。
+- always：表示服务退出后会自动重启。
+- on-failure：表示只有当服务以非零状态退出时才会自动重启。
+- unless-stopped：表示除非手动停止服务，否则会自动重启。
+
+pull_policy: always     # 强制刷新
+
 ## cli-list
 
 ```bash
