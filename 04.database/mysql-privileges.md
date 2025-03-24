@@ -8,7 +8,7 @@ _**MYSQL Version:8.0+**_
 use mysql;
 
 --创建数据库
-create database if not exists mysqldb default character set utf8mb4 COLLATE utf8mb4_unicode_ci;
+create database if not exists work default character set utf8mb4 collate utf8mb4_unicode_ci;
 ```
 
 ## 2.create user
@@ -42,22 +42,22 @@ flush privileges;
 --
 
 --所有权限
-grant all privileges on mysqldb.* to 'dbroot'@localhost;
+grant all privileges on work.* to 'dbroot'@localhost;
 flush privileges;
 
 --部分权限
-grant select,delete,update,insert,create,drop on mysqldb.* to 'dbroot'@localhost;
+grant select,delete,update,insert,create,drop on work.* to 'dbroot'@localhost;
 flush privileges;
 
 --
 --远程用户
 --
 --所有权限
-grant all privileges on mysqldb.* to 'dbroot'@'%';
+grant all privileges on work.* to 'dbroot'@'%';
 flush privileges;
 
 --部分权限
-grant select,delete,update,insert,create,drop on mysqldb.* to 'dbroot'@'%';
+grant select,delete,update,insert,create,drop on work.* to 'dbroot'@'%';
 flush privileges;
 ```
 
@@ -84,21 +84,11 @@ alter user 'dbroot'@'%' identified with mysql_native_password by '123456';
 flush privileges;
 ```
 
-## demo: create gogs database
-
-```sql
---create database engine = innodb
-create database gogs engine = innodb
-
---create database character = utf8mb4 COLLATE utf8mb4_unicode_ci
-create database if not exists gogs default character set utf8mb4 COLLATE utf8mb4_unicode_ci
-```
-
 ## demo: create dev database
 
 ```sql
 --create database
-create database if not exists work default character set utf8mb4mb4 COLLATE utf8mb4_unicode_ci;
+create database if not exists work default character set utf8mb4 collate utf8mb4_unicode_ci;
 
 --create db user
 create user 'dbroot'@'%' identified by '123456';
