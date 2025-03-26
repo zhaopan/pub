@@ -4,24 +4,53 @@
 
 ```json
 {
-    "auto_find_in_selection": true,
-    "bold_folder_labels": true,
-    "draw_white_space": "all",
-    "ensure_newline_at_eof_on_save": true,
-    "font_face":"JetBrains Mono",
-    "font_size": 14,
-    "highlight_line": true,
-    "highlight_modified_tabs": true,
-    "save_on_focus_lost": true,
-    "show_encoding": true,
-    "show_line_endings": true,
-    "tab_size": 4,
-    "translate_tabs_to_spaces": true,
-    "trim_automatic_white_space": true,
-    "trim_trailing_white_space_on_save": true,
-    "update_check": false,
-    "word_wrap": false,
+  "auto_find_in_selection": true,
+  "bold_folder_labels": true,
+  "draw_white_space": "all",
+  "ensure_newline_at_eof_on_save": true,
+  "font_face":"JetBrains Mono",
+  "font_size": 10,
+  "highlight_line": true,
+  "highlight_modified_tabs": true,
+  "index_files": true,
+  "save_on_focus_lost": true,
+  "show_encoding": true,
+  "show_line_endings": true,
+  "tab_size": 4,
+  "translate_tabs_to_spaces": true,
+  "trim_automatic_white_space": true,
+  "trim_trailing_white_space_on_save": true,
+  "update_check": false,
+  "word_wrap": false,
+  "associations": {
+      "*.vue": "source.js.babel",
+  }
 }
+```
+
+## user key bingings
+
+```json
+[
+  {
+    "keys": [
+      "alt+1"
+    ],
+    "command": "terminus_open",
+    "args": {
+      "cwd": "${file_path:${folder}}"
+    }
+  },
+  {
+    "keys": [
+      "alt+`"
+    ],
+    "command": "toggle_terminus_panel",
+    "args": {
+      "cwd": "${file_path:${folder}}"
+    }
+  }
+]
 ```
 
 ## extensions
@@ -32,7 +61,8 @@
 - `PrettyJson`          json格式化
 - `SFTP`                FTP同步
 - `theme-Afterglow`     主题样式
-- `sublimerge`         文件对比
+- `sublimerge`          文件对比
+- `Terminus`            命令行插件
 
 ## install package control
 
