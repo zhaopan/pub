@@ -1,6 +1,5 @@
-# git.config.setting.sh
+#!/bin/bash
 
-```bash
 # user.name
 git config --global user.name "name"
 
@@ -72,5 +71,3 @@ git config --global alias.append "commit --amend --no-edit"
 
 # 没有任何改动的提交
 git config --global alias.foo "commit -m "foo" --allow-empty"
-
-```
