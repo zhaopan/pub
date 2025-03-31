@@ -27,6 +27,15 @@
 ```bash
 # aliyun docker mirror
 curl -fsSL get.docker.com -o get-docker.sh
+####
+# OR
+####
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+
+# !!! Warning !!!
+实在不行手动下载脚本到服务器
+# !!! Warning !!!
+
 sudo sh get-docker.sh --mirror Aliyun
 
 #
