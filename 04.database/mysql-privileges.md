@@ -1,6 +1,6 @@
 # mysql privileges
 
-`MYSQL Version:8.0+`
+`MYSQL 8.0+`
 
 ## 1.create database
 
@@ -14,20 +14,18 @@ create database if not exists work default character set utf8mb4 collate utf8mb4
 ## 2.create user
 
 ```sql
--- dbroot本地访问
+-- 本地用户
 insert into mysql.user(host,user,password) values('localhost','dbroot',password('<mysql-pwd>'));
 
--- dbroot远程访问
+-- 远程用户
 insert into mysql.user(host,user,password) values('%','dbroot',password('<mysql-pwd>'));
 
---------
 -- OR --
---------
 
--- dbroot本地访问
+-- 本地用户
 create user 'dbroot'@'localhost' identified by '<mysql-pwd>';
 
--- dbroot远程访问
+-- 远程用户
 create user 'dbroot'@'%' identified by '<mysql-pwd>';
 
 flush privileges;
@@ -36,22 +34,18 @@ flush privileges;
 ## 3.privileges
 
 ```sql
---
--- 本地用户
---
--- 所有权限
+-- 本地用户(所有权限)
 grant all privileges on work.* to 'dbroot'@localhost;
 
--- 部分权限
-grant select,delete,update,insert,create,drop on work.* to 'dbroot'@localhost;
-
---
--- 远程用户
---
--- 所有权限
+-- 远程用户(所有权限)
 grant all privileges on work.* to 'dbroot'@'%';
 
--- 部分权限
+-- OR --
+
+-- 本地用户(部分权限)
+grant select,delete,update,insert,create,drop on work.* to 'dbroot'@localhost;
+
+-- 远程用户(部分权限)
 grant select,delete,update,insert,create,drop on work.* to 'dbroot'@'%';
 ```
 
@@ -73,20 +67,24 @@ alter user 'dbroot'@'%' identified by '<mysql-pwd>' password expire never;
 alter user 'dbroot'@'%' identified with mysql_native_password by '<mysql-pwd>';
 ```
 
-## demo: create dev database
+## eg
 
 ```sql
+-- use mysql;
+
 -- 创建数据库
 create database if not exists work default character set utf8mb4 collate utf8mb4_unicode_ci;
 
 -- 创建远程访问用户
 create user 'dbroot'@'%' identified by '<mysql-pwd>';
 
--- 授权
-grant alter,select,delete,update,insert,create,drop on work.* to 'dbroot'@'%';
-
 -- 授权(all)
 grant all on *.* to 'dbroot'@'%';
+
+-- OR --
+
+-- 授权
+grant alter,select,delete,update,insert,create,drop on work.* to 'dbroot'@'%';
 
 -- 修改密码
 alter user 'dbroot'@'%' identified with mysql_native_password by '<mysql-pwd>';
