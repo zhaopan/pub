@@ -294,13 +294,13 @@ docker exec -it redis redis-cli CONFIG GET *
 docker pull stilliard/pure-ftpd:hardened
 
 # 2.下载完后直接运行
-docker run -dt --name ftpd_server -p 21:21 -p 30000-30009:30000-30009 -e "PUBLICHOST=localhost" --privileged=true --restart=always -v ~/nginx/html/des:/home/ftpusers/www stilliard/pure-ftpd:hardened bash
+docker run -dt --name pureftpd -p 21:21 -p 30000-30009:30000-30009 -e "PUBLICHOST=localhost" --privileged=true --restart=always -v ~/nginx/html/des:/home/ftpusers/www stilliard/pure-ftpd:hardened bash
 #使用绑定IP为192.168.1.66，如果是公开FTP的话，可以不写IP。这里只是本机测试
 #不使用官方教程的端口号30000-30009，因为30000-30009端口只能满足5个用户同时FTP登陆。计算方式为“(最大端口号-最小端口号) / 2”。所以我这里修改为可以满足100个用户同时连接登陆
 #做了个目录映射，把本机的/home/ftpusers/des目录映射到pure-ftp的/home/ftpusers/www下
 
 # 3.登陆pure-ftp容器
-docker exec -it ftpd_server /bin/bash
+docker exec -it pureftpd /bin/bash
 
 # 4.在容器内新建用户（用户名为：www）
 pure-pw useradd www -u ftpuser -d /home/ftpusers/www
@@ -319,6 +319,62 @@ pure-pw mkdb
 # 7.防火墙设置
 firewall-cmd --permanent --zone=public --add-port=30000-30009/tcp
 firewall-cmd --reload
+```
+
+docker-compose.yml
+
+```yml
+services:
+  pureftpd:
+    build:
+      context: ./pure-ftpd
+    container_name: pureftpd
+    ports:
+      - "10021:21"
+      - "30000-30019:30000-30019"
+    volumes:
+      - /mnt/www:/home/ftpusers/
+      - puredb:/etc/pure-ftpd/passwd
+    environment:
+      PUBLICHOST: "localhost"
+      FTP_USER_NAME: ftpdef
+      FTP_USER_PASS: ftpdef.
+      FTP_USER_HOME: /home/ftpusers/ftpdef
+    restart: always
+    networks:
+      backend:
+        ipv4_address: 172.18.0.100
+
+volumes:
+  puredb:
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/data/puredb # 宿主机目录路径
+      o: bind # 绑定模式
+
+networks:
+  backend:
+    external: true
+```
+
+pure-ftpd/Dockerfile
+
+```Dockerfile
+FROM stilliard/pure-ftpd
+
+CMD /run.sh -c 30 -C 10 -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P $PUBLICHOST -p 30000:30009
+```
+
+.env
+
+```evn
+WEB_ROOT_PATH=../www
+PURE_FTP_IP=172.18.0.100
+PURE_FTPD_PUBLICHOST=localhost
+PURE_FTPD_USER=ftpdef
+PURE_FTPD_PASSWD=94abf22f232.
+PURE_FTPD_DATA_PATH=/mnt/lnmp/data/puredb
 ```
 
 ## rabbitmq
