@@ -24,7 +24,7 @@
     // vscode默认启用了根据文件类型自动设置tabsize的选项
     "editor.detectIndentation": true,
     "editor.codeLens": false,
-    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontFamily": "Intel One Mono",
     "editor.unicodeHighlight.nonBasicASCII": false,
     // 文件路径导航
     "breadcrumbs.enabled": true,
@@ -55,7 +55,7 @@
     "http.proxySupport": "on",
     "http.proxyStrictSSL": false,
     // terminal
-    "terminal.integrated.fontFamily": "JetBrains Mono",
+    "terminal.integrated.fontFamily": "Intel One Mono",
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     // markdown
     "markdown-pdf.displayHeaderFooter": false,

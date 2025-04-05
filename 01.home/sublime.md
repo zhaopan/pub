@@ -8,7 +8,7 @@
   "bold_folder_labels": true,
   "draw_white_space": "all",
   "ensure_newline_at_eof_on_save": true,
-  "font_face":"JetBrains Mono",
+  "font_face":"Intel One Mono",
   "font_size": 10,
   "highlight_line": true,
   "highlight_modified_tabs": true,
