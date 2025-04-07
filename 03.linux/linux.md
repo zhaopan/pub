@@ -2,6 +2,8 @@
 
 ## 常用命令
 
+![ssh 权限](https://fkwar.oss-cn-beijing.aliyuncs.com/qKOEJ3mgRKYGSYCj2Kmv0I4j7nXOkwbH.png)
+
 ```bash
 # 安装桌面
 sudo apt-get install ubuntu-desktop
