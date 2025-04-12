@@ -1,0 +1,27 @@
+name: Update TOC
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - '**/*.md'       # 监控所有Markdown文件
+      - '!README.md'    # 仅排除根目录的README.md
+
+jobs:
+  update-toc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Update TOC
+        run: |
+          chmod +x build.sh
+          ./build.sh
+          
+          git config --global user.name "${{ secrets.GIT_USER_NAME }}"
+          git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
+          git add README.md
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update TOC [skip ci] go up 👍"
+          git push
