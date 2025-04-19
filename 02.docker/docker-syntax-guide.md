@@ -50,8 +50,8 @@ compose.yml 和 Dockerfile 的语法规则容易混淆，尤其是 `=` 和 `:` �
 
   ```yml
   environment:
-  - DB_HOST=db         # 必须用 =
-  - REDIS_URL=redis://cache
+    - DB_HOST=db         # 必须用 =
+    - REDIS_URL=redis://cache
   ```
 
 **`:` 的使用场景**
