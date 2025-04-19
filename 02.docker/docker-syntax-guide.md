@@ -4,22 +4,22 @@ compose.yml 和 Dockerfile 的语法规则容易混淆，尤其是 `=` 和 `:` �
 
 ## 一、核心规则速查表
 
-| 文件/场景               | 符号 | 示例                     | 规则说明                  |
-|------------------------|------|--------------------------|-------------------------|
-| **Dockerfile ENV**     | `=`  | `ENV KEY=value`          | 必须用 `=` |
-| **Dockerfile ARG**     | `=`  | `ARG VERSION=1.0`        | 默认值用 `=` |
-| **Compose environment** (列表) | `=`  | `- KEY=value`          | 列表项字符串格式         |
-| **Compose environment** (映射) | `:`  | `KEY: value`           | YAML 键值对 |
-| **Compose args**       | `:`  | `VERSION: ${VER}`      | 必须用 `:` |
-| **Compose ports**      | `:`  | `- "8080:80"`          | 端口映射 |
-| **Compose volumes**    | `:`  | `- /host:/container`   | 路径映射 |
-| **Compose labels**     | `:`  | `label: "value"`       | YAML 键值对 |
+| 文件/场景 | 符号 | 示例 | 规则说明 |
+|:--|:--|:--|:--|
+| **Dockerfile ENV** | `=` | `ENV KEY=value` | 必须用 `=` |
+| **Dockerfile ARG** | `=` | `ARG VERSION=1.0` | 默认值用 `=` |
+| **Compose environment** (列表) | `=` | `- KEY=value` | 列表项字符串格式 |
+| **Compose environment** (映射) | `:` | `KEY: value` | YAML 键值对 |
+| **Compose args** | `:` | `VERSION: ${VER}` | 必须用 `:` |
+| **Compose ports** | `:` | `- "8080:80"` | 端口映射 |
+| **Compose volumes** | `:` | `- /host:/container` | 路径映射 |
+| **Compose labels** | `:` | `label: "value"` | YAML 键值对 |
 
 ---
 
 ## 二、Dockerfile 中的符号规则
 
-### `=` 的使用场景
+**`=` 的使用场景**
 
 - **`ENV` 环境变量**
 
@@ -34,7 +34,7 @@ compose.yml 和 Dockerfile 的语法规则容易混淆，尤其是 `=` 和 `:` �
   ARG USER=admin           # 定义默认值用 =
   ```
 
-### `:` 的使用场景
+**`:` 的使用场景**
 
 - LABEL 标签
 
@@ -44,7 +44,7 @@ compose.yml 和 Dockerfile 的语法规则容易混淆，尤其是 `=` 和 `:` �
 
 ## 三、docker-compose.yml 中的符号规则
 
-### `=` 的使用场景
+**`=` 的使用场景**
 
 - environment 的列表格式
 
@@ -54,7 +54,7 @@ compose.yml 和 Dockerfile 的语法规则容易混淆，尤其是 `=` 和 `:` �
   - REDIS_URL=redis://cache
   ```
 
-### `:` 的使用场景
+**`:` 的使用场景**
 
 |字段|示例|说明|
 |:--|:--|:--|
@@ -65,7 +65,7 @@ compose.yml 和 Dockerfile 的语法规则容易混淆，尤其是 `=` 和 `:` �
 
 ## 四、高频易错点
 
-### 1. 混淆 `environment` 的两种格式
+### 混淆 `environment` 的两种格式
 
 ```yml
 # ✅ 正确
@@ -79,7 +79,7 @@ environment:
   - KEY: VALUE   # 列表格式误用 :
 ```
 
-### 2. 误用 `=` 代替 `:`
+### 误用 `=` 代替 `:`
 
 ```yml
 # ❌ 错误
