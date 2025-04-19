@@ -56,12 +56,12 @@ compose.yml 和 Dockerfile 的语法规则容易混淆，尤其是 `=` 和 `:` �
 
 **`:` 的使用场景**
 
-|字段|示例|说明|
+| 字段 | 示例 | 说明 |
 |:--|:--|:--|
-|`environment` 映射格式|`DB_HOST: db`|替代 `- DB_HOST=db` 的写法|
-|`args`|`APP_VERSION: ${VERSION}`|构建参数必须用 `:`|
-|`ports`|`- "8080:80"`|端口映射必须用 `:`|
-|`volumes`|`- ./data:/app/data`|路径映射必须用 `:`|
+| `environment` 映射格式 | `DB_HOST: db` | 替代 `- DB_HOST=db` 的写法 |
+| `args` | `APP_VERSION: ${VERSION}` | 构建参数必须用 `:` |
+| `ports` | `- "8080:80"` | 端口映射必须用 `:` |
+| `volumes` | `- ./data:/app/data` | 路径映射必须用 `:` |
 
 ## 四、高频易错点
 
