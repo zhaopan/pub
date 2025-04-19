@@ -31,6 +31,7 @@
   - [docker-cli-eg.md](02.docker/docker-cli-eg.md)
   - [docker-compose-cli-eg.md](02.docker/docker-compose-cli-eg.md)
   - [docker-compose.md](02.docker/docker-compose.md)
+  - [docker-syntax-guide.md](02.docker/docker-syntax-guide.md)
   - [docker.md](02.docker/docker.md)
   - [docker_mysql.md](02.docker/docker_mysql.md)
   - [journalctl.md](02.docker/journalctl.md)
@@ -87,6 +88,7 @@
   - [1.golang.md](07.book/1.golang.md)
   - [2.csharp.md](07.book/2.csharp.md)
   - [3.java.md](07.book/3.java.md)
+  - [4.python.md](07.book/4.python.md)
 <!-- FILE NAV END -->
 
 <!-- /TOC -->
