@@ -2,7 +2,7 @@ name: Update TOC
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ v2, master ]
     paths:
       - '**/*.md'       # 监控所有Markdown文件
       - '!README.md'    # 仅排除根目录的README.md
