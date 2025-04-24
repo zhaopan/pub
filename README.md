@@ -42,6 +42,7 @@
   - [centos7-update-sshport.md](03.linux/centos7-update-sshport.md)
   - [centos7.install.netcore2.2.md](03.linux/centos7.install.netcore2.2.md)
   - [easybcd-install-ubuntu.md](03.linux/easybcd-install-ubuntu.md)
+  - [foo.md](03.linux/foo.md)
   - [lamp-ubuntu.md](03.linux/lamp-ubuntu.md)
   - [linux-authorized-keys.md](03.linux/linux-authorized-keys.md)
   - [linux-bash.md](03.linux/linux-bash.md)
