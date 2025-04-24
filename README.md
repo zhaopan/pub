@@ -9,7 +9,7 @@
 <!-- FILE NAV START -->
 ## 文件目录导航
 
-- [.obsidian/](./.obsidian)
+- [01.home/](./01.home)
 - [02.docker/](./02.docker)
   - [docker-syntax-guide.md](02.docker/docker-syntax-guide.md)
   - [README.md](02.docker/README.md)
@@ -46,6 +46,7 @@
   - [97.ssh.md](03.linux/97.ssh.md)
   - [98.archive.md](03.linux/98.archive.md)
   - [99.foo.md](03.linux/99.foo.md)
+- [04.database/](./04.database)
 - [97.book/](./97.book)
   - [0.clang.md](97.book/0.clang.md)
   - [1.golang.md](97.book/1.golang.md)
