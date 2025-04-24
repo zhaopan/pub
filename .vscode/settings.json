@@ -7,6 +7,8 @@
     "files.exclude": {
         ".editorconfig": true,
         ".git": true,
+        ".obsidian": true,
+        ".idea": true,
         ".gitattributes": true,
         ".github": true,
         ".vscode": true,
