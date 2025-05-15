@@ -86,7 +86,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'dbroot'@'%';
 
 ## 4. 权限管理与用户修改
 
-查看用户权限
+### 查看用户权限
 
 要查看特定用户当前拥有的权限，可以使用 `SHOW GRANTS` 语句。
 
@@ -127,7 +127,7 @@ ALTER USER 'dbroot'@'%' IDENTIFIED WITH mysql_native_password BY '新密码';
 -- 注意：'新密码' 应该替换为您的实际密码。
 ```
 
-## eg
+## 5. eg
 
 ```sql
 use mysql;
