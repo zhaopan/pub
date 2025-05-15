@@ -35,7 +35,7 @@ chmod 400 ~/.ssh/*_id_rsa
 # OR
 chmod 755 ~
 chmod 700 ~/.ssh
-chmod 644 ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
 chmod -R 600 ~/.ssh/*id_rsa
 chmod -R 600 ~/Dropbox/.ssh/*id_rsa
 chmod -R 600 ~/Dropbox/.ssh/*pem
