@@ -1,94 +1,155 @@
-# mysql privileges
+# MySQL 权限管理
 
 `MYSQL 8.0+`
 
-## 1.create database
+## 1. 数据库创建
+
+在进行任何用户权限配置之前，首先需要创建对应的数据库。
 
 ```sql
-use mysql;
+-- mysql -h HOST -u USER root -p PASS
+
+USE mysql;
 
 -- 创建数据库
-create database if not exists work default character set utf8mb4 collate utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS work DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-## 2.create user
+## 2. 用户创建
+
+在 MySQL 8.0 及更高版本中，推荐使用 `CREATE USER` 语句来创建用户，而不是直接操作 `mysql.user` 表。直接操作 `mysql.user` 表可能会导致兼容性问题。
 
 ```sql
--- 本地用户
-insert into mysql.user(host,user,password) values('localhost','dbroot',password('<mysql-pwd>'));
-
--- 远程用户
-insert into mysql.user(host,user,password) values('%','dbroot',password('<mysql-pwd>'));
-
--- OR --
+--
+-- 8.0 推荐 CREATE USER
+--
 
 -- 本地用户
-create user 'dbroot'@'localhost' identified by '<mysql-pwd>';
+CREATE USER 'DBROOT'@'localhost' IDENTIFIED BY '<mysql-pwd>';
 
 -- 远程用户
-create user 'dbroot'@'%' identified by '<mysql-pwd>';
+CREATE USER 'DBROOT'@'%' IDENTIFIED BY '<mysql-pwd>';
 
-flush privileges;
-```
-
-## 3.privileges
-
-```sql
--- 本地用户(所有权限)
-grant all privileges on work.* to 'dbroot'@localhost;
-
--- 远程用户(所有权限)
-grant all privileges on work.* to 'dbroot'@'%';
+-- 注意：请务必替换 'mysql-pwd' 为一个强密码。
+-- 在创建用户后，通常不需要手动执行 FLUSH PRIVILEGES，因为 CREATE USER 语句会自动使更改生效。
 
 -- OR --
 
--- 本地用户(部分权限)
-grant select,delete,update,insert,create,drop on work.* to 'dbroot'@localhost;
+-- 本地用户
+INSERT INTO mysql.user(host,user,password) VALUES('localhost','dbroot',password('<mysql-pwd>'));
 
--- 远程用户(部分权限)
-grant select,delete,update,insert,create,drop on work.* to 'dbroot'@'%';
+-- 远程用户
+INSERT INTO mysql.user(host,user,password) VALUES('%','dbroot',password('<mysql-pwd>'));
+
+FLUSH PRIVILEGES;
 ```
 
-## grant
+## 3. 权限授予
+
+授予用户特定数据库或全局权限。请务必遵循`最小权限原则`，即只授予用户完成其任务所需的最低权限。
+
+### 授予特定数据库权限
+
+以下示例展示如何授予 `'dbroot'` 用户对 `work` 数据库中所有表的权限。
 
 ```sql
--- 给dbroot所有权限
-grant all privileges on *.* to 'dbroot'@'%';
+-- 本地用户：授予 'dbroot'@'localhost' 对 'work' 数据库的所有权限
+GRANT ALL PRIVILEGES ON work.* TO 'dbroot'@'localhost';
 
--- 授权 dbroot 用户的所有权限并设置远程访问,grant all on 表示所有权限，% 表示通配所有 host，可以访问远程。
-grant all on *.* to 'dbroot'@'%';
+-- 远程用户：授予 'dbroot'@'%' 对 'work' 数据库的所有权限
+GRANT ALL PRIVILEGES ON work.* TO 'dbroot'@'%';
+```
 
--- 撤销mysql 权限
-revoke all on *.* from 'dbroot'@'%';
+### 授予部分权限 (推荐)
 
--- 修改加密规则和密码
-alter user 'dbroot'@'%' identified by '<mysql-pwd>' password expire never;
--- OR --
-alter user 'dbroot'@'%' identified with mysql_native_password by '<mysql-pwd>';
+在生产环境中，`更推荐授予具体且有限的权限`，而非 `ALL PRIVILEGES`。
+
+```sql
+-- 本地用户：授予 'dbroot'@'localhost' 对 'work' 数据库的常用读写、创建、删除表权限
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON work.* TO 'dbroot'@'localhost';
+
+-- 远程用户：授予 'dbroot'@'%' 对 'work' 数据库的常用读写、创建、删除表权限
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON work.* TO 'dbroot'@'%';
+```
+
+### 授予全局权限 (谨慎使用)
+
+`ALL PRIVILEGES ON *.*` 意味着用户对所有数据库都有完全控制权，这通常只用于管理员用户，请谨慎使用。
+
+```sql
+-- 本地用户：授予 'dbroot'@'localhost' 对所有数据库的所有权限
+GRANT ALL PRIVILEGES ON *.* TO 'dbroot'@'localhost';
+
+-- 远程用户：授予 'dbroot'@'%' 对所有数据库的所有权限
+GRANT ALL PRIVILEGES ON *.* TO 'dbroot'@'%';
+```
+
+## 4. 权限管理与用户修改
+
+查看用户权限
+
+要查看特定用户当前拥有的权限，可以使用 `SHOW GRANTS` 语句。
+
+```sql
+-- 查看 'dbroot'@'localhost' 用户的权限
+SHOW GRANTS FOR 'dbroot'@'localhost';
+
+-- 查看 'dbroot'@'%' 用户的权限
+SHOW GRANTS FOR 'dbroot'@'%';
+
+-- 查看 查看当前连接用户的权限
+SHOW GRANTS FOR CURRENT_USER();
+```
+
+### 撤销权限
+
+`REVOKE` 语句用于撤销已授予用户的权限。
+
+```sql
+-- 撤销 'dbroot'@'localhost' 对所有数据库的所有权限
+REVOKE ALL PRIVILEGES ON *.* FROM 'dbroot'@'localhost';
+
+-- 撤销 'dbroot'@'%' 对 'work' 数据库的 SELECT 和 INSERT 权限
+REVOKE SELECT, INSERT ON work.* FROM 'dbroot'@'%';
+```
+
+### 修改用户密码和认证方式
+
+在 MySQL 8.0 中，`mysql_native_password` 是默认的认证插件。如果需要更改密码或认证插件，可以使用 `ALTER USER`。
+
+```sql
+-- 修改 'dbroot'@'%' 用户的密码，并设置密码永不过期
+ALTER USER 'dbroot'@'%' IDENTIFIED BY '新密码' PASSWORD EXPIRE NEVER;
+
+-- 修改 'dbroot'@'%' 用户的认证方式为 mysql_native_password 并设置新密码
+ALTER USER 'dbroot'@'%' IDENTIFIED WITH mysql_native_password BY '新密码';
+
+-- 注意：'新密码' 应该替换为您的实际密码。
 ```
 
 ## eg
 
 ```sql
--- use mysql;
+use mysql;
 
--- 创建数据库
-create database if not exists work default character set utf8mb4 collate utf8mb4_unicode_ci;
+-- 1. 创建数据库
+CREATE DATABASE IF NOT EXISTS work DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- 创建远程访问用户
-create user 'dbroot'@'%' identified by '<mysql-pwd>';
-
--- 授权(all)
-grant all on *.* to 'dbroot'@'%';
-
+-- 2. 创建远程访问用户 'dbroot'
+CREATE USER 'dbroot'@'%' IDENTIFIED BY '<mysql-pwd>';
 -- OR --
+-- 2. 创建本地用户 'dbroot'
+CREATE USER 'dbroot'@'localhost' IDENTIFIED BY '<mysql-pwd>';
 
--- 授权
-grant alter,select,delete,update,insert,create,drop on work.* to 'dbroot'@'%';
+-- 3. 授权(all)
+GRANT ALL ON *.* TO 'dbroot'@'%';
+-- OR --
+-- 3. 授予权限：只授予 'dbroot'@'%' 对 'work' 数据库的常用读写、创建、删除权限
+GRANT ALTER,SELECT,DELETE,UPDATE,INSERT,CREATE,DROP ON work.* TO 'dbroot'@'%';
 
--- 修改密码
-alter user 'dbroot'@'%' identified with mysql_native_password by '<mysql-pwd>';
+-- 4. 如果需要，可以修改用户密码或认证方式（例如，将认证插件明确设置为 mysql_native_password）
+ALTER USER 'dbroot'@'%' IDENTIFIED WITH mysql_native_password BY '<mysql-pwd>';
 
--- 刷新
-flush privileges;
+-- 5. 刷新权限（通常在 GRANT/REVOKE 后不需要手动执行，但为了确保即时生效，尤其是旧版本或复杂环境）
+FLUSH PRIVILEGES;
 ```

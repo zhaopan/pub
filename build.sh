@@ -3,7 +3,8 @@
 # 排除规则配置（支持通配符）
 EXCLUDE_PATTERNS=(
   ".idea/"
-  ".vscode"
+  ".obsidian/"
+  ".vscode/"
   "CODE_OF_CONDUCT.md"
   "CONTRIBUTING.md"
   "intractable-disease.md"
