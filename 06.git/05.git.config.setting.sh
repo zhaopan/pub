@@ -60,6 +60,9 @@ git config --global alias.br branch
 # 设置commit -> cm
 git config --global alias.cm commit
 
+# 设置commit -> cma
+git config --global alias.cma "commit -am 'fix'"
+
 # 设置status -> sw
 git config --global alias.sw switch
 
