@@ -1,22 +1,19 @@
 {
-    "editor.rulers": [
-        80,
-        160,
-    ],
-    "editor.formatOnSave": true,
-    "files.exclude": {
-        ".editorconfig": true,
-        ".git": true,
-        ".obsidian": true,
-        ".idea": true,
-        ".gitattributes": true,
-        ".github": true,
-        ".vscode": true,
-        "CODE_OF_CONDUCT.md": true,
-        "CONTRIBUTING.md": true,
-        "_config.yml": true,
-        "LICENSE": true,
-    },
-    "editor.renderControlCharacters": true,
-    "editor.guides.indentation": true
+  "editor.rulers": [80, 160],
+  "editor.formatOnSave": true,
+  "files.exclude": {
+    ".editorconfig": true,
+    ".git": true,
+    ".gitattributes": true,
+    ".github": true,
+    ".idea": true,
+    ".obsidian": true,
+    ".vscode": true,
+    "CODE_OF_CONDUCT.md": true,
+    "CONTRIBUTING.md": true,
+    "LICENSE": true,
+    "_config.yml": true
+  },
+  "editor.renderControlCharacters": true,
+  "editor.guides.indentation": true
 }
