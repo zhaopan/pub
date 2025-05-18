@@ -6,7 +6,7 @@ git config --global user.name "name"
 # user.email
 git config --global user.email "email address"
 
-# 设置大小写敏感（windows不区分大小写的解决办法）
+# 设置大小写敏感 windows不区分大小写的解决办法
 git config --global core.ignorecase false
 
 ##
@@ -39,7 +39,7 @@ git config --global core.autocrlf true
 git config --global gui.encoding utf-8
 git config --global core.quotepath false
 
-# 让git mergetool不再生成烦人的备份文件（*.orig）
+# 让git mergetool不再生成烦人的备份文件 *.orig 
 git config --global mergetool.keepBackup false
 
 # 不修改文件模式(文件mode变化不提交到仓库)
