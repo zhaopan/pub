@@ -26,6 +26,7 @@
   - [vscode-setting.md](01.home/vscode-setting.md)
   - [vscode.md](01.home/vscode.md)
   - [windows.md](01.home/windows.md)
+  - [zed.md](01.home/zed.md)
 - [02.docker/](./02.docker)
   - [README.md](02.docker/README.md)
   - [docker-ENV.md](02.docker/docker-ENV.md)
