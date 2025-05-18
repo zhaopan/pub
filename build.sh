@@ -5,6 +5,7 @@ EXCLUDE_PATTERNS=(
   ".idea/"
   ".obsidian/"
   ".vscode/"
+  ".zed/"
   "CODE_OF_CONDUCT.md"
   "CONTRIBUTING.md"
   "intractable-disease.md"

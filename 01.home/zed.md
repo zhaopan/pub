@@ -9,7 +9,7 @@
 
 安装
 
-- 1. Install scoop tool
+- Install scoop tool
 
 ```bash
 # Windows PowerShell
@@ -17,7 +17,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 ```
 
-- 2. Install zed
+- Install zed
 
 ```bash
 # Stable builds

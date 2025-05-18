@@ -53,6 +53,22 @@
 ]
 ```
 
+## `Windows` Terminus->Setting 设置默认 终端
+
+```
+{
+    "shell_configs": [
+    {
+        "name": "Git Bash",
+        "cmd": ["C:/Program Files/Git/bin/bash.exe", "--login", "-i"],
+        "env": {},
+        "enable": true,
+        "default": true  // 设为默认终端
+    }],
+}
+
+```
+
 ## extensions
 
 - `DeleteBlankLines`    删除空白行

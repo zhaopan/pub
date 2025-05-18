@@ -1,16 +1,19 @@
 # 01.collection
 
-- [macOS.md](01.home/macOS.md)
-- [nginx.md](01.home/nginx.md)
-- [nginx-conf.md](01.home/nginx-conf.md)
-- [vs2019.md](01.home/vs2019.md)
-- [vs2019-nuget.md](01.home/vs2019-nuget.md)
-- [vs2019-template.md](01.home/vs2019-template.md)
-- [vscode.md](01.home/vscode.md)
-- [vscode-setting.md](01.home/vscode-setting.md)
-- [ngrok-install.md](01.home/ngrok-install.md)
-- [sublime.md](01.home/sublime.md)
-- [windows.md](01.home/windows.md)
+- [Rule.md](Rule.md)
+- [golang.md](golang.md)
+- [macOS.md](macOS.md)
+- [make.md](make.md)
+- [mermaid.md](mermaid.md)
+- [nginx-conf.md](nginx-conf.md)
+- [nginx.md](nginx.md)
+- [ngrok-install.md](ngrok-install.md)
+- [py.md](py.md)
+- [sublime.md](sublime.md)
+- [vs2019.md](vs2019.md)
+- [vscode.md](vscode.md)
+- [windows.md](windows.md)
+- [zed.md](zed.md)
 
 ## 程序员好习惯
 
