@@ -12,7 +12,7 @@
 USE mysql;
 
 -- 创建数据库
-CREATE DATABASE IF NOT EXISTS work DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS gitea DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 ## 2. 用户创建
@@ -50,14 +50,14 @@ FLUSH PRIVILEGES;
 
 ### 授予特定数据库权限
 
-以下示例展示如何授予 `'dbroot'` 用户对 `work` 数据库中所有表的权限。
+以下示例展示如何授予 `'dbroot'` 用户对 `gitea` 数据库中所有表的权限。
 
 ```sql
--- 本地用户：授予 'dbroot'@'localhost' 对 'work' 数据库的所有权限
-GRANT ALL PRIVILEGES ON work.* TO 'dbroot'@'localhost';
+-- 本地用户：授予 'dbroot'@'localhost' 对 'gitea' 数据库的所有权限
+GRANT ALL PRIVILEGES ON gitea.* TO 'dbroot'@'localhost';
 
--- 远程用户：授予 'dbroot'@'%' 对 'work' 数据库的所有权限
-GRANT ALL PRIVILEGES ON work.* TO 'dbroot'@'%';
+-- 远程用户：授予 'dbroot'@'%' 对 'gitea' 数据库的所有权限
+GRANT ALL PRIVILEGES ON gitea.* TO 'dbroot'@'%';
 ```
 
 ### 授予部分权限 (推荐)
@@ -65,11 +65,11 @@ GRANT ALL PRIVILEGES ON work.* TO 'dbroot'@'%';
 在生产环境中，`更推荐授予具体且有限的权限`，而非 `ALL PRIVILEGES`。
 
 ```sql
--- 本地用户：授予 'dbroot'@'localhost' 对 'work' 数据库的常用读写、创建、删除表权限
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON work.* TO 'dbroot'@'localhost';
+-- 本地用户：授予 'dbroot'@'localhost' 对 'gitea' 数据库的常用读写、创建、删除表权限
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON gitea.* TO 'dbroot'@'localhost';
 
--- 远程用户：授予 'dbroot'@'%' 对 'work' 数据库的常用读写、创建、删除表权限
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON work.* TO 'dbroot'@'%';
+-- 远程用户：授予 'dbroot'@'%' 对 'gitea' 数据库的常用读写、创建、删除表权限
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON gitea.* TO 'dbroot'@'%';
 ```
 
 ### 授予全局权限 (谨慎使用)
@@ -109,8 +109,8 @@ SHOW GRANTS FOR CURRENT_USER();
 -- 撤销 'dbroot'@'localhost' 对所有数据库的所有权限
 REVOKE ALL PRIVILEGES ON *.* FROM 'dbroot'@'localhost';
 
--- 撤销 'dbroot'@'%' 对 'work' 数据库的 SELECT 和 INSERT 权限
-REVOKE SELECT, INSERT ON work.* FROM 'dbroot'@'%';
+-- 撤销 'dbroot'@'%' 对 'gitea' 数据库的 SELECT 和 INSERT 权限
+REVOKE SELECT, INSERT ON gitea.* FROM 'dbroot'@'%';
 ```
 
 ### 修改用户密码和认证方式
@@ -133,23 +133,25 @@ ALTER USER 'dbroot'@'%' IDENTIFIED WITH mysql_native_password BY '新密码';
 use mysql;
 
 -- 1. 创建数据库
-CREATE DATABASE IF NOT EXISTS work DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS gitea DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- 2. 创建远程访问用户 'dbroot'
 CREATE USER 'dbroot'@'%' IDENTIFIED BY '<mysql-pwd>';
 -- OR --
 -- 2. 创建本地用户 'dbroot'
-CREATE USER 'dbroot'@'localhost' IDENTIFIED BY '<mysql-pwd>';
+CREATE USER 'dbroot'@'localhost' IDENTIFIED BY 'd8aec3e145c7.';
 
 -- 3. 授权(all)
-GRANT ALL ON *.* TO 'dbroot'@'%';
+GRANT ALL ON gitea.* TO 'dbroot'@'localhost';
 -- OR --
--- 3. 授予权限：只授予 'dbroot'@'%' 对 'work' 数据库的常用读写、创建、删除权限
-GRANT ALTER,SELECT,DELETE,UPDATE,INSERT,CREATE,DROP ON work.* TO 'dbroot'@'%';
+-- 3. 授予权限：只授予 'dbroot'@'%' 对 'gitea' 数据库的常用读写、创建、删除权限
+GRANT ALTER,SELECT,DELETE,UPDATE,INSERT,CREATE,DROP ON gitea.* TO 'dbroot'@'%';
 
 -- 4. 如果需要，可以修改用户密码或认证方式（例如，将认证插件明确设置为 mysql_native_password）
-ALTER USER 'dbroot'@'%' IDENTIFIED WITH mysql_native_password BY '<mysql-pwd>';
+ALTER USER 'dbroot'@'localhost' IDENTIFIED WITH mysql_native_password BY 'd8aec3e145c7.';
 
 -- 5. 刷新权限（通常在 GRANT/REVOKE 后不需要手动执行，但为了确保即时生效，尤其是旧版本或复杂环境）
 FLUSH PRIVILEGES;
 ```
+          0.0.0.0:10022->22/tcp, [::]:10022->22/tcp, 0.0.0.0:10881->3000/tcp, [::]:10881->3000/tcp       gogs
+3000/tcp, 0.0.0.0:10021->22/tcp, [::]:10021->22/tcp, 0.0.0.0:3000->80/tcp,      [::]:3000->80/tcp   gitea
