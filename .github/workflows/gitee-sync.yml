@@ -15,5 +15,5 @@ jobs:
             dst_key: ${{ secrets.SSH_GITEE_PRIVATE_KEY }}
             dst_token: ${{ secrets.GITEE_TOKEN }}
             static_list: "pub"
-            timeout: '1h'
+            timeout: '3m'
             clone_style: "ssh"
