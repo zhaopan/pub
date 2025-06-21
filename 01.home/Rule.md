@@ -12,6 +12,7 @@
       - D43 美国
       - D44 美国宽频 [2]
 rules:
+  - DOMAIN-SUFFIX,ai.google.dev,💬 ChatGPT
   - DOMAIN-SUFFIX,aistudio.google.com,💬 ChatGPT
   - DOMAIN-SUFFIX,gemini.google.com,💬 ChatGPT
   - DOMAIN-SUFFIX,chatapt.com,💬 ChatGPT
