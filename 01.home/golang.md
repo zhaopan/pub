@@ -10,18 +10,18 @@ mkdir /mnt/sdk
 mkdir /mnt/go
 
 # downloand golang
-weget https://go.dev/dl/go1.18.linux-amd64.tar.gz
+weget https://go.dev/dl/go1.20.0.linux-amd64.tar.gz
 
 ##
 ## or
 ##
 
 # scp golang
-scp /d/download/go1.18.linux-amd64.tar.gz root@10.10.0.1:/mnt/sdk/go1.18.linux-amd64.tar.gz
+scp /d/download/go1.20.0.linux-amd64.tar.gz root@10.10.0.1:/mnt/sdk/go1.20.0.linux-amd64.tar.gz
 
 # tar
 cd /mnt/sdk
-tar -xzvf go1.18.linux-amd64.tar.gz
+tar -xzvf go1.20.0.linux-amd64.tar.gz
 ```
 
 ## 设置环境变量(方式一)
