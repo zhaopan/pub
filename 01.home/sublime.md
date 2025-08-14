@@ -66,7 +66,6 @@
         "default": true  // 设为默认终端
     }],
 }
-
 ```
 
 ## extensions
