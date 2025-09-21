@@ -55,7 +55,7 @@
 
 ## `Windows` Terminus->Setting 设置默认 终端
 
-```
+```txt
 {
     "shell_configs": [
     {
@@ -78,9 +78,64 @@
 - `theme-Afterglow`     主题样式
 - `sublimerge`          文件对比
 - `Terminus`            命令行插件
+- `Dockerfile Syntax Highlighting`
+- `LSP`
+- `LSP-dockerfile`
+- `LSP-vue`
+- `LSP-yaml`
+- `nginx`
+- `Package Control`
+- `Terminus`
 
-## install package control
+## LSP
 
-```python
-import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp  = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try           manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+### Package Control -> Install Package Control -> LSP
+
+```txt
+LSP：这是核心插件，用于连接各种语言服务器
+LSP-vue：用于支持 Vue 文件的语言服务
+LSP-yaml：用于支持 YAML 文件的语言服务
+LSP-dockerfile：用于支持 Dockerfile 的语言服务
+```
+
+### Install LSP Server
+
+```bash
+npm install -g @vue/language-server
+npm install -g yaml-language-server
+npm install -g docker-langserver
+npm install -g docker-langserver
+```
+
+### Preferences -> Package Settings -> LSP -> Settings
+
+```yml
+{
+    "clients": {
+        "vue-language-server": {
+            "enabled": true,
+            "command": ["vue-language-server", "--stdio"],
+            "scopes": ["text.html.vue"],
+            "syntaxes": ["Packages/LSP-vue/vue.sublime-syntax"],
+            "priority_match": "auto",
+            "settings": {
+                // 这里可以添加 Volar 的特定配置，比如 volar.format.enable
+            }
+        },
+        "yaml-language-server": {
+            "enabled": true,
+            "command": ["yaml-language-server", "--stdio"],
+            "scopes": ["source.yaml"],
+            "syntaxes": ["Packages/LSP-yaml/YAML.sublime-syntax"],
+            "priority_match": "auto",
+        },
+        "dockerfile-language-server": {
+            "enabled": true,
+            "command": ["docker-langserver", "--stdio"],
+            "scopes": ["source.dockerfile"],
+            "syntaxes": ["Packages/LSP-dockerfile/Dockerfile.sublime-syntax"],
+            "priority_match": "auto",
+        }
+    }
+}
 ```
