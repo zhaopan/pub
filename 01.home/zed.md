@@ -34,6 +34,7 @@ scoop update zed
 
 ```json
 {
+  "base_keymap": "SublimeText",
   "buffer_font_family": "Intel One Mono", // 编辑器字体
   "buffer_font_size": 16, // 编辑器字体大小
   "cursor_blinking": true, // 光标闪烁
@@ -42,7 +43,6 @@ scoop update zed
   "relative_line_numbers": true, // (可选) 相对行号
   "scrollbar": "visible",
   "show_whitespaces": "selection", // 显示空白字符
-  "tab_bar": "show", // (可选) 总是显示 Tab 栏
   "tab_size": 2, // 缩进空格数
   "trim_trailing_whitespace": true, // 保存时去除行尾空格
   "ui_font_family": "Intel One Mono", // UI 字体
@@ -52,6 +52,9 @@ scoop update zed
     "mode": "system",
     "light": "One Light",
     "dark": "One Dark"
+  },
+  "minimap": {
+      "show": "always"
   },
   "file_scan_exclusions": [
     // 文件夹&文件排除配置
