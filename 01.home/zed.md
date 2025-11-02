@@ -54,7 +54,8 @@ scoop update zed
     "dark": "One Dark"
   },
   "minimap": {
-      "show": "always"
+      "show": "always",
+      "max_width_columns": 50
   },
   "file_scan_exclusions": [
     // 文件夹&文件排除配置
@@ -65,7 +66,9 @@ scoop update zed
     "**/.vs",
     "**/.vscode",
     "**/.zed",
-    "**/node_modules"
+    "**/build",
+    "**/dist",
+    "**/node_modules",
   ],
   "terminal": {
       "shell": {
