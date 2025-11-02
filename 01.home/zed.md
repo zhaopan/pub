@@ -53,17 +53,21 @@ scoop update zed
     // 文件扫描排除
     "**/.DS_Store",
     "**/.git",
+    "**/.github",
     "**/.idea",
     "**/.vscode",
     "**/.zed",
     "**/node_modules"
   ],
   "terminal": {
-    "shell": {
-      "program": "C:\\Program Files\\Git\\bin\\bash.exe"
-    },
-    "font_family": "Intel One Mono"
-  }
+      "shell": {
+          "with_arguments": {
+              "program": "C:\\Program Files\\Git\\bin\\sh.exe",
+              "args": ["-i"]
+          }
+      },
+      "font_family": "Intel One Mono"
+  },
 }
 ```
 
