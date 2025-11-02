@@ -104,7 +104,10 @@ scoop update zed
 {
   "terminal": {
     "shell": {
-      "program": "C:\\Program Files\\Git\\bin\\bash.exe"
+        "with_arguments": {
+        "program": "C:\\Program Files\\Git\\bin\\sh.exe",
+            "args": ["-i"]
+        }
     },
     "font_family": "Intel One Mono"
   }
