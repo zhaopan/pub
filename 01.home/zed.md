@@ -34,27 +34,32 @@ scoop update zed
 
 ```json
 {
-  "ui_font_family": "Intel One Mono", // UI 字体
-  "ui_font_size": 16, // UI 字体大小
   "buffer_font_family": "Intel One Mono", // 编辑器字体
   "buffer_font_size": 16, // 编辑器字体大小
-  "tab_size": 2, // 缩进空格数
-  "hard_tabs": false, // 使用空格代替制表符
-  "wrap_lines": "editor_width", // 行自动换行
-  "show_whitespaces": "selection", // 显示空白字符
+  "cursor_blinking": true, // 光标闪烁
   "format_on_save": "on", // 保存时自动格式化
+  "hard_tabs": false, // 使用空格代替制表符
+  "relative_line_numbers": true, // (可选) 相对行号
+  "scrollbar": "visible",
+  "show_whitespaces": "selection", // 显示空白字符
+  "tab_bar": "show", // (可选) 总是显示 Tab 栏
+  "tab_size": 2, // 缩进空格数
+  "trim_trailing_whitespace": true, // 保存时去除行尾空格
+  "ui_font_family": "Intel One Mono", // UI 字体
+  "ui_font_size": 16, // UI 字体大小
+  "wrap_lines": "editor_width", // 行自动换行
   "theme": {
     "mode": "system",
     "light": "One Light",
     "dark": "One Dark"
   },
   "file_scan_exclusions": [
-    // 文件夹，文件排除配置
-    // 文件扫描排除
+    // 文件夹&文件排除配置
     "**/.DS_Store",
     "**/.git",
     "**/.github",
     "**/.idea",
+    "**/.vs",
     "**/.vscode",
     "**/.zed",
     "**/node_modules"
@@ -66,7 +71,8 @@ scoop update zed
               "args": ["-i"]
           }
       },
-      "font_family": "Intel One Mono"
+      "font_family": "Intel One Mono",
+      "font_size": 16
   },
 }
 ```
