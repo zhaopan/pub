@@ -69,6 +69,7 @@
   - [mysql-replication.md](04.database/mysql-replication.md)
   - [mysql-slave-conf.md](04.database/mysql-slave-conf.md)
   - [README.md](04.database/README.md)
+  - [T-SQL.md](04.database/T-SQL.md)
 - [05.sundries/](./05.sundries)
   - [aliyun.ossutil.md](05.sundries/aliyun.ossutil.md)
   - [CodeGener.md](05.sundries/CodeGener.md)
