@@ -34,53 +34,80 @@ scoop update zed
 
 ```json
 {
-  "base_keymap": "SublimeText",
-  "buffer_font_family": "Intel One Mono", // 编辑器字体
-  "buffer_font_size": 16, // 编辑器字体大小
-  "cursor_blinking": true, // 光标闪烁
-  "format_on_save": "on", // 保存时自动格式化
-  "hard_tabs": false, // 使用空格代替制表符
-  "relative_line_numbers": true, // (可选) 相对行号
-  "scrollbar": "visible",
-  "show_whitespaces": "selection", // 显示空白字符
-  "tab_size": 2, // 缩进空格数
-  "trim_trailing_whitespace": true, // 保存时去除行尾空格
-  "ui_font_family": "Intel One Mono", // UI 字体
-  "ui_font_size": 16, // UI 字体大小
-  "wrap_lines": "editor_width", // 行自动换行
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
-  },
-  "minimap": {
-      "show": "always",
-      "max_width_columns": 50
-  },
-  "file_scan_exclusions": [
-    // 文件夹&文件排除配置
-    "**/.DS_Store",
-    "**/.git",
-    "**/.github",
-    "**/.idea",
-    "**/.vs",
-    "**/.vscode",
-    "**/.zed",
-    "**/build",
-    "**/dist",
-    "**/node_modules",
-  ],
-  "terminal": {
-      "shell": {
-          "with_arguments": {
-              "program": "C:\\Program Files\\Git\\bin\\sh.exe",
-              "args": ["-i"]
-          }
-      },
-      "font_family": "Intel One Mono",
-      "font_size": 16
-  },
+    "theme": "One Dark",
+    "icon_theme": "Catppuccin Latte",
+    "ui_font_family": "JetBrains Mono",
+    "agent": {
+        "default_model": {
+            "provider": "zed.dev",
+            "model": "gemini-2.5-flash"
+        },
+        "expand_terminal_card": false,
+        "expand_edit_card": false,
+        "enable_feedback": false,
+        "single_file_review": false,
+        "model_parameters": []
+    },
+    "edit_predictions": {
+        "mode": "eager"
+    },
+    "relative_line_numbers": true,
+    "show_edit_predictions": false,
+    "languages": {
+        "Python": {
+            "show_edit_predictions": false
+        },
+        "SQL": {
+            "formatter": {
+                "external": {
+                    "command": "sql-formatter",
+                    "arguments": ["--language", "mysql"]
+                }
+            }
+        }
+    },
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false
+    },
+    "terminal": {
+        "shell": {
+            "with_arguments": {
+                "program": "C:\\Program Files\\Git\\bin\\sh.exe",
+                "args": ["-i"]
+            }
+        },
+        "font_family": "JetBrains Mono",
+        "font_size": 16
+    },
+    "proxy": "http://127.0.0.1:7890",
+    "minimap": {
+        "show": "always",
+        "max_width_columns": 50
+    },
+    "buffer_font_family": "JetBrains Mono",
+    "show_whitespaces": "all",
+    "ensure_final_newline_on_save": true,
+    "soft_wrap": "none",
+    "tab_size": 4,
+    "base_keymap": "SublimeText",
+    "ui_font_size": 16,
+    "buffer_font_size": 12.0,
+    "file_scan_exclusions": [
+        // 文件夹&文件排除配置
+        "**/.DS_Store",
+        "**/.git",
+        "**/.github",
+        "**/.idea",
+        "**/.vs",
+        "**/.vscode",
+        "**/.zed",
+        "**/build",
+        "**/dist",
+        "**/node_modules"
+    ]
 }
+
 ```
 
 - 快捷键设置
@@ -110,7 +137,7 @@ scoop update zed
 }
 ```
 
-- 设置终端
+- 设置终端 Windows
 
 ```json
 {
@@ -121,7 +148,8 @@ scoop update zed
             "args": ["-i"]
         }
     },
-    "font_family": "Intel One Mono"
+    "font_family": "JetBrains Mono",
+    "font_size": 16
   }
 }
 ```

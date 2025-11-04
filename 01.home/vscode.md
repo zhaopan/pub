@@ -110,7 +110,7 @@ code --list-extensions | xargs -L 1 echo code --install-extension
     // vscode默认启用了根据文件类型自动设置tabsize的选项
     "editor.detectIndentation": true,
     "editor.codeLens": false,
-    "editor.fontFamily": "Intel One Mono",
+    "editor.fontFamily": "JetBrains Mono",
     "editor.unicodeHighlight.nonBasicASCII": false,
     // 文件路径导航
     "breadcrumbs.enabled": true,
@@ -141,7 +141,7 @@ code --list-extensions | xargs -L 1 echo code --install-extension
     "http.proxySupport": "on",
     "http.proxyStrictSSL": false,
     // terminal
-    "terminal.integrated.fontFamily": "Intel One Mono",
+    "terminal.integrated.fontFamily": "JetBrains Mono",
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     // markdown
     "markdown-pdf.displayHeaderFooter": false,
@@ -152,5 +152,24 @@ code --list-extensions | xargs -L 1 echo code --install-extension
         "*.md": "markdown"
     },
     "markdown-pdf.executablePath": "C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe",
+    "files.exclude": {
+        "DS_Store": true,
+        "_config.yml": true,
+        ".git": true,
+        ".gitattributes": true,
+        ".github": true,
+        ".idea": true,
+        ".obsidian": true,
+        ".vs": true,
+        ".vscode": true,
+        ".zed": true,
+        "dist": true,
+        "node_modules": true,
+    },
+    "terminal.integrated.profiles.windows": {
+        "Git Bash": {
+            "source": "Git Bash",
+        }
+    },
 }
 ```
