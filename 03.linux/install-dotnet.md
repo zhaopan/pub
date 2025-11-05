@@ -48,10 +48,10 @@ sh install-dotnet.sh
 
 # 写入环境变量
 echo 'export DOTNET_ROOT="/mnt/sdk/dotnet"
-export PATH="$PATH:/mnt/sdk/dotnet"' >> ~/.zshrc
+export PATH="$PATH:/mnt/sdk/dotnet"' >> ~/.bashrc
 
 # 永久生效
-source ~/.zshrc
+source ~/.bashrc
 
 # test
 dotnet --version
