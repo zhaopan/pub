@@ -42,6 +42,7 @@
   - [centos7-update-sshport.md](03.linux/centos7-update-sshport.md)
   - [easybcd-install-ubuntu.md](03.linux/easybcd-install-ubuntu.md)
   - [foo.md](03.linux/foo.md)
+  - [install-dotnet.md](03.linux/install-dotnet.md)
   - [lamp-ubuntu.md](03.linux/lamp-ubuntu.md)
   - [linux.md](03.linux/linux.md)
   - [linux-authorized-keys.md](03.linux/linux-authorized-keys.md)
