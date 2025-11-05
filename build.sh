@@ -8,12 +8,12 @@ EXCLUDE_PATTERNS=(
   ".zed/"
   "CODE_OF_CONDUCT.md"
   "CONTRIBUTING.md"
+  "README.md"
+  "SUMMARY.md"
   "intractable-disease.md"
   "naming-abbreviation.md"
-  "SUMMARY.md"
-  "README.md"
-  "*/log4net/"                            # 匹配任何目录下的这个特定文件
   "*-debug.md"                            # 匹配所有以-debug.md结尾的文件
+  "*/log4net/"                            # 匹配任何目录下的这个特定文件
   "*/temp/*"                              # 匹配任何temp子目录
 )
 
