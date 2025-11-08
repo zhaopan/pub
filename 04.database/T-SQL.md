@@ -240,3 +240,21 @@ INNER JOIN
 SET
     TargetField.FieldCode = MatchingUpdateData.NewFieldCode;
 ```
+
+## 查询有小写字段的表和字段
+
+```sql
+SELECT
+    t.table_schema AS '数据库名',
+    t.table_name AS '表名',
+    t.column_name AS '字段名'
+FROM
+    information_schema.columns t
+WHERE
+    t.table_schema = DATABASE() -- 仅查询当前数据库
+    -- 核心逻辑：检查字段名的第一个字符的 ASCII 值是否在 97 到 122 之间 (即 a-z)
+    AND ASCII(LEFT(t.column_name, 1)) BETWEEN 97 AND 122
+ORDER BY
+    t.table_name,
+    t.column_name;
+```
