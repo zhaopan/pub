@@ -99,6 +99,7 @@ scoop update zed
         "**/.git",
         "**/.github",
         "**/.idea",
+        "**/.obsidian",
         "**/.vs",
         "**/.vscode",
         "**/.zed",
