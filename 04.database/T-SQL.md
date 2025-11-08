@@ -141,7 +141,7 @@ ORDER BY t.table_name;
 
 ## 支持函数 `f_format`
 
-```
+```sql
 DELIMITER $$
 
 -- 检查并删除已存在的函数（如果需要重新创建）
