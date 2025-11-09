@@ -195,7 +195,10 @@ END$$
 
 DELIMITER ;
 ```
+
 ## 全值匹配 更新配置表
+
+### sys_source_fields
 
 ```sql
 UPDATE
@@ -232,6 +235,55 @@ INNER JOIN
                     AND tb.table_type = 'BASE TABLE'
             ) AS SchemaColumn
             -- 匹配条件：SourceConfig (表名) = table_name AND FieldCode (旧字段名) = column_name (新字段名)
+            ON SourceFieldMatch.SourceConfig = SchemaColumn.table_name
+            AND SourceFieldMatch.FieldCode = SchemaColumn.column_name
+    ) AS MatchingUpdateData
+    -- 关联：使用 Id 将结果集与目标表 sys_source_fields 连接
+    ON TargetField.Id = MatchingUpdateData.TargetRecordId
+SET
+    TargetField.FieldCode = MatchingUpdateData.NewFieldCode;
+```
+
+### sys_form_fields
+
+```sql
+UPDATE
+    sys_form_fields AS TargetField
+INNER JOIN
+    -- MatchingUpdateData: 匹配到的需要更新的数据集
+    (
+    -- MatchingUpdateData: 匹配到的需要更新的数据集
+
+        SELECT
+            SourceFieldMatch.Id AS TargetRecordId,
+            SourceFieldMatch.SourceConfig,
+            SourceFieldMatch.FieldCode AS OldFieldCode,
+            SchemaColumn.column_name AS NewFieldCode
+        FROM
+            -- SourceFieldMatch: 找出 sys_source_fields 中需要匹配的记录
+            (
+                SELECT
+                    Field.Id,
+                    Field.FieldCode,
+                    slist.SourceConfig
+                FROM sys_form_list AS List 
+                    INNER JOIN sys_form_fields AS Field ON List.Id = Field.FormId
+                    INNER JOIN sys_source_list AS slist ON slist.ModuleId = List.ModuleId
+            ) AS SourceFieldMatch
+        INNER JOIN
+            -- SchemaColumn: 找出 information_schema 中实际存在的表和字段
+            (
+                SELECT
+                    c.table_name,
+                    c.column_name
+                FROM
+                    information_schema.COLUMNS c
+                INNER JOIN
+                    information_schema.TABLES tb ON c.table_schema = tb.table_schema
+                    AND c.table_name = tb.table_name
+                    AND c.table_schema = DATABASE()
+                    AND tb.table_type = 'VIEW'
+            ) AS SchemaColumn
             ON SourceFieldMatch.SourceConfig = SchemaColumn.table_name
             AND SourceFieldMatch.FieldCode = SchemaColumn.column_name
     ) AS MatchingUpdateData
