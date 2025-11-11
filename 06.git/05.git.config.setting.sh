@@ -74,3 +74,6 @@ git config --global alias.append "commit --amend --no-edit"
 
 # 没有任何改动的提交
 git config --global alias.foo "commit -m "foo" --allow-empty"
+
+# 获取最新 抛弃本地修改
+git config --global alias.reload '!git fetch origin master && git reset --hard origin/master'
