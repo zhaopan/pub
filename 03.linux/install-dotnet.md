@@ -17,6 +17,7 @@ DOWNLOAD_PATH="$DOWNLOAD_DIR/$SDK_FILENAME"
 # 2. 创建目录
 mkdir -p "$DOWNLOAD_DIR"
 mkdir -p "$INSTALL_DIR"
+rm -rf "$INSTALL_DIR/*"
 
 # 3. 下载
 echo "正在将 $SDK_FILENAME 下载到 $DOWNLOAD_DIR... "
