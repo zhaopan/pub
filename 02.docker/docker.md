@@ -283,6 +283,13 @@ docker run --name redis --restart=always -p 6379:6379 -d redis:3.2 redis-server
 docker exec -it redis redis-cli
 
 docker exec -it redis redis-cli CONFIG GET *
+
+
+redis5
+docker exec -it redis redis-cli CONFIG GET '*'
+docker exec -it redis redis-cli FLUSHALL ASYNC
+docker exec -it redis redis-cli DBSIZE
+
 ```
 
 ## pure-ftp
