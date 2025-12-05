@@ -284,8 +284,7 @@ docker exec -it redis redis-cli
 
 docker exec -it redis redis-cli CONFIG GET *
 
-
-redis5
+# redis5
 docker exec -it redis redis-cli CONFIG GET '*'
 docker exec -it redis redis-cli FLUSHALL ASYNC
 docker exec -it redis redis-cli DBSIZE
