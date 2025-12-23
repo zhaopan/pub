@@ -57,3 +57,17 @@ tasklist|findstr "9088"
 # 强制（/F参数）杀死 pid 为 9088 的所有进程包括子进程（/T参数）：
 taskkill /T /F /PID 9088
 ```
+## 系统重装后 SID 不一致
+
+现象：无法删除文件或文件夹
+
+PowerShell-admin
+
+```PowerShell
+# 1. 强制夺取所有权
+takeown /f "你的文件夹或文件路径" /r /d y
+
+# 2. 重置 ACL，抹掉旧系统的 SID 记录
+# /reset 会移除所有旧的、无效的 ACE（访问控制条目）
+icacls "你的文件夹或文件路径" /reset /t /c /l
+```
