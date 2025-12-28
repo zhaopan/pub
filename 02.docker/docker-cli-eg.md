@@ -132,6 +132,8 @@ docker network connect devops_proxy redis
 docker network connect --ip 172.18.0.2 devops_proxy redis
 # 如果指定，容器的 IP 地址将在停止的容器重新启动时重新应用。如果 IP 地址不再可用，容器将无法启动。保证 IP 地址可用的一种方法是--ip-range在创建网络时指定一个地址，并从该范围之外选择静态 IP 地址。这可确保当此容器不在网络上时，不会将 IP 地址提供给另一个容器。
 docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 multi-host-network
+# 查看 network 中有哪些容器
+docker network inspect backend --format='{{range .Containers}}{{.Name}} {{.IPv4Address}}{{println}}{{end}}' | grep redis
 ```
 
 ## exec
