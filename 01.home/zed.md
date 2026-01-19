@@ -34,6 +34,15 @@ scoop update zed
 
 ```json
 {
+    "outline_panel": {
+        "button": false,
+    },
+    "collaboration_panel": {
+        "button": false,
+    },
+    "features": {
+        "edit_prediction_provider": "zed",
+    },
     "theme": "One Dark",
     "icon_theme": "Catppuccin Latte",
     "ui_font_family": "JetBrains Mono",
