@@ -34,6 +34,18 @@ scoop update zed
 
 ```json
 {
+    "diagnostics": {
+        "lsp_pull_diagnostics": {
+            "enabled": false,
+        },
+        "button": false,
+    },
+    "scrollbar": {
+        "diagnostics": "none",
+    },
+    "project_panel": {
+        "show_diagnostics": "off",
+    },
     "outline_panel": {
         "button": false,
     },
