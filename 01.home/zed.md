@@ -53,7 +53,11 @@ scoop update zed
     },
     "relative_line_numbers": true,
     "show_edit_predictions": false,
+    "preferred_line_length": 100,
     "languages": {
+        "YAML": {
+            "preferred_line_length": 120,
+        },
         "Python": {
             "show_edit_predictions": false
         },
@@ -64,7 +68,11 @@ scoop update zed
                     "arguments": ["--language", "mysql"]
                 }
             }
-        }
+        },
+        "Git Commit": {
+            "soft_wrap": "editor_width",
+            "preferred_line_length": 72,
+        },
     },
     "telemetry": {
         "diagnostics": false,
