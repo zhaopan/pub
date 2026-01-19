@@ -139,3 +139,20 @@ npm install -g docker-langserver
     }
 }
 ```
+
+### Set syntax
+
+e.g. Caddyfile.sublime-settings
+
+Windows PATH `C:\Users\ZP\AppData\Roaming\Sublime Text\Packages\User\Caddyfile.sublime-syntax`
+
+```yml
+{
+  // 这里不需要 <.caddy> 扩展名那个 <.> , 只要 <caddy>
+  "extensions": [
+    "caddy"
+  ],
+  "tab_size": 2,
+  "translate_tabs_to_spaces": true
+}
+```
