@@ -114,6 +114,9 @@ scoop update zed
         "show": "always",
         "max_width_columns": 50
     },
+    "file_types": {
+        "Caddyfile": ["*.caddy"],
+    },
     "buffer_font_family": "JetBrains Mono",
     "show_whitespaces": "all",
     "ensure_final_newline_on_save": true,

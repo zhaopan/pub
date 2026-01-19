@@ -149,7 +149,8 @@ code --list-extensions | xargs -L 1 echo code --install-extension
         "editor.defaultFormatter": "yzhang.markdown-all-in-one"
     },
     "files.associations": {
-        "*.md": "markdown"
+        "*.md": "markdown",
+        "*.caddy": "caddyfile"
     },
     "markdown-pdf.executablePath": "C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe",
     "files.exclude": {
