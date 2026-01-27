@@ -439,6 +439,24 @@ docker system prune -f
 docker system prune --volumes -f
 ```
 
+## cleanup docker logs
+
+ubuntu + debian
+
+```bash
+# 查看所有容器日志大小
+du -sh /var/lib/docker/containers/*/*-json.log
+
+# 查看Docker日志总大小
+du -h $(docker inspect --format='{{.LogPath}}' $(docker ps -q) 2>/dev/null | grep -v ^$)
+
+# 清空所有容器的日志文件
+truncate -s 0 /var/lib/docker/containers/*/*-json.log
+
+# 或使用 find 命令
+find /var/lib/docker/containers/ -name "*.log" -exec truncate -s 0 {} \;
+```
+
 ## docker daemon
 
 ```bash
