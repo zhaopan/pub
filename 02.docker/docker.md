@@ -441,6 +441,8 @@ docker system prune --volumes -f
 
 ## cleanup docker logs
 
+### 手动清理
+
 ubuntu + debian
 
 ```bash
@@ -455,6 +457,21 @@ truncate -s 0 /var/lib/docker/containers/*/*-json.log
 
 # 或使用 find 命令
 find /var/lib/docker/containers/ -name "*.log" -exec truncate -s 0 {} \;
+```
+
+### 配置 Docker 日志轮转 自动清理（推荐）
+
+修改 [daemon.json](#docker-daemon) 文件，路径如下：
+
+
+```yml
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3"
+  }
+}
 ```
 
 ## docker daemon
