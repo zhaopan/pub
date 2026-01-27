@@ -463,6 +463,8 @@ find /var/lib/docker/containers/ -name "*.log" -exec truncate -s 0 {} \;
 
 修改 [daemon.json](#docker-daemon) 文件，路径如下：
 
+- **特别注意 末尾 不能多一个 `,` 否则会报错, 必须要严格遵循标准`JSON`格式规范**
+
 ```yml
 {
   "log-driver": "json-file",
