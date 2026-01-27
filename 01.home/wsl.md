@@ -63,6 +63,8 @@ networkingMode=mirrored
 autoProxy=true
 # 允许从局域网其他设备访问 WSL 里的 Vue Dev Server
 hostAddressLoopback=true
+# 强制同步 Windows 的 DNS
+dnsTunneling=true
 ```
 
 ## 限制资源占用
@@ -84,8 +86,64 @@ autoMemoryReclaim=gradual
 - 在 `PowerShell` 中执行
 
 ```bash
-# 1:
+# 1. 彻底关闭 WSL
 wsl --shutdown
-# 2:
-optimize-vhd -Path "您的vhdx路径" -Mode Full
+
+# 2. 在 PowerShell 中以管理员身份执行 (只读挂载 -> 压缩 -> 卸载)
+mount-vhd -Path "C:\path\to\ext4.vhdx" -ReadOnly
+optimize-vhd -Path "C:\path\to\ext4.vhdx" -Mode Full
+detach-vhd -Path "C:\path\to\ext4.vhdx"
+```
+
+## 快速定位`VHDX`路径
+
+- PowerShell
+
+```bash
+# 获取包含 Debian 的注册表项
+$guid = (Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss\*" |
+    Where-Object { $_.DistributionName -eq "Debian" }).PSChildName
+
+# 确保拿到的只是 GUID，然后拼接
+$regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss\$guid"
+$vhdxPath = (Get-ItemProperty $regPath).BasePath + "\ext4.vhdx"
+
+Write-Host "成功定位 VHDX 路径：" -ForegroundColor Green
+$vhdxPath
+```
+
+## 为 VHDX 创建软链接
+
+- 给 `ext4.vhdx` 创建一个符号链接 到 `D:\Debian_Disk.vhdx`
+- 以后执行 `get-command optimize-vhd` 时，就不需要再写一长串路径了
+
+```bash
+# 管理员权限运行 PowerShell
+New-Item -ItemType SymbolicLink -Path "D:\Debian_Disk.vhdx" -Target "$vhdxPath" -Force
+```
+
+## `diskpart` 压缩
+
+- 管理员权限运行 PowerShell
+
+```bash
+# 1. 关闭 WSL
+wsl --shutdown
+
+# 2. 启动磁盘工具
+diskpart
+
+# 3. 在 diskpart 交互界面依次输入：
+# 选择你的虚拟磁盘文件 (刚才找出来的那个路径)
+select vdisk file="E:\data\wsl\Debian\ext4.vhdx"
+
+# 以只读模式挂载 (为了安全)
+attach vdisk readonly
+
+# 执行压缩
+compact vdisk
+
+# 分离并退出
+detach vdisk
+exit
 ```
