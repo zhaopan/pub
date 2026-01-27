@@ -95,6 +95,8 @@ code --list-extensions | xargs -L 1 echo code --install-extension
     "git.autofetch": true,
     // 去除行末尾的空格
     "files.trimTrailingWhitespace": true,
+    // 删除文件末尾多余的空行
+    "files.trimFinalNewlines": true,
     // 文件末尾插入新行
     "files.insertFinalNewline": true,
     // 编辑器换行
