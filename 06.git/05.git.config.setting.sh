@@ -47,6 +47,9 @@ git config --global http.postBuffer 524288000
 git config --global pull.rebase true
 git config --global rebase.autoStash true
 
+# 让git mergetool不再生成烦人的备份文件 *.orig
+git config --global mergetool.keepBackup false
+
 ##
 ## 关闭SSL
 ##
@@ -61,9 +64,6 @@ git config --global alias.st "status -sb"
 
 # 设置status -> sw
 git config --global alias.sw switch
-
-# 让git mergetool不再生成烦人的备份文件 *.orig
-git config --global mergetool.keepBackup false
 
 # 设置checkout -> ck
 git config --global alias.ck checkout
