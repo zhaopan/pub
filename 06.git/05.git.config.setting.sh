@@ -102,11 +102,11 @@ git config --global alias.reload '!git fetch origin master && git reset --hard o
 git config --global alias.sh "stash push -u -m"
 
 # 查看暂存堆栈列表
-git config --global alias.sl 'git stash list'
+git config --global alias.sl 'stash list'
 
 # 弹出并应用最近一次暂存
 # e.g. 若有冲突, 记录会保留在栈中, 需手动 fix 后执行 sd
-git config --global alias.sp 'git stash pop'
+git config --global alias.sp 'stash pop'
 
 # 丢弃最近一次暂存记录
-git config --global alias.sd 'git stash drop'
+git config --global alias.sd 'stash drop'
