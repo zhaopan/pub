@@ -5,6 +5,7 @@
 ## 快速导航
 
 ### 核心功能
+
 - [快速开始](#快速开始) - 安装、认证、配置
 - [仓库管理](#仓库管理) - 创建、克隆、Fork、同步、批量操作
 - [Pull Request 工作流](#pull-request-工作流) - 创建、审查、合并、自动化
@@ -12,12 +13,14 @@
 - [GitHub Actions](#github-actions) - Workflow 管理、清理、监控
 
 ### 进阶技能
+
 - [GitHub API](#github-api) - REST API 和 GraphQL 高级查询
 - [批量自动化](#批量自动化) - 跨仓库批处理、脚本模板
 - [扩展生态](#扩展生态) - 实用扩展、自定义扩展
 - [最佳实践](#最佳实践) - 性能优化、安全建议、团队协作
 
 ### 资源
+
 - [实战场景](#实战场景) - 真实场景解决方案
 - [常见问题](#常见问题) - 故障排查
 - [速查表](#速查表) - 快速参考
@@ -1420,6 +1423,7 @@ gh api graphql -f query='...'          # GraphQL
 ## 参考资料
 
 ### 官方文档
+
 - [GitHub CLI 官方文档](https://cli.github.com/manual/)
 - [GitHub CLI 仓库](https://github.com/cli/cli)
 - [GitHub REST API](https://docs.github.com/rest)
@@ -1427,6 +1431,7 @@ gh api graphql -f query='...'          # GraphQL
 - [GitHub Actions 文档](https://docs.github.com/actions)
 
 ### 社区资源
+
 - [gh-cli Discussions](https://github.com/cli/cli/discussions)
 - [Awesome gh Extensions](https://github.com/topics/gh-extension)
 
