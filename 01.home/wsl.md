@@ -9,6 +9,12 @@ wsl -l -v
 # 进入 Debian
 wsl -d Debian
 
+# 关闭Debian
+wsl --terminate Debian
+
+# 检查运行状态
+wsl --list --verbose
+
 # 查找官方支持的名称
 wsl --list --online
 
@@ -24,7 +30,7 @@ wsl --export Debian E:\backups\debian-backup-2026-01.tar
 # 导入
 wsl --import Debian E:\data\wsl\Debian E:\backups\debian-backup-2026-01.tar
 
-# 关闭WSL实例
+# 关闭所有 WSL实例
 wsl --shutdown
 
 # 卸载
