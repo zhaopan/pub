@@ -72,6 +72,28 @@ takeown /f "你的文件夹或文件路径" /r /d y
 icacls "你的文件夹或文件路径" /reset /t /c /l
 ```
 
+## 重设pem文件权限
+
+```bash
+# PowerShell
+
+# 1. 进入密钥所在的目录
+cd "e:\sync\Dropbox\.ssh\"
+
+# 2. 循环处理所有 .pem 文件
+Get-ChildItem * | ForEach-Object {
+    $path = $_.FullName
+
+    # 禁用权限继承，并移除所有已继承的权限
+    icacls $path /inheritance:r
+
+    # 只授予当前登录用户读取和写入权限
+    icacls $path /grant:r "${env:USERNAME}:(R,W)"
+
+    Write-Host "已修复权限: $path" -ForegroundColor Green
+}
+```
+
 ## 清理Windows.old
 
 - 按下 Win + R,输入 cleanmgr 并回车.
