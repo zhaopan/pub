@@ -21,6 +21,7 @@
   - [py.md](01.home/py.md)
   - [README.md](01.home/README.md)
   - [Rule.md](01.home/Rule.md)
+  - [scoop.md](01.home/scoop.md)
   - [sublime.md](01.home/sublime.md)
   - [vs2019-2026.md](01.home/vs2019-2026.md)
   - [vscode.md](01.home/vscode.md)
