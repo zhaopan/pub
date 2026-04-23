@@ -1,145 +1,118 @@
 # zed
 
-## windows install
-
-参考阅读
-
-- [zed-windows-builds](https://github.com/deevus/zed-windows-builds)
-- [scoop](https://scoop.sh/)
-
-安装
-
-- Install scoop tool
-
-```bash
-# Windows PowerShell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-```
-
-- Install zed
-
-```bash
-# Stable builds
-scoop bucket add extras
-scoop install extras/zed
-
-# update
-scoop update zed
-```
-
 ## 配置
 
 - 常规配置
 
 ```json
 {
-    "diagnostics": {
-        "lsp_pull_diagnostics": {
-            "enabled": false,
+  "agent_buffer_font_size": 14.0,
+  "agent_ui_font_size": 14.0,
+  "buffer_font_size": 14.0,
+  "ui_font_size": 14.0,
+  "buffer_font_family": "JetBrains Mono",
+  "diagnostics": {
+    "lsp_pull_diagnostics": {
+      "enabled": false,
+    },
+    "button": false,
+  },
+  "scrollbar": {
+    "diagnostics": "none",
+  },
+  "project_panel": {
+    "show_diagnostics": "off",
+  },
+  "outline_panel": {
+    "button": false,
+  },
+  "collaboration_panel": {
+    "button": false,
+  },
+  "theme": "One Dark",
+  "icon_theme": "Catppuccin Latte",
+  "ui_font_family": "JetBrains Mono",
+  "agent": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "gemini-2.5-flash",
+    },
+    "expand_terminal_card": false,
+    "expand_edit_card": false,
+    "enable_feedback": false,
+    "single_file_review": false,
+    "model_parameters": [],
+  },
+  "edit_predictions": {
+    "provider": "zed",
+    "mode": "eager",
+  },
+  "relative_line_numbers": "enabled",
+  "show_edit_predictions": false,
+  "preferred_line_length": 100,
+  "languages": {
+    "YAML": {
+      "preferred_line_length": 120,
+    },
+    "Python": {
+      "show_edit_predictions": false,
+    },
+    "SQL": {
+      "formatter": {
+        "external": {
+          "command": "sql-formatter",
+          "arguments": ["--language", "mysql"],
         },
-        "button": false,
+      },
     },
-    "scrollbar": {
-        "diagnostics": "none",
+    "Git Commit": {
+      "soft_wrap": "editor_width",
+      "preferred_line_length": 72,
     },
-    "project_panel": {
-        "show_diagnostics": "off",
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "terminal": {
+    "shell": {
+      "with_arguments": {
+        "program": "C:\\Program Files\\Git\\bin\\sh.exe",
+        "args": ["-i"],
+      },
     },
-    "outline_panel": {
-        "button": false,
-    },
-    "collaboration_panel": {
-        "button": false,
-    },
-    "features": {
-        "edit_prediction_provider": "zed",
-    },
-    "theme": "One Dark",
-    "icon_theme": "Catppuccin Latte",
-    "ui_font_family": "JetBrains Mono",
-    "agent": {
-        "default_model": {
-            "provider": "zed.dev",
-            "model": "gemini-2.5-flash"
-        },
-        "expand_terminal_card": false,
-        "expand_edit_card": false,
-        "enable_feedback": false,
-        "single_file_review": false,
-        "model_parameters": []
-    },
-    "edit_predictions": {
-        "mode": "eager"
-    },
-    "relative_line_numbers": true,
-    "show_edit_predictions": false,
-    "preferred_line_length": 100,
-    "languages": {
-        "YAML": {
-            "preferred_line_length": 120,
-        },
-        "Python": {
-            "show_edit_predictions": false
-        },
-        "SQL": {
-            "formatter": {
-                "external": {
-                    "command": "sql-formatter",
-                    "arguments": ["--language", "mysql"]
-                }
-            }
-        },
-        "Git Commit": {
-            "soft_wrap": "editor_width",
-            "preferred_line_length": 72,
-        },
-    },
-    "telemetry": {
-        "diagnostics": false,
-        "metrics": false
-    },
-    "terminal": {
-        "shell": {
-            "with_arguments": {
-                "program": "C:\\Program Files\\Git\\bin\\sh.exe",
-                "args": ["-i"]
-            }
-        },
-        "font_family": "JetBrains Mono",
-        "font_size": 16
-    },
-    "proxy": "http://127.0.0.1:7890",
-    "minimap": {
-        "show": "always",
-        "max_width_columns": 50
-    },
-    "file_types": {
-        "Caddyfile": ["*.caddy"],
-    },
-    "buffer_font_family": "JetBrains Mono",
-    "show_whitespaces": "all",
-    "ensure_final_newline_on_save": true,
-    "soft_wrap": "none",
-    "tab_size": 4,
-    "base_keymap": "SublimeText",
-    "ui_font_size": 16,
-    "buffer_font_size": 12.0,
-    "file_scan_exclusions": [
-        // 文件夹&文件排除配置
-        "**/.DS_Store",
-        "**/.git",
-        "**/.github",
-        "**/.idea",
-        "**/.obsidian",
-        "**/.vs",
-        "**/.vscode",
-        "**/.zed",
-        "**/build",
-        "**/dist",
-        "**/node_modules"
-    ]
+    "font_family": "JetBrains Mono",
+    "font_size": 14,
+  },
+  "proxy": "http://127.0.0.1:7890",
+  "minimap": {
+    "show": "always",
+    "max_width_columns": 50,
+  },
+  "file_types": {
+    "Caddyfile": ["*.caddy"],
+  },
+  "show_whitespaces": "all",
+  "ensure_final_newline_on_save": true,
+  "soft_wrap": "none",
+  "tab_size": 2,
+  "base_keymap": "SublimeText",
+  "file_scan_exclusions": [
+    // 文件夹&文件排除配置
+    "**/.DS_Store",
+    "**/.git",
+    "**/.github",
+    "**/.idea",
+    "**/.obsidian",
+    "**/.vs",
+    "**/.vscode",
+    "**/.zed",
+    "**/build",
+    "**/dist",
+    "**/node_modules",
+  ],
 }
+
 
 ```
 
