@@ -1,8 +1,8 @@
 # scoop
 
-URL: [Scoop](https://scoop.sh/)
+> URL: [Scoop](https://scoop.sh/)
 
-安装
+## 安装
 
 ```bash
 # Windows PowerShell
