@@ -6,6 +6,8 @@
 
 ```json
 {
+  "enable_language_server": true,
+  "server_url": "https://zed.dev",
   "agent_buffer_font_size": 14.0,
   "agent_ui_font_size": 14.0,
   "buffer_font_size": 14.0,
@@ -32,10 +34,44 @@
   "theme": "One Dark",
   "icon_theme": "Catppuccin Latte",
   "ui_font_family": "JetBrains Mono",
+  "diff_view_style": "split",
+  "git_panel": {
+    "dock": "right",
+    "tree_view": true,
+    "fallback_branch_name": "main",
+    "status_style": "icon",
+    "show_count_badge": false,
+    "diff_stats": true,
+    "folder_icons": true,
+    "file_icons": false,
+  },
   "agent": {
+    "dock": "left",
+    "flexible": true,
+    "button": true,
     "default_model": {
-      "provider": "zed.dev",
-      "model": "gemini-2.5-flash",
+      "effort": "high",
+      "enable_thinking": true,
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+    },
+    "inline_assistant_model": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+    },
+    "commit_message_model": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+    },
+    "inline_alternatives": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-v4-flash",
+      },
+    ],
+    "thread_summary_model": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
     },
     "expand_terminal_card": false,
     "expand_edit_card": false,
@@ -51,6 +87,9 @@
   "show_edit_predictions": false,
   "preferred_line_length": 100,
   "languages": {
+    "Dockerfile": {
+      "enable_language_server": false,
+    },
     "YAML": {
       "preferred_line_length": 120,
     },
@@ -68,6 +107,13 @@
     "Git Commit": {
       "soft_wrap": "editor_width",
       "preferred_line_length": 72,
+    },
+  },
+  "lsp": {
+    "docker-language-server": {
+      "binary": {
+        "arguments": ["--disabled"],
+      },
     },
   },
   "telemetry": {
@@ -90,7 +136,7 @@
     "max_width_columns": 50,
   },
   "file_types": {
-    "Caddyfile": ["*.caddy"],
+    "Caddyfile": ["*.caddy", "*-caddy"],
   },
   "show_whitespaces": "all",
   "ensure_final_newline_on_save": true,
@@ -112,8 +158,6 @@
     "**/node_modules",
   ],
 }
-
-
 ```
 
 - 快捷键设置
