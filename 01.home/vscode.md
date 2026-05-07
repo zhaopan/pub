@@ -152,7 +152,11 @@ code --list-extensions | xargs -L 1 echo code --install-extension
     },
     "files.associations": {
         "*.md": "markdown",
-        "*.caddy": "caddyfile"
+        "*.toml.example": "toml",
+        "*.env.example": "dotenv",
+        "*.conf.example": "properties",
+        "*.caddy": "caddyfile",
+        "*-caddy": "caddyfile"
     },
     "markdown-pdf.executablePath": "C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe",
     "files.exclude": {
