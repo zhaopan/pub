@@ -1,89 +1,234 @@
 # npm
 
-## 设置npm源的几种方式
+## 切换源
+
+### 方案1: 使用 nrm
 
 ```bash
-# the original source
-https://registry.npmjs.org/
-
-###
-### 方案1: 使用nrm
-###
-
 # 安装
 npm install -g nrm
 
-# 列出源的候选项
+# 列出可用源
 nrm ls
 
-# 使用淘宝源
+# 切换源
 nrm use taobao
+```
 
-###
-### 方案2: 改变全局的注册
-###
+### 方案2: 全局配置
 
-# 设置成淘宝源
+```bash
+# 设置淘宝源
 npm config set registry https://registry.npm.taobao.org
-# 查看结果
+
+# 验证
 npm config get registry
-# 输出结果：
-https://registry.npm.taobao.org/
-# 测试一下
+# https://registry.npm.taobao.org/
+
+# 测试连接
 npm info underscore
+```
 
-###
-### 方案:3 在命令行里指定源(个人推荐)
-###
+### 方案3: 命令行指定
+
+```bash
 npm --registry https://registry.npm.taobao.org install [name]
+```
 
-###
 ### 方案4: 修改 ~/.npmrc
-###
-registry = https://registry.npm.taobao.org
 
-###
-### 方案5: 使用cnpm
-###
+```ini
+registry = https://registry.npm.taobao.org
+```
+
+### 方案5: 使用 cnpm
+
+```bash
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm install [name]
 ```
 
+## 初始化与安装
+
 ```bash
-# 创建 package.json 文件
-
+# 创建 package.json
 npm init
-# 以默认配置创建 package.json 文件
-npm init -y
+npm init -y                     # 使用默认配置
 
-# 全局安装
-npm install -g <--save/--save-dev>  [模块名]
-# 简写
-npm i -g <--save/--save-dev> [模块名]
+# 安装依赖
+npm install <package>          # 安装并保存到 dependencies
+npm install -D <package>        # 安装并保存到 devDependencies
+npm install -g <package>        # 全局安装
+npm install <package>@latest    # 安装最新版本
+npm install <package>@1.0.0     # 安装指定版本
+npm install <package>@^1.0.0    # 匹配 1.x.x 范围
 
-# 局部安装
-npm install <--save/--save-dev> [模块名]
-# 简写
-npm i <--save/--save-dev> [模块名]
+# 卸载
+npm uninstall <package>
+npm uninstall -g <package>
 
-#说明：
+# 更新
+npm update <package>
+npm update -g <package>
+npm update                      # 更新所有依赖
+```
 
-# npm install 后面的 --save 与 --save-dev 可选，当该参数存在时，表示 npm 维护一份列表，记录安装过的第三方依赖，此列表内容存放于 package.json 中，分别为 dependencies 与 devDependencies，dependencies 表示项目运行时需要的依赖模块，devDependencies 表示项目开发是需要的依赖模块 。
+## 查看与搜索
 
-# 查看全局模块
-npm list -g
-# 查看全局安装模块的一级目录
-npm list -g --depth 0
+```bash
+# 查看已安装的包
+npm list                        # 当前项目
+npm list -g                     # 全局
+npm list --depth=0              # 只显示一级依赖
 
-# 更新模块
-npm update -g [模块名]
+# 查看包信息
+npm info <package>
+npm view <package> version     # 查看最新版本
+npm view <package> versions    # 查看所有版本
 
-# 卸载模块
-npm uninstall -g [模块名]
+# 搜索
+npm search <keyword>
+```
 
-# 获取当前在线仓库镜像地址
-npm get registry
+## package.json scripts
 
-# 设置在线仓库地址(设置淘宝仓库镜像地址)
-npm set registry https://registry.npm.taobao.org
+```bash
+# 在 package.json 中定义
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest",
+    "lint": "eslint ."
+  }
+}
+
+# 运行脚本
+npm run dev
+npm run build
+npm test
+```
+
+## workspaces
+
+```bash
+# 在根 package.json 中配置
+{
+  "workspaces": [
+    "packages/*"
+  ]
+}
+
+# 在工作区中运行命令
+npm install                      # 在根目录安装所有工作区的依赖
+npm install <package> -w packages/ui   # 在指定工作区安装
+```
+
+## 缓存管理
+
+```bash
+# 清除缓存
+npm cache clean --force
+
+# 查看缓存位置
+npm cache ls
+
+# 离线安装
+npm install --offline
+```
+
+## 发布包
+
+```bash
+# 登录
+npm login
+
+# 发布
+npm publish                      # 发布到 npmjs.org
+npm publish --access public      # 发布公开作用域包
+
+# 更新版本
+npm version patch                # 1.0.0 -> 1.0.1
+npm version minor                # 1.0.0 -> 1.1.0
+npm version major                # 1.0.0 -> 2.0.0
+```
+
+## 其他常用命令
+
+```bash
+npm outdated                     # 检查过时的依赖
+npm audit                        # 安全审计
+npm audit fix                    # 自动修复安全问题
+npm ci                           # 全新安装 (基于 package-lock.json)
+npm ls <package>                 # 查看包的依赖树
+npm explain <package>            # 查看包为什么被安装
+npm deprecate <package>@<version> "<message>"  # 弃用警告
+
+# 查看全局模块位置
+npm root -g
+npm bin                          # 查看当前项目的 node_modules/.bin
+```
+
+## nvm
+
+### Linux/macOS
+
+```bash
+# 安装
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
+
+# 常用命令
+nvm install 22                   # 安装 Node 22
+nvm use 22                       # 使用 Node 22
+nvm alias default 22             # 设置默认版本
+nvm ls | grep -v "N/A"           # 列出已安装版本
+nvm cache clear                  # 清除缓存
+
+# 查看版本
+node -v
+npm -v
+```
+
+### Windows
+
+使用 [nvm-windows](https://github.com/coreybutler/nvm-windows) 或 [fnm](https://github.com/Schniz/fnm):
+
+```bash
+# 使用 fnm (跨平台)
+winget install Schniz.fnm
+
+# 或使用 nvm-windows
+# 下载: https://github.com/coreybutler/nvm-windows/releases
+```
+
+## pnpm (推荐替代方案)
+
+```bash
+# 安装
+npm install -g pnpm
+
+# 常用命令 (与 npm 用法相同)
+pnpm install
+pnpm add <package>
+pnpm remove <package>
+pnpm update
+
+# 特点: 速度快、节省磁盘空间
+```
+
+## yarn
+
+```bash
+# 安装
+npm install -g yarn
+
+# 常用命令
+yarn install
+yarn add <package>
+yarn remove <package>
+yarn upgrade
+yarn build
+
+# 特点: 确定性安装、工作区支持
 ```
