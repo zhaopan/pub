@@ -18,6 +18,13 @@
 
 + SchemaExplorer.MySQLSchemaProvider.dll
 # 来源于 CodeSmith\SchemaProviders\SchemaExplorer.MySQLSchemaProvider.dll
+
+###
+### 注意
+### SchemaExplorer.MySQLSchemaProvider.dll 
+### MySql.Data.dll
+### 是否有需要解锁 Web 下载属性
+
 ```
 
 ---
